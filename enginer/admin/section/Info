@@ -1,0 +1,29 @@
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<div class="LeftPadding"> 
+<p class="mainTopP">Системная информация</p> 
+<p><strong>Версия CMS</strong>: %VERSION%</p> 
+<p><strong>Версия PHP</strong>: %VERSIONPHP% </p> 
+<p><strong>Операционная система</strong>: %OS% </p> 
+<p><strong>Библиотека GD</strong>: %GD% </p> 
+<p><strong>Время на сервере</strong>: %TIME%</p> 
+<p><strong>Имя сервера</strong>: %NAMESERVER% </p> 
+<p><strong>Ip сервера</strong>: %IP%</p> 
+<p><strong>ПО</strong>: %SOFT%</p> 
+<p><strong>Протокол</strong>: %PRO% </p> 
+<p><strong>Порт сервера</strong>:%PORT%</p> 
+<p><strong>Execution time</strong>: %EXE% </p> 
+<p><strong>Safe mode</strong>: %SAFE%  </p> 
+<p><strong>Magic quotes gpc</strong>: %MAG%  </p> 
+<p><strong>Register globals</strong>: %REG% </p> 
+<p><strong>Версия ядра CMS</strong>: %CMS% </p> 
+</div> 
+[/section::3]
+[section::4]
+<span class="RedText">выключено</span>
+[/section::4]
+[section::5]
+<span class="greenText">включено</span>
+[/section::5]

@@ -1,0 +1,37 @@
+[section::1]
+<form action="#" method="post">
+<table width="100%" cellpadding="2" cellspacing="2">
+<tr>
+<td><input style="width:100%" type="text" name="TextSearch" /></td><td><input type="submit" name="go" value="найти" /></td>
+</tr>
+</table>
+</form>
+[/section::1]
+[section::2]
+<h2><a href="{url}">{name}</a></h2>
+{text}
+[/section::2]
+[section::3]
+<p>По вашему запросу "{word}" не чего не найдено.</p>
+[/section::3]
+[section::4]
+<p>Слишком короткий запрос, менее 5 символов </p>
+[/section::4]
+[section::5]
+<p>Всего найдено: <b>{num}</b></p>
+[/section::5]
+[section::6]
+<p style="text-align:center">{back}{pages}{next}</p>
+[/section::6]
+[section::7]
+<b>{j}</b>
+[/section::7]
+[section::8]
+<a href="{url}">{j}</a>
+[/section::8]
+[section::9]
+<a href="{url}">&larr; назад</a>
+[/section::9]
+[section::10]
+<a href="{url}">вперед &rarr;</a>
+[/section::10]

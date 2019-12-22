@@ -1,0 +1,331 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Объекты на карте</p>
+</div>
+<table class="table5" cellpadding="0" cellspacing="0">
+<tr>
+<th></th><th>добавить</th><th>редактировать</th><th>удалить</th>
+</tr>
+<tr>
+<td class="textTable" style="width:170px;">Объекты на карте</td>
+<td><a href="main-modules-setting-mod-{NameModule}-1.pl"><img src="../images/news/+.png" alt="" /></a></td><td><a href="main-modules-setting-mod-{NameModule}-2.pl"><img src="../images/news/edit.png" alt="" /></a></td><td><a href="main-modules-setting-mod-{NameModule}-3.pl"><img src="../images/news/delete.png" alt="" /></a></td>
+</tr>
+<tr>
+<th></th><th></th><th></th><th></th>
+</tr>
+
+<tr>
+<th></th><th></th><th></th><th></th>
+</tr>
+</table>
+<form action="#" method="post">
+<table>
+<tr>
+<td align="left">Изображение большое ширина:</td><td><input style="height:15px;" class="stepInput" type="text" value="{ProWidth}" name="ProWidth" /></td>
+</tr>
+
+<tr>
+<td align="left">Изображение большое высота:</td><td><input style="height:15px;" class="stepInput" type="text" value="{ProHeight}" name="ProHeight" /></td>
+</tr>
+
+<tr>
+<td align="left">Изображение маленькое ширина:</td><td><input style="height:15px;" class="stepInput" type="text" value="{sProWidth}" name="sProWidth" /></td>
+</tr>
+
+<tr>
+<td align="left">Изображение маленькое высота:</td><td><input style="height:15px;" class="stepInput" type="text" value="{sProHeight}" name="sProHeight" /></td>
+</tr>
+<tr><td></td><td></td></tr>
+<tr>
+<td align="right"></td><td><input type="submit" name="save" class="buttons" value="сохранить" /></td>
+</tr>
+</table>
+<input type="hidden" name="comment" value="2" />
+</form>
+<p class="mainTopP">Текст</p>
+<form action="#" method="post">
+{editor}
+<input type="submit" name="savetext" class="buttons" value="сохранить" />
+</form>
+[/section::1]
+[section::2]
+<div class="LeftPadding"> 
+<p class="mainTopP">Объекты на карте</p>
+[/section::2]
+[section::3]
+</div>
+[/section::3]
+
+[section::5]
+<p class="backgo"><a href="main-modules-setting-mod-{NameModule}.pl">вернуться назад</a></p>
+</div>
+<ul class="ul1"> 
+<li><a href="main-modules-setting-mod-{NameModule}-1.pl" {style-1}>{list-1} Добавить объект</a></li> 
+<li><a href="main-modules-setting-mod-{NameModule}-2.pl" {style-2}>{list-2} Редактировать объект</a></li> 
+<li><a href="main-modules-setting-mod-{NameModule}-3.pl" {style-3}>{list-3} Удалить объект</a></li> 
+</ul>
+<div class="LeftPadding">
+[/section::5]
+[section::6]
+<option value="{id}" {s}>{next}{name}</option>
+[/section::6]
+
+[section::12]
+<ul class="ulLeft">
+[/section::12]
+[section::13]
+</ul>
+[/section::13]
+[section::14]
+<ul>
+[/section::14]
+[section::15]
+
+<span class="span1"><span class="span2">
+{position} {name} 
+<a href="main-modules-setting-mod-{NameModule}-2-{id}.pl">
+<img style="cursor:pointer;"  src="../templates/admin/images/icon/edit.gif" alt="" /> </a></span></span>
+
+[/section::15]
+
+[section::15-1]
+<span style="cursor:pointer; font-size:20px;" onclick="PositionElement({id},'top')">&uarr;</span>
+[/section::15-1]
+[section::15-2]
+<span style="cursor:pointer; font-size:20px;" onclick="PositionElement({id},'bottom')">&darr;</span>
+[/section::15-2]
+
+
+[section::20]
+<p class="backgo"><a href="main-modules-setting-mod-{NameModule}.pl">вернуться назад</a></p>
+</div>
+<ul class="ul1"> 
+<li><a href="main-modules-setting-mod-{NameModule}-4.pl" {style-1}>{list-1} Добавить товар</a></li> 
+<li><a href="main-modules-setting-mod-{NameModule}-5.pl" {style-2}>{list-2} Редактировать товары</a></li> 
+<li><a href="main-modules-setting-mod-{NameModule}-6.pl" {style-3}>{list-3} Удалить товары</a></li> 
+</ul>
+<div class="LeftPadding">
+[/section::20]
+[section::add]
+{top}
+<script type="text/javascript"> 
+var items=1;
+function AddItem() {
+	items++;
+	div=document.getElementById("ite");
+	button=document.getElementById("add");
+	newitem="<p id=\"a"+items+"\" style=\"position:relative\"><input type=\"file\" name=\"file[]\" style=\"width:100%;height:30px;\" class=\"set1\" /><input style=\"width:30px;cursor:pointer;height:30px;background:red;color:#fff;position:absolute;right:0px;top:0px;\" type=\"button\" class=\"stepInput\" onClick=\"a('a"+items+"');\" value=\"-\" /></p>";
+	newnode=document.createElement("span");
+	newnode.innerHTML=newitem;
+	div.insertBefore(newnode,button);
+}
+function a(x){
+	r=document.getElementById(x);
+	r.parentNode.removeChild(r);
+	items=items-1;
+}
+
+
+</script>
+<form action="#" method="post" enctype="multipart/form-data">
+<p style="clear:both;padding-top:10px;">* - поля обязательные для заполнения</p>
+<table  width="500" cellpadding="2" cellspacing="2">
+<tr>
+<td width="100">Название*:</td><td><input name="name" class="set1" style="width:100%;height:30px" value="" /></td>
+</tr>
+<tr>
+<td width="100">Описание*:</td><td>{editor}</td>
+</tr>
+<tr>
+<td>Ссылка на группу:</td><td><input type="text" name="href" class="set1" style="width:100%;height:30px" value="" /></td>
+</tr>
+<tr>
+<td>Координаты:</td><td><input type="text" name="coords" class="set1" style="width:100%;height:30px" value="" /></td>
+</tr>
+<tr>
+<td>Изображения:</td><td><div id="ite" style="position:relative;"><input type="file" name="file[]" class="set1" style="width:100%;height:30px" /><input type="button" class="stepInput"  style="width:30px;cursor:pointer;height:30px;background:green;color:#fff; position:absolute;top:0px; right:0px;" id="add" onClick="AddItem();" value="+" />
+</div>
+</td>
+</tr>
+
+
+<tr>
+<td></td><td><input type="submit" name="add" class="buttons" value="добавить" /></td>
+</tr>
+</table>
+</form>
+[/section::add]
+[section::22]
+<span class="span1"><span class="span2">
+<a href="main-modules-setting-mod-{NameModule}-5-{id}.pl">{name}</a></span></span>
+[/section::22]
+[section::23]
+{top}
+</div>
+<div class="LeftPadding" style="clear:both;padding-top:10px;">
+<table class="tablelist" width="100%">
+<tr>
+<th>Название</th>
+<th>Описание</th>
+<th>Координаты</th><th width="110">Редактировать</th>
+</tr>
+<tbody id="ListProduct">
+{list}
+</tbody>
+</table>
+[/section::23]
+[section::24]
+<tr>
+<td>{name}</td><td>{desc}</td><td>{coords}</td>
+<td align="center"><a href="main-modules-setting-mod-{NameModule}-2-{id}.pl"><img src="../templates/admin/images/icon/edit.gif" alt="" /></a></td>
+</tr>
+[/section::24]
+[section::25]
+<a href="{img}" class="fancy" ><img src="{img}" height="100" alt="" /></a>
+[/section::25]
+
+[section::28]
+{top}
+<p style="clear:both;padding-top:10px"><b>Нет пунктов выдачи</b></p>
+[/section::28]
+[section::edit]
+{top}
+</div>
+<div class="LeftPadding" style="clear:both;padding-top:10px;">
+<p class="backgo"><a href="main-modules-setting-mod-{NameModule}-2.pl">вернуться к списку пунктов выдачи</a></p>
+<script type="text/javascript"> 
+var items=1;
+function AddItem() {
+	items++;
+	div=document.getElementById("ite");
+	button=document.getElementById("add");
+	newitem="<p id=\"a"+items+"\" style=\"position:relative\"><input type=\"file\" name=\"file[]\" style=\"width:100%;height:30px;\" class=\"set1\" /><input style=\"width:30px;cursor:pointer;height:30px;background:red;color:#fff;position:absolute;right:0px;top:0px;\" type=\"button\" class=\"stepInput\" onClick=\"a('a"+items+"');\" value=\"-\" /></p>";
+	newnode=document.createElement("span");
+	newnode.innerHTML=newitem;
+	div.insertBefore(newnode,button);
+}
+function a(x){
+	r=document.getElementById(x);
+	r.parentNode.removeChild(r);
+	items=items-1;
+}
+</script>
+<form action="#" method="post" enctype="multipart/form-data">
+<p style="clear:both;padding-top:10px;">* - поля обязательные для заполнения</p>
+<table  width="500" cellpadding="2" cellspacing="2">
+<tr>
+<td width="100">Название*:</td><td><input name="address" class="set1" style="width:100%;height:30px" value="{name}" /></td>
+</tr>
+<tr>
+<td width="100">Описание:</td><td>{editor}</td>
+</tr>
+<tr>
+<td>Ссылка на группу:</td><td><input type="text" name="href" class="set1" style="width:100%;height:30px" value="{href}" /></td>
+</tr>
+<tr>
+<td>Координаты:</td><td><input type="text" name="coords" class="set1" style="width:100%;height:30px" value="{coords}" /></td>
+</tr>
+<tr>
+<td>Изображения:</td><td>{i}<div id="ite" style="position:relative;clear:both;"><input type="file" name="file[]" class="set1" style="width:100%;height:30px" /><input type="button" class="stepInput"  style="width:30px;cursor:pointer;height:30px;background:green;color:#fff; position:absolute;top:0px; right:0px;" id="add" onClick="AddItem();" value="+" />
+</div>
+</td>
+</tr>
+<tr>
+<td></td><td><input type="submit" name="edit" class="buttons" value="сохранить" /></td>
+</tr>
+</table>
+<input type="hidden" name="id" value="{id}" />
+</form>
+[/section::edit]
+[section::30]
+<option value="{id}" {check}>{next}{name}</option>
+[/section::30]
+[section::30-1]
+<option {s}>{name}</option>
+[/section::30-1]
+[section::30-2]
+<option value="{id}" {s}>{name}</option>
+[/section::30-2]
+[section::31]
+<a href="../{img}" class="fancy" ><img src="../{img}" height="100" alt="" /></a>
+<p><input type="checkbox" name="deleteDef" /> удалить</p>
+[/section::31]
+[section::32]
+<div style="width:100px;height:140px;float:left;margin-right:5px;margin-bottom:5px;">
+<div style="background:url(../{img}) no-repeat center; width:100px;height:100px;">
+<a href="../{img}" rel="1" title="" class="fancy"><img src="../images/clear.gif" width="100%" height="100%" alt="image" /></a></div>
+<p><input type="checkbox" name="delete[{id}]" /> удалить</p></div>
+[/section::32]
+[section::42]
+<table class="tablelist">
+<tr>
+<th>Название</th>
+<th>Описание</th>
+<th>Координаты</th>
+<th>Удалить</th>
+</tr>
+{delete}
+</table>
+[/section::42]
+[section::42-1]
+<tr><td>{name}</td><td>{desc}</td><td>{coords}</td><td><form action="#" method="post">
+<input type="hidden" name="id" value="{id}"/><input type="submit" name="delete" class="buttons" value="" style="width:16px;height:16px;background:url(../templates/admin/images/icon/delete.gif);"/>
+</form></td></tr>
+[/section::42-1]
+
+
+[section::town]
+<div class="LeftPadding" style="clear:both;padding-top:10px;">
+<p class="backgo"><a href="main-modules-setting-mod-{NameModule}.pl">вернуться назад</a></p>
+<p class="mainTopP" style="clear:both;padding-top:10px;">Добавить город</p>
+<form action="#" method="post">
+<table  width="500" cellpadding="2" cellspacing="2">
+<tr>
+<td width="100">Город:</td><td><input type="text" name="name" class="set1" style="width:100%;height:30px" value="" /></td>
+</tr>
+<tr>
+<td width="100">Столичный:</td><td style="text-align:left;"><input type="checkbox" name="capital" class="set1"  value="1" /></td>
+</tr>
+<tr>
+<td>&nbsp;</td><td><input type="submit" name="add" class="buttons" value="Добавить" /></td>
+</tr>
+</table>
+<input type="hidden" name="id" value="{id}" />
+</form>
+{table}
+</div>
+[/section::town]
+[section::town1]
+<table >
+<tr>
+<th>Название</th>
+<th>Столичный</th>
+<th>Редактировать</th>
+<th>Удалить</th>
+</tr>
+{towns}
+</table>
+[/section::town1]
+[section::town2]
+<tr><td>{name}</td><td>{capital}</td>
+<td style="text-align:center;">{edit}<img src="../templates/admin/images/icon/edit.gif" onclick="ShowWindow('{id}');" style="cursor:pointer;" alt="" /></td>
+<td style="text-align:center;"><form action="#" method="post">
+<input type="hidden" name="id" value="{id}"/><input type="submit" name="delete" class="buttons" value="" style="width:16px;height:16px;background:url(../templates/admin/images/icon/delete.gif);"/>
+</form></td></tr>
+[/section::town2]
+[section::town3]
+<form action="#" method="post">
+<table>
+<tr>
+	<td>Город:</td><td><input type="text" name="city" value="{city}"/></td>
+</tr>
+<tr>
+	<td>Столичный:</td><td><input type="checkbox" name="capital" value="1" {capitalch}/></td>
+</tr>
+<tr>
+	<td></td><td><input type="submit" name="redact" value="Сохранить"/></td>
+</tr>
+</table>
+<input type="hidden" name="id" value="{id}"/>
+</form>
+[/section::town3]

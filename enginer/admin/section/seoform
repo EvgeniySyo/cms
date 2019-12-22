@@ -1,0 +1,20 @@
+<span onclick="PanelWorks('seo')" class="p10">Дополнительно</span> 
+<div class="panelCss" style="display: none;" id="seo">
+
+<table width="100%">
+<tbody>
+<tr> 
+<td width="220">Алиас:</td><td><input style="width:100%;height:25px;" class="set1" type="text" name="SIMPLE_ALIAS" value="{alias}"></td>
+</tr>
+<tr> 
+<td width="220">Meta title:</td><td><input style="width:100%;height:25px;" class="set1" type="text" name="SIMPLE_META_TITLE" value="{title}"></td>
+</tr>
+<tr>
+<td>Meta keywords:</td><td><input style="width:100%;height:25px;" class="set1" type="text" name="SIMPLE_META_KEYWORD" value="{key}"></td>
+</tr>
+<tr>
+<td>Meta description:</td><td><input style="width:100%;height:25px;" class="set1" type="text" name="SIMPLE_META_DESC" value="{desc}"></td>
+</tr>
+</tbody></table>
+
+</div> 

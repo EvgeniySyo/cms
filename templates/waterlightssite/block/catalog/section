@@ -1,0 +1,66 @@
+[section::1]
+
+<div id="kat">
+<div class="aligncenter"><a href="#" id="prev"></a></div>
+<div class="slidediv">
+	<div id="carousel">{list}</div>
+</div>
+<div class="aligncenter"><a href="#" id="next"></a></div>
+</div>
+<script type="text/javascript">
+	$(function() {
+		$('#carousel').carouFredSel({
+			responsive: true,
+			direction: 'down',
+			next: '#next',
+			prev: '#prev',
+			height: '100%',
+			items: {
+				height: 57,
+				width: 288,
+				visible: {
+					min: 8,
+					max: 8
+				}
+			},
+			auto: false,
+			scroll: {
+				items: 8,
+				pauseOnHover: false,
+				timeoutDuration: 7000
+			}
+			/*
+				visible:{
+					min: 2,
+					max: 3
+				}
+			*/
+		});
+		{slideto}
+	});
+	
+</script>
+[/section::1]
+[section::2]
+<div class="item"><a href="{url}">{name}</a></div>
+[/section::2]
+[section::2-1]
+<div class="item selected"><a href="{url}">{name}</a></div>
+[/section::2-1]
+[section::2-2]
+	$('#carousel').trigger('slideTo', {num});
+[/section::2-2]
+
+[section::3]
+<form action="/shop/search/" method="get" class="formdata" id="shopsearch">
+<input type="submit" name="searchgo" value="1" class="searchsubmit"/>
+<div class="search">
+	<p>Поиск по модели</p>
+	<input type="text" name="search" value="" />
+</div>
+<div class="clearleft"></div>
+</form>
+[/section::3]
+[section::4]
+<ul>{list}</ul>
+[/section::4]

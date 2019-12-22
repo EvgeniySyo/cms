@@ -1,0 +1,105 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Шаблоны</p>
+<table class="tablelist" width="100%" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th>Внешний вид</th><th>Название</th><th>Статус</th><th>Информация</th><th width="200">Редактировать</th> 
+</tr> 
+%INFO%
+</table>
+[/section::1]
+[section::2]
+<tr> 
+<td><img src="%IMG%" class="bImg" alt="" /></td><td>%NAME%</td><td>%SELECT%</td> 
+<td class="ttt"> 
+<span class="st">Дата создания:</span> %DATE% <br /> 
+<span class="st">Автор шаблона:</span> %AUTOR% <br /> 
+<span class="st">e-mail:</span> %MAIL% <br /> 
+<span class="st">Дополнительная информация:</span> <br /> 
+%INFO% 
+</td> 
+<td><div style="float:left;margin-right:15px;">
+<a href="templates-edittheme-%NAME%.pl"><img src="../templates/admin/images/text.png" alt="файлы шаблонов" title="файлы шаблонов" /></a>
+</div>
+<div style="float:left;margin-right:15px;">
+<a href="templates-addition-%NAME%.pl"><img src="../templates/admin/images/addition.png" alt="дополнительно" title="дополнительно" /></a>
+</div>
+<div style="float:left;margin-right:15px;">
+<a href="templates-css-%NAME%.pl"><img src="../templates/admin/images/css.png" alt="css" title="редактировать css" /></a>
+</div>
+<form action="#" method="post" style="float:left;margin-right:15px;">
+<input type="hidden" value="%NAME%" name="template" />
+<input type="submit" class="templateEdit" name="editT" value="" />
+</form>
+<form action="#" method="post" style="float:left">
+<input type="hidden" value="%NAME%" name="template" />
+<input type="submit" class="deleteTemplate" name="deleteT" value="" />
+</form>
+</td> 
+</tr> 
+[/section::2]
+[section::3]
+<img src="../templates/admin/images/icon/yes.gif" alt="" /> <span class="YesT">установлен </span>
+[/section::3]
+[section::4]
+<form action="#" method="post">
+<input type="hidden" name="id" value="%ID%" />
+<input type="submit" class="set" value="установить" />
+</form>
+[/section::4]
+[section::5]
+<div class="LeftPadding"> 
+<p class="mainTopP">Редактитрование шаблона</p>
+<p class="backgo"><a href="templates.pl">вернуться назад</a></p>
+<div class="LineTop"><div class="posText"><strong>%NAME%</strong></div><img src="%IMG%" style="height:50px;" class="posImg bImg" alt="" /> </div> 
+<p class="RedText"><strong>Внимание! Только для опытных пользователей!</strong></p> 
+<p class="TextTop">Редактируемые области шаблона</p> 
+%TABLE%
+</div>
+[/section::5]
+[section::6]
+<form action="#" method="post">
+<table> 
+%TTT% 
+<tr> 
+<td class="td250"></td><td><input type="submit" class="buttons" value="сохранить" name="save" /></td> 
+</tr> 
+</table>
+<input type="hidden" value="%NAME%" name="template" /> 
+<input type="hidden" name="editT" value="" />
+ </form>
+[/section::6]
+[section::7]
+<tr> 
+<td class="td250">%NAMES%</td><td><input type="text" name="name[%T%]" value="%NAME%" class="InputEd" />
+<input type="hidden" name="IdSector[%T%]" value="%ID%" />
+<input type="hidden" name="value[%T%]" value="%NAMES%" />
+</td> 
+</tr> 
+[/section::7]
+[section::8]
+<p class="mainTopP">Новые шаблоны</p>
+[/section::8]
+[section::9]
+<p class="er">шаблоны не найдены</p> 
+[/section::9]
+[section::10]
+<table class="table2" style="width:400px;">
+%TABLE%
+</table>
+[/section::10]
+[section::11]
+<tr>
+<td><img src="%IMG%" class="bImg" alt="" /></td>
+<td><b>%NAME%</b></td>
+<td>
+<form action="#" method="post">
+<input name="NameTemplates" value="%NAME%" type="hidden" />
+<input type="submit" class="buttons" value="установить" />
+</form>
+</td>
+</tr>
+[/section::11]
+[section::12]
+</div>
+[/section::12]

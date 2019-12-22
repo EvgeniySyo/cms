@@ -1,0 +1,6 @@
+<div id="dialog{id}" class="alertWindow" style="display:none;">
+<div id="dialog-header" class="warningheader">
+<div id="dialog-title">{title}</div>
+<div id="dialog-close" onclick="hiddenWindow('{id}')" style="visibility: visible; "></div>
+</div><div id="dialog-content" class="warning">{text}</div>
+</div>

@@ -1,0 +1,6 @@
+<?php
+$names_module = "Объекты на карте";
+$ver = "1.0";
+$info = "Объекты на карте";
+$programin = "A!EX";
+?>

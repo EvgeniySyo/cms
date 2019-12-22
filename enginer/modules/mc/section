@@ -1,0 +1,296 @@
+[section::1]
+
+<script type="text/javascript">
+function StatusPage(id)
+{
+	$.get('/admin.php?ajax=1&id='+id, function(data) {
+	$('#status'+id).html(data);
+	});
+}
+</script>
+
+<script type="text/javascript">
+
+function PositionPage(idthis,idchange,x)
+{
+	$.get('/admin.php?ajax=1&idpagethis='+idthis+'&idpagechange='+idchange, function(data) {
+		$('#positionpage').html(data);
+	});
+}
+
+function PositionCat(idthis,idchange,x)
+{
+	$.get('/admin.php?ajax=1&idcatthis='+idthis+'&idcatchange='+idchange, function(data) {
+		$('#positioncat').html(data);
+	});
+}
+
+</script>
+
+<div class="LeftPadding">
+<p class="mainTopP">Менеджер контента</p>
+[/section::1]
+[section::2]
+<div style="clear:both"></div>
+</div>
+<div class="LeftPadding">
+<p class="mainTopP">Настройки</p>
+<form action="#" method="post">
+<table cellpadding="4" cellspacing="4">
+<tr><td>Использовать пути до страницы:</td><td><select style="width:200px;height:25px" class="set1" name="path"><option value="1" {p3}>Да</option><option value="2" {p4}>Нет</option></select></td></tr>
+<tr><td>Применять fansybox для изображений:</td><td><select style="width:200px;height:25px" class="set1" name="fansybox"><option value="1" {p1}>Да</option><option value="2" {p2}>Нет</option></select> {js}</td></tr>
+<tr><td>Применять fansybox для тестовых файлов (формат txt):</td><td><select style="width:200px;height:25px" class="set1" name="text"><option value="1" {p5}>Да</option><option value="2" {p6}>Нет</option></select> {js}</td></tr>
+<tr><td>{window}Текст главного раздела:</td><td><a href="#" onclick="ShowWindow('-1')">редактирвать</a></td></tr>
+<tr><td></td><td><input type="submit" name="save_data" class="buttons" value="сохранить" /></td></tr>
+</table>
+</form>
+</div>
+[/section::2]
+[section::3]
+<table width="100%"  class="table-mc" cellpadding="0" cellspacing="0">
+<tr>
+<td colspan="2" class="table-mc-top"><span><a href="{url}">Создать страницу</a></span>
+{window}
+<span style="padding-left:36px;"><a href="#" onclick="ShowWindow('alex')">Создать раздел</a></span></td>
+</tr>
+<tr>
+<td valign="top" style="background:#f8f8f8;width:223px;height:615px;border:1px #bdbdbd solid;padding:10px;overflow:auto;">{map}</td>
+<td valign="top" style="background:#f8f8f8;height:615px;border:1px #bdbdbd solid;padding:10px;overflow:auto;">{folder}</td>
+</tr>
+</table>
+[/section::3]
+[section::3-1]
+<form action="#" method="post">
+<p class="editPUser">Создание раздела</p> 
+<table width="100%"> 
+<table> 
+<tr> 
+<td align="right" width="170">Название раздела:</td><td align="left"><input style="width:200px;" class="set1" type="text" name="nameCat" value="" /></td> 
+</tr>
+<tr> 
+<td align="right" width="170">Использовать пути до категории:</td><td align="left"><select style="width:200px;height:25px;" class="set1" name="PathToCat" /><option value="1">Да</option><option value="2" selected>Нет</option></select></td> 
+</tr>  
+<tr> 
+<td></td><td><input type="submit" name="add" class="set" value="создать" /> 
+</td> 
+</tr> 
+</table>  
+</form>
+[/section::3-1]
+[section::4]
+<table id="positioncat" width="100%" cellpadding="5" cellspacing="5">
+{list}
+</table>
+[/section::4]
+[section::4-1]
+<table  id="positionpage" width="100%" cellpadding="5" cellspacing="5">
+{list}
+</table>
+[/section::4-1]
+[section::5]
+<tr>
+<td align="right" width="80">{positionup}{positiondown}<img style="width:40px;" src="../templates/admin/images1/folder.png" alt="" /></td>
+<td align="left"><a href="{urls}" style="font-size:16px;color:#000000;text-decoration:undeline">{name}</a> <br />
+{window1}
+
+<span style="color:green;text-decoration:underline;cursor:pointer" onclick="ShowWindow({id})">редактировать</span>&nbsp;&nbsp;&nbsp;
+{window}
+
+<span style="color:#bd5959;text-decoration:underline;cursor:pointer" onclick="ShowWindow('-{id}')">удалить</span>
+</td>
+</tr>
+[/section::5]
+[section::5-1]
+<p class="editPUser">Вы точно хотите удалить данный раздел?</p>
+<p class="editPUser">{name}</p>
+<form action="#" method="post" >
+<input type="submit" style="margin-left:130px;text-align:center;" name="delete" class="TrueButton" value="да" />&nbsp;&nbsp;&nbsp;<input type="button" class="TrueButton" value="нет" onclick="hiddenWindow(-{id})" /> 
+<input type="hidden" name="idCat" value="{id}" />
+</form>
+[/section::5-1]
+[section::5-2]
+<form action="#" method="post">
+<table> 
+<tr> 
+<td align="right" width="170">Название раздела:</td><td align="left"><input style="width:200px;" class="set1" type="text" name="nameCat" value="{name}" /></td> 
+</tr> 
+<tr> 
+<td align="right" width="170">Использовать пути до категории:</td><td align="left"><select style="width:200px;height:25px;" class="set1" name="PathToCat" /><option value="1" {s1}>Да</option><option value="2" {s2}>Нет</option></select></td> 
+</tr>
+<tr> 
+<td align="right" width="170">Текст раздела:</td><td align="left"><a href="{url}">редактирвать</a></td> 
+</tr>
+<tr> 
+<td align="right" width="170">Сайт:</td><td align="left"><a href="{url-site}" target="_blank">посмотреть на сайте</a></td> 
+</tr>  
+<tr> 
+<td></td><td><input type="submit" name="edit" class="set" value="сохранить" /> 
+<input type="hidden" name="idCat" value="{id}" />
+</td> 
+</tr> 
+</table>  
+</form>
+[/section::5-2]
+[section::5-3]
+<img src="../templates/admin/images/on.png" alt="" title="включен" /> 
+[/section::5-3]
+[section::5-4]
+<img src="../templates/admin/images/off.png" alt="" title="выключен" /> 
+[/section::5-4]
+[section::5-5]
+<img src="../templates/admin/images/up_block.png" alt="" title="Вверх" /> 
+[/section::5-5]
+[section::5-6]
+<img src="../templates/admin/images/down_block.png" alt="" title="Вниз" /> 
+[/section::5-6]
+[section::6]
+<p class="backgo"><a href="{url}">вернуться назад</a></p>	
+<form action="#" method="post">
+<table width="100%" cellpadding="2" cellspacing="2">
+<tr>
+<td colspan="2">{seo}</td>
+</tr>
+<tr>
+<td align="left" width="220">Название страницы:</td><td align="left"><input type="text" style="width:100%;height:25px;" class="set1" name="namePage" value="{name}"/></td>
+</tr>
+{category-page}
+<tr><td align="left">Использовать пути до страницы:</td><td><select style="width:100%;height:25px;" class="set1" name="pathInPa"><option value="1">Да</option><option value="2" selected>Нет</option></select></td></tr>
+<tr>
+<td colspan="2">{editor}</td>
+</tr>
+
+<tr> 
+<td colspan="2" style="text-align:center;"><input type="submit" class="buttons" name="addPage" value="создать" /></td> 
+</tr>
+</table>
+</form>
+[/section::6]
+[section::7]
+<tr>
+<td align="right" width="80">{positionup}{positiondown}<img style="width:40px;" src="../templates/admin/images1/page.png" alt="" /></td>
+<td align="left"><span style="font-size:16px;color:#000000">{name}</span> <span id="status{id}" onclick="StatusPage('{id}');">{status}</span><br />
+<!-- window -->
+<div class="UserWindow" id="{id}" style="display:none;height:140px;"> 
+<div class="ClosedI"><img style="cursor:pointer;" src="../templates/admin/images/icon/close.png" onclick="windowsUserClosed({id})" alt="" /></div> 
+<form action="#" method="post">
+<p class="editPUser">Редактирование раздела</p> 
+<table width="100%"> 
+<table> 
+<tr> 
+<td align="right" width="150">Название раздела:</td><td align="left"><input style="width:200px;" class="set1" type="text" name="nameCat" value="{name}" /></td> 
+</tr> 
+<tr> 
+<td align="right" width="150">Текст раздела:</td><td align="left"><a class="fancy" href="../admin.php?ajax=1&id={id}">редактировать</a></td> 
+</tr> 
+<tr> 
+<td></td><td><input type="submit" name="buttons" class="set" value="сохранить" /> 
+<input type="hidden" name="idCat" value="{id}" />
+</td> 
+</tr> 
+</table>  
+</form>
+</div> 
+<!-- end -->
+<a href="../mc/{id}/" target="_blank" style="color:#48beb1;text-decoration:underline">просмотр</a>&nbsp;&nbsp;&nbsp;
+<a href="{url}" style="color:green;text-decoration:underline">редактировать</a>&nbsp;&nbsp;&nbsp;
+{window}
+<span style="color:#bd5959;text-decoration:underline;cursor:pointer;" onclick="ShowWindow('{id}')">удалить</span>
+</td>
+</tr>
+[/section::7]
+[section::7-1]
+<p class="editPUser">Вы точно хотите удалить данную страницу?</p>
+<p class="editPUser">{name}</p>
+<form action="#" method="post" >
+<input type="submit" style="margin-left:130px;text-align:center;" name="deletePage" class="TrueButton" value="да" />&nbsp;&nbsp;&nbsp;<input type="button" class="TrueButton" value="нет" onclick="hiddenWindow({id})" /> 
+<input type="hidden" name="idCat" value="{id}" />
+</form>
+[/section::7-1]
+[section::7-2]
+<span onclick="PositionPage('{idpagethis}','{idpagechange}',1);"><img style="cursor:pointer;" src="../templates/admin/images/up_block.png" alt="" /></span>
+[/section::7-2]
+[section::7-3]
+<span onclick="PositionPage('{idpagethis}','{idpagechange}',1);"><img style="cursor:pointer;" src="../templates/admin/images/down_block.png" alt="" /></span>
+[/section::7-3]
+[section::7-4]
+<span onclick="PositionCat('{idcatthis}','{idcatchange}',1);"><img style="cursor:pointer;" src="../templates/admin/images/up_block.png" alt="" /></span>
+[/section::7-4]
+[section::7-5]
+<span onclick="PositionCat('{idcatthis}','{idcatchange}',1);"><img style="cursor:pointer;" src="../templates/admin/images/down_block.png" alt="" /></span>
+[/section::7-5]
+[section::8]
+<p class="backgo"><a href="{url}">вернуться назад</a></p>
+<form action="#" method="post">
+<table width="100%" cellpadding="2" cellspacing="2">
+<tr>
+<td colspan="2">{seo}</td>
+</tr>
+<tr>
+<td align="left" width="220">Название {nameText}:</td><td align="left"><input type="text" style="width:100%;height:25px;" class="set1" name="namePage" value="{name}" /></td>
+</tr>
+{category-page}
+<tr><td align="left">Использовать пути до страницы:</td><td><select style="width:100%;height:25px;" class="set1" name="pathInPa"><option value="1" {s1}>Да</option><option value="2" {s2}>Нет</option></select></td></tr>
+<tr>
+<tr>
+<td colspan="2">{editor}</td>
+</tr>
+<tr> 
+<td colspan="2" style="text-align:center;"><input type="submit" class="buttons" name="edit" value="сохранить" />
+<input type="hidden" name="idPage" value="{id}" />
+</td> 
+</tr>
+</table>
+</form>
+[/section::8]
+[section::8-1]
+<tr>
+<td>Категория</td><td><select style="width:100%;height:25px;" class="set1" name="PageCcategory">
+<option value="0">Корневая</option>
+{option}</select></td>
+</tr>
+[/section::8-1]
+[section::8-2]
+<option value="{id}" {s}>{go}{name}</option>
+[/section::8-2]
+[section::9]
+<ul style="list-style:none">
+[/section::9]
+[section::10]
+</ul>
+[/section::10]
+[section::11]
+<li><img src="../templates/admin/images/folder.gif" alt=""  /> <a href="{url}" style="text-decoration:none;color:#000000">{name}</a></li>
+[/section::11]
+[section::12]
+<li>{go}<img src="../templates/admin/images/page.gif" alt="" /> {name}</li>
+[/section::12]
+[section::13]
+<li>{go}<img src="../templates/admin/images/folder.gif" alt="" /> <span style="background:#23bde4;padding:1px;">{name}</span></li>
+[/section::13]
+[section::14]
+<span style="color:red">требуется вкючение js библиотеки <b>fancybox</b></span>
+[/section::14]
+[section::15]
+<span style="color:red">требуется вкючение js библиотеки <b>jquery</b></span>
+[/section::15]
+[section::16]
+<ul style="list-style:none;padding-left:10px;">{main}
+[/section::16]
+[section::17]
+</ul>
+[/section::17]
+[section::18]
+<li><img src="../templates/admin/images/folder.gif" alt=""  /> <a href="{url}" style="text-decoration:none;color:#000000">{name}</a>
+[/section::18]
+[section::19]
+</li>
+[/section::19]
+[section::20]
+<form action="#" method="post">
+<table style="width:100%">
+<tr><td>{editor}</td></tr>
+<tr><td style="text-align:center"><input type="submit" name="main" value="сохранить" class="buttons" /></td></tr>
+</table>
+</form>
+<p><b>{main}</b> - выводит список категорий и страниц</p>
+[/section::20]

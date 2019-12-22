@@ -1,0 +1,28 @@
+﻿[section::1]
+<div class="LeftPadding" style="width:950px;margin:0 auto;"> 
+<p class="mainTopP">Статистика </p> 
+<div class="calendar"> 
+<table width="100%"> 
+<tr><td style="text-align:center"><a href="%URL%"><img src="../templates/admin/images/leftnum.png" alt="" /></a></td><td class="Num">%M% %Y%</td><td style="text-align:center"><a href="%URL1%"><img src="../templates/admin/images/rightnum.png" alt="" /></a></td></tr> 
+</table> 
+<table class="table4" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th>Пн</th><th>Вт</th><th>Ср</th><th>Чт</th><th>Пт</th><th>Сб</th><th>Вс</th> 
+</tr> 
+%DATA%
+</table> 
+</div> 
+<div class="ContentStat" style="width:700px;"> 
+<iframe src="../stat/static.php?id_date=%DATAS%" width="100%" height="100%" frameborder="0"></iframe> 
+</div> 
+%DELETE%
+</div> 
+[/section::1]
+[section::2]
+<div class="deleteStat">
+<form action="#" method="post">
+<img src="../templates/admin/images/icon/delete.gif" align="left"  alt="" /><input type="submit" class="set" value="удалить" /> 
+<input type="hidden" name="id_date" value="%DATAS%" />
+</form>
+</div> 
+[/section::2]

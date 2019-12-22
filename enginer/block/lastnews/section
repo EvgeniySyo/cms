@@ -1,0 +1,49 @@
+[section::1]
+<div class="LeftPadding"> 
+<p class="mainTopP">Последние новости</p> 
+<form action="#" method="post">
+<table>
+<tr>
+<td>Количество последних новостей:</td><td><input type="text" name="news" style="width:300px;height:20px;" class="set1" value="{num}" /></td>
+</tr>
+<tr>
+<td>Вывод новостей из:</td>
+<td><select name="cat" style="width:300px;height:25px;" class="set1"><option value="0" selected>весь список</option>{option}</select></td>
+</tr>
+<tr>
+<td>Тип вывода:</td>
+<td><select name="type" style="width:300px;height:25px;" class="set1">
+<option value="0" {t}>только заголовки</option>
+<option value="1" {t1}>только текст</option>
+<option value="2" {t2}>текст и заголовки</option>
+</select>
+</td>
+</tr>
+<tr>
+<td>Количество выводимых символов в тексте:</td><td><input type="text" name="text" style="width:300px;height:20px;" class="set1" value="{n}" /></td>
+</tr>
+<tr>
+<td>Вытаскивать изображение из новости:</td>
+<td>
+<select name="image" style="width:300px;height:25px;" class="set1">
+<option value="0" {s}>да</option>
+<option value="1" {s1}>нет</option>
+</select>
+</td>
+</tr>
+<tr>
+<td></td><td><input type="submit" name="save" value="сохранить" class="buttons" /></td>
+</tr>
+</table>
+</form>
+</div>
+[/section::1]
+[section::2]
+<option value="{id}" {s}>{name}</option>
+[/section::2]
+[section::3]
+<div class="LeftPadding"> 
+<p class="mainTopP">Последние новости</p> 
+<p>Модуль новостей не установлен</p>
+</div>
+[/section::3]

@@ -1,0 +1,58 @@
+#Action phpcgi-script /php-bin/php
+#AddType "application/x-rar-compressed" .rar
+#AddType "application/rss+xml" .rss
+#AddType "application/rss+xml; charset=utf-8" .rss
+#AddHandler phpcgi-script .php
+php_value display_errors 0
+#CharsetDisable On
+#AddDefaultCharset windows-1251
+AddDefaultCharset utf-8
+#############################################################
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+
+#RewriteCond %{HTTP_HOST} ^galaktika32.ru
+#RewriteRule (.*) http://www.galaktika32.ru/$1 [R=301,L]
+
+RewriteRule ^index.html       index.php  [NC]
+RewriteRule ^([a-zA-Z_0-9]+)/$		index.php?page=$1
+RewriteRule ^([a-zA-Z_0-9]+)/([a-zA-Z,0-9,]+)/$		index.php?page=$1&cat=$2
+RewriteRule ^([a-zA-Z_0-9]+)/([a-zA-Z,0-9]+)/in/([a-zA-Z,0-9,.-]+)/$		index.php?page=$1&cat=$2&in=$3
+RewriteRule ^([a-zA-Z_0-9]+)/([a-zA-Z,0-9]+)/in/([a-zA-Z,0-9,.-]+)/([a-zA-Z0-9]+)/$		index.php?page=$1&cat=$2&in=$3&pages_all=$4
+RewriteRule ^([a-zA-Z_0-9]+)/([a-zA-Z,0-9]+)/in/([a-zA-Z,0-9,.-]+)/([a-zA-Z0-9]+)/([0-9]+)/$		index.php?page=$1&cat=$2&in=$3&pages_all=$4&ppp=$5
+RewriteRule ^([a-zA-Z_0-9]+)/([a-zA-Z,0-9]+)/in/([a-zA-Z,0-9,.-]+)/([a-zA-Z0-9]+)/([0-9]+)/([0-9]+)/$		index.php?page=$1&cat=$2&in=$3&pages_all=$4&ppp=$5&st=$6
+RewriteRule ^([a-zA-Z_0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/$		index.php?page=$1&cat=$2&id=$3
+RewriteRule ^([a-zA-Z_0-9]+)/([a-zA-Z0-9]+)/page/([0-9]+)/$		index.php?page=$1&cat=$2&pages_all=$3
+RewriteRule ^([a-zA-Z_0-9]+)/num-([0-9]+)\.html$		index.php?page=$1&go_page=$2
+RewriteRule ^([a-zA-Z_0-9]+)/([a-zA-Z0-9]+)/([a-zA-Z0-9]+)/go/([0-9]+)\.html$		index.php?page=$1&cat=$2&id=$3&go=$4
+#############################################################
+RewriteRule admin.pl       admin.php
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3
+
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-bl-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&nameblock=$4
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-bl-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&nameblock=$4&posision=$5
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-bl-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&nameblock=$4&posision=$5&f=$6
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-bl-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&nameblock=$4&posision=$5&f=$6&pos=$7
+
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-set-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-blo-([a-zA-Z_0-9.]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-blo-([a-zA-Z_0-9.]+)-([a-zA-Z_0-9.]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4&idss=$5
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-del-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-ins-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-user-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-ins-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4&install=$5
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-mod-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-mod-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4&page=$5
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-mod-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4&page=$5&id_cat=$6
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-mod-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([0-9]+)-([0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4&page=$5&id_cat=$6&id_news=$7
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-mod-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4&page=$5&id_cat=$6&id_news=$7&id_st=$8
+RewriteRule ^admin_panel/([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-mod-([a-zA-Z_0-9]+)-([a-zA-Z_0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)-([0-9]+)\.pl$       admin.php?admin=$1&config=$2&admin_page=$3&name_tamlates=$4&page=$5&id_cat=$6&id_news=$7&id_st=$8&id_cm=$9
+#############################################################
+#ErrorDocument 404 /error/
+#ErrorDocument 403 /error/
+RewriteRule ^([a-zA-Z_0-9\-]+)$ index.php [L,QSA]
+RewriteRule ^([a-zA-Z_0-9\-]+)\.html$ index.php [L,QSA]

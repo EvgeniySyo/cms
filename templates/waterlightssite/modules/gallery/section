@@ -1,0 +1,96 @@
+[section::1]
+<ul>{li}</ul>
+[/section::1]
+[section::2]
+<li><a href="{url}">{name}</a></li>
+[/section::2]
+#альбомы
+[section::3]
+
+<!--
+<div class="galleryelement">
+	<div class="galleryimg" style="background:url({img}) #d5d6d8 no-repeat center;"><a href="{url}"></a></div>
+	<p class="galleryname"><a href="{url}">{name}</a></p> 
+</div>
+-->
+[/section::3]
+[section::4]
+<div style="width:100%;clear:both"></div>
+<p class="pages">{list}</p>
+[/section::4]
+[section::5]
+
+[/section::5]
+[section::6]
+<a href="{url}" class="pagea">{n1}</a>
+[/section::6]
+[section::7]
+<span class="pagespan">{n1}</span>
+[/section::7]
+[section::8]
+
+[/section::8]
+[section::9]
+<p align="left"><a href="{back}">&larr; обратно в галерею</a></p><a href="#" name="desc"></a><a href="#" name="img"></a>
+<table width="100%">
+<tr>
+<td align="right" width="150">{b}</td><td width="500"><a rel="gallery" class="gallery" href="{url}" ><img src="{img}" alt="{name}" /></a></td><td align="left" width="150">{n}</td>
+</tr>
+</table>
+
+<p style="text-align:center;">{desc}</p>
+
+[/section::9]
+[section::10]
+<a href="{url}" class="pagelr">&laquo;</a> 
+[/section::10]
+[section::11]
+<a href="{url}" class="pagelr">&raquo;</a>
+[/section::11]
+[section::12]
+<p class="pages">{back} {next}</p>
+[/section::12]
+[section::13]
+<p class="pages">{back} {next}</p>
+[/section::13]
+[section::14]
+<a href="{url}#desc"><img src="{PATH_TO_THEME}images/left_a.png" alt="" /></a>
+[/section::14]
+[section::15]
+<a href="{url}#desc"><img src="{PATH_TO_THEME}images/right_a.png" alt="" /></a>
+[/section::15]
+
+[section::16]
+<img style="border: 3px red solid;" src="{img}" alt="{name}" />
+[/section::16]
+[section::17]
+<a href="{url}#img"><img src="{img}" alt="{name}" /></a>
+[/section::17]
+[section::18]
+<p class="sl">{img}</p>
+[/section::18]
+[section::19]
+<div style="width:100%;height:10px;"></div>
+<ul>
+[/section::19]
+[section::20]
+<li style="display: inline-block;vertical-align: top;border:1px solid black;float:left;margin-left:7px;margin-bottom:10px;padding:2px;min-height:200px;"><center><a class="gallery" rel="group" href="{img1}"><img src="{img}" style="max-width:133px;"/></a></center></li>
+<!--
+<div class="galleryelement">
+	<div class="galleryimg" style="background:url({img}) #d5d6d8 no-repeat center;"><a href="{img1}" class="gallery"></a></div>
+</div>
+-->
+[/section::20]
+[section::21]
+</ul>
+<div style="clear:both;"></div>
+[/section::21]
+[section::22]
+
+[/section::22]
+[section::23]
+{desc}
+[/section::23]
+[section::31]
+<p class="path"><a href="/">Главная</a> / Галерея</p>
+[/section::31]

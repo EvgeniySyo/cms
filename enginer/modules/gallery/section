@@ -1,0 +1,655 @@
+[section::0]
+<div class="LeftPadding"> 
+<p class="mainTopP">Галерея</p>
+</div>
+[/section::0]
+[section::1]
+<table class="table5" cellpadding="0" cellspacing="0">
+<tr>
+<th></th><th>добавить</th><th>редактировать</th><th>удалить</th>
+</tr>
+<tr>
+<td class="textTable" style="width:170px;">Альбомы</td>
+<td><a href="main-modules-setting-mod-{NameModule}-1.pl"><img src="../images/news/+.png" alt="" /></a></td><td><a href="main-modules-setting-mod-{NameModule}-2.pl"><img src="../images/news/edit.png" alt="" /></a></td><td><a href="main-modules-setting-mod-{NameModule}-3.pl"><img src="../images/news/delete.png" alt="" /></a></td>
+</tr>
+<tr>
+<th></th><th></th><th></th><th></th>
+</tr>
+<tr>
+<th></th><th></th><th></th><th></th>
+</tr>
+<tr>
+<td class="textTable" style="width:170px;">Фотографии</td>
+<td><a href="main-modules-setting-mod-{NameModule}-4.pl"><img src="../images/news/+.png" alt="" /></a></td><td><a href="main-modules-setting-mod-{NameModule}-5.pl"><img src="../images/news/edit.png" alt="" /></a></td><td><a href="main-modules-setting-mod-{NameModule}-6.pl"><img src="../images/news/delete.png" alt="" /></a></td>
+</tr>
+</table>
+<div class="LeftPadding"><p class="mainTopP">Настройки</p> 
+<form action="#" method="post">
+<table>
+<tr>
+<td align="left">Использовать альбомы:</td><td><select style="height:20px;" class="stepInput" name="OnAlbum"><option value="1" {select1}>Да</option><option value="2" {select2}>Нет</option></select></td>
+</tr>
+<tr>
+<td align="left">Количество фотографий на страницу:</td><td><input style="height:15px;" class="stepInput" type="text" value="{foto}" name="fotoOnPage" /></td>
+</tr>
+<tr>
+<td align="left">Ширина маленького изображения:</td><td><input style="height:15px;" class="stepInput" type="text" value="{ws}" name="ws" /></td>
+</tr>
+<tr>
+<td align="left">Высота маленького изображения:</td><td><input style="height:15px;" class="stepInput" type="text" value="{hs}" name="wh" /></td>
+</tr>
+<tr>
+<td align="left">Ширина большого изображения:</td><td><input style="height:15px;" class="stepInput" type="text" value="{wb}" name="wb" /></td>
+</tr>
+<tr>
+<td align="left">Высота большого изображения:</td><td><input style="height:15px;" class="stepInput" type="text" value="{hb}" name="hb" /></td>
+</tr>
+<tr>
+<td align="left">Использовать превью для альбомов:</td><td><select style="height:20px;" class="stepInput" name="OnAlbumPreview"><option value="1" {select3}>Да</option><option value="2" {select4}>Нет</option></select></td>
+</tr>
+<tr><td></td><td></td></tr>
+<tr>
+<td align="right"></td><td><input type="submit" name="save" class="buttons" value="сохранить" /></td>
+</tr>
+</table>
+</form>
+</div>
+[/section::1]
+[section::2]
+<p class="editPUser" style="color:green">данные обновлены</p> 
+[/section::2]
+[section::3]
+<div class="LeftPadding"> 
+<p class="backgo"><a href="main-modules-setting-mod-{NameModule}.pl">вернуться назад</a></p>
+</div>
+<ul class="ul1"> 
+<li><a href="main-modules-setting-mod-{NameModule}-1.pl" {style-1}>{list-1} Добавить альбом</a></li> 
+<li><a href="main-modules-setting-mod-{NameModule}-2.pl" {style-2}>{list-2} Редактировать альбомы</a></li> 
+<li><a href="main-modules-setting-mod-{NameModule}-3.pl" {style-3}>{list-3} Удаление альбомов</a></li> 
+</ul>
+[/section::3]
+[section::4]
+
+
+
+<div class="LeftPadding"> 
+<br /><br />  
+<style>
+#upload{
+	margin-top:20px;
+	padding:10px;
+	font-weight:bold; font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+	text-align:center;
+	background:#f2f2f2;
+	color:#3366cc;
+	border:1px solid #ccc;
+	width:140px;
+	cursor:pointer !important;
+	-moz-border-radius:5px; -webkit-border-radius:5px;
+}
+.darkbg{
+	background:#ddd !important;
+}
+#status{
+	font-family:Arial; padding:5px;
+}
+#file img { max-width:160px; max-height:150px; }
+</style>
+<script type="text/javascript" >
+	$(function(){
+		var counter=0;
+		var btnUpload=$('#upload');
+		var status=$('#status');
+		var fileloaded=$('#file');
+		new AjaxUpload(btnUpload, {
+			action: '/admin.php?ajax=1',
+			name: 'uploadfile',
+			data: {
+				key : 'add'
+			  },
+			onSubmit: function(file, ext){
+				 if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){ 
+                    // extension is not allowed
+					status.text('Поддерживаемые форматы JPG, PNG или GIF');
+					return false;
+				}
+				status.text('Загрузка...');
+			},
+			onComplete: function(file, response){
+				//On completion clear the status
+				status.text('');
+				//Add uploaded file to list
+				if(response==="error"){
+					fileloaded.text('Файл не загружен' + file).addClass('error');
+				} else{
+					var file1=response.substring(8, response.lenght);
+					var randimg='?'+Math.floor((Math.random()*10000)+1);
+					fileloaded.html('<input type="hidden" name="preload_img" value="'+file1+'"/><img src="../images/{modname}/upload/'+file1+randimg+'" alt=""/><br />'+file);
+					counter++;
+				}
+			}
+		});
+	});
+</script>
+
+
+<div class="LeftPadding"> 
+<br /><br />  
+<form action="#" method="post" style="clear:both" enctype="multipart/form-data"> 
+<table width="100%"> 
+<table> 
+<tr> 
+<td align="right">Название:</td><td align="left"><input style="width:500px;height:30px;" class="set1" type="text" name="nameCat" value="" /></td> 
+</tr>
+<tr>
+<td align="right">описание альбома:</td><td align="left"><textarea name="desc" style="width:500px;height:200px;" class="set1"></textarea></td> 
+</tr>
+<tr> 
+<td align="left" valign="top"><p>Изображение:</p></td>
+<td><div id="file"></div>
+<div id="upload" ><span>Выбрать изображение</span></div><p id="status" ></p>	
+</td> 
+</tr>
+<tr> 
+<td></td><td><input type="submit" name="add" class="buttons" value="добавить" /></td> 
+</tr> 
+</table> 
+</form> 
+</div> 
+[/section::4]
+
+[section::8]
+<div class="LeftPadding">
+<br />
+<p style="clear:both"><span class="mainTopP">Список альбомов</span></p>
+[/section::8]
+[section::9]
+</div>
+[/section::9]
+[section::10]
+<script type="text/javascript">
+function PositionAlbum(idthis,idchange,x)
+{
+	$.get('/admin.php?ajax=1&idalbumthis='+idthis+'&idalbumchange='+idchange, function(data) {
+		$('#positionalbum').html(data);
+	});
+}
+</script>
+<table class="tablelist" width="100%" id="positionalbum" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th>Порядок</th><th>Название</th><th width="140" style="text-align:center">Редактировать</th> 
+</tr> 
+{list}
+</table>
+[/section::10]
+[section::10-1]
+<table class="tablelist" width="100%" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th>Название</th><th width="140" style="text-align:center">Удалить</th> 
+</tr> 
+{list}
+</table>
+[/section::10-1]
+[section::11]
+<tr> 
+<td style="width:100px;">{toupalbum}{todownalbum}</td>
+<td>{name}</td> 
+<td align="center">  
+{window}
+<img style="cursor:pointer;" onclick="ShowWindow({id})" src="../templates/admin/images/icon/edit.gif" alt="" /> 
+</td>
+</tr> 
+[/section::11]
+[section::11-1]
+<style>
+#upload{id}{
+	padding:10px;
+	font-weight:bold; font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+	text-align:center;
+	background:#f2f2f2;
+	color:#3366cc;
+	border:1px solid #ccc;
+	width:140px;
+	cursor:pointer !important;
+	-moz-border-radius:5px; -webkit-border-radius:5px;
+}
+.darkbg{id}{
+	background:#ddd !important;
+}
+#status{id}{
+	font-family:Arial; padding:5px;
+}
+#file{id} img { max-width:160px; max-height:150px; }
+</style>
+<script type="text/javascript" >
+	$(function(){
+		var counter=0;
+		var btnUpload=$('#upload{id}');
+		var status=$('#status{id}');
+		var fileloaded=$('#file{id}');
+		new AjaxUpload(btnUpload, {
+			action: '/admin.php?ajax=1',
+			name: 'uploadfile',
+			data: {
+				key : 'edit'
+			  },
+			onSubmit: function(file, ext){
+				 if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){ 
+                    // extension is not allowed
+					status.text('Поддерживаемые форматы JPG, PNG или GIF');
+					return false;
+				}
+				status.text('Загрузка...');
+			},
+			onComplete: function(file, response){
+				//On completion clear the status
+				status.text('');
+				//Add uploaded file to list
+				if(response==="error"){
+					fileloaded.text('Файл не загружен' + file);
+				} else{
+					var file1=response.substring(8, response.lenght);
+					var randimg='?'+Math.floor((Math.random()*10000)+1);
+					fileloaded.html('<input type="hidden" name="preload_img" value="'+file1+'"/><img src="../images/{modname}/upload/'+file1+randimg+'" alt=""/><br />'+file);
+					counter++;
+				}
+			}
+		});
+	});
+</script>
+
+<form action="#" method="post" style="clear:both" enctype="multipart/form-data"> 
+<table width="100%" class="table">
+<tr> 
+<td align="right">Название:</td><td align="left"><input style="width:200px;height:20px;" class="set1" type="text" name="nameCat" value="{name}" /></td> 
+</tr>
+<tr> 
+<td align="right">Описание:</td><td align="left"><textarea name="desc" class="set1" style="width:250px;height:100px;">{desc}</textarea></td> 
+</tr>
+<tr> 
+<td align="right" valign="top">Изображение:</td><td align="left">
+<input type="checkbox" name="delete" /> удалить<br />
+<div id="file{id}"><img src="{image}" alt="" /></div>
+<p id="status{id}" ></p>
+<div id="upload{id}"><span>Выбрать изображение</span></div>
+</td>
+</tr>
+<tr> 
+<td></td><td><input type="submit" name="edit" class="buttons" value="сохранить" /> 
+<input type="hidden" name="id" value="{id}" /> 
+</td> 
+</tr> 
+</table> 
+</form> 
+[/section::11-1]
+[section::12]
+<div class="LeftPadding"> 
+<br />
+<p style="clear:both"><span class="mainTopP">Список альбомов</span></p> 
+ 
+[/section::12]
+[section::13]
+</div>
+[/section::13]
+[section::14]
+<tr>
+<td>{name}</td> 
+<td align="center"> 
+{window}
+<img style="cursor:pointer;" onclick="ShowWindow({id})" src="../templates/admin/images/icon/delete.gif" alt="" /> 
+</td> 
+</tr> 
+[/section::14]
+[section::14-1]
+<p class="editPUser">Вы точно хотите удалить данный альбом: <b>{name}</b> ?</p>
+<p>Внимание: так же будут удалены и изображения входящие в данный альбом</p>
+<form action="#" method="post" >
+<input type="submit" style="text-align:center;" name="delete" class="TrueButton" value="да" />&nbsp;&nbsp;&nbsp;<input type="button" class="TrueButton" value="нет" onclick="hiddenWindow({id})" /> 
+<input type="hidden" name="id" value="{id}" />
+</form>
+[/section::14-1]
+[section::16]
+<div class="LeftPadding"> 
+<p class="backgo"><a href="main-modules-setting-mod-{NameModule}.pl">вернуться назад</a></p>
+</div>
+<ul class="ul1"> 
+<li><a href="main-modules-setting-mod-{NameModule}-4.pl" {style-1}>{list-1} Добавить изображение</a></li> 
+<li><a href="main-modules-setting-mod-{NameModule}-5.pl" {style-2}>{list-2} Редактирование изображений</a></li> 
+<li><a href="main-modules-setting-mod-{NameModule}-6.pl" {style-3}>{list-3} Удаление изображений</a></li> 
+</ul>
+[/section::16]
+[section::17]
+<div class="LeftPadding"> 
+<br /><br />  
+<style>
+#upload{
+	margin-top:20px;
+	padding:10px;
+	font-weight:bold; font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+	text-align:center;
+	background:#f2f2f2;
+	color:#3366cc;
+	border:1px solid #ccc;
+	width:140px;
+	cursor:pointer !important;
+	-moz-border-radius:5px; -webkit-border-radius:5px;
+}
+.darkbg{
+	background:#ddd !important;
+}
+#status{
+	font-family:Arial; padding:5px;
+}
+#file img { max-width:160px; max-height:150px; }
+</style>
+<script type="text/javascript" >
+	$(function(){
+		var counter=0;
+		var btnUpload=$('#upload');
+		var status=$('#status');
+		var fileloaded=$('#file');
+		new AjaxUpload(btnUpload, {
+			action: '/admin.php?ajax=1',
+			name: 'uploadfile',
+			data: {
+				key : 'add'
+			  },
+			onSubmit: function(file, ext){
+				 if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){ 
+                    // extension is not allowed
+					status.text('Поддерживаемые форматы JPG, PNG или GIF');
+					return false;
+				}
+				status.text('Загрузка...');
+			},
+			onComplete: function(file, response){
+				//On completion clear the status
+				status.text('');
+				//Add uploaded file to list
+				if(response==="error"){
+					fileloaded.text('Файл не загружен' + file).addClass('error');
+				} else{
+					var file1=response.substring(8, response.lenght);
+					var randimg='?'+Math.floor((Math.random()*10000)+1);
+					fileloaded.html('<input type="hidden" name="preload_img" value="'+file1+'"/><img src="../images/{modname}/upload/'+file1+randimg+'" alt=""/><br />'+file);
+					counter++;
+				}
+			}
+		});
+	});
+</script>
+<form action="#" method="post" style="clear:both" enctype="multipart/form-data">
+
+<input style="width:500px;height:30px;" class="set1" type="hidden" name="nameCat" value="image" />
+<table width="100%"> 
+<table> 
+<tr> 
+<td align="left"><p>Название:</p></td>
+<td><input style="width:500px;height:30px;" class="set1" type="text" name="name" value="" />
+</td>
+</tr>
+<tr> 
+<td align="left"><p>Альбом:</p></td>
+<td><select name="idAlbum" style="width:500px;height:30px;" class="set1">
+<option value="0">не вносить в альбом</option>
+{option}
+</select>
+</td> 
+</tr>
+<tr> 
+<td align="left" valign="top"><p>Описание:</p></td>
+<td><textarea name="desc" style="width:500px;height:100px;" class="set1"></textarea>
+</td> 
+</tr>
+<tr> 
+<td align="left" valign="top"><p>Изображение:</p></td>
+<td><div id="file"></div>
+<div id="upload" ><span>Выбрать изображение</span></div><p id="status" ></p>
+		
+</td> 
+</tr>
+<td></td><td><input type="submit" name="add" class="buttons" value="добавить" /></td> 
+</tr> 
+</table> 
+</form> 
+</div> 
+[/section::17]
+[section::18]
+<option value="{id}">{name}</option>
+[/section::18]
+[section::22]
+<div class="LeftPadding"> 
+<br /><p style="clear:both"><span class="mainTopP">Альбомы</span></p> 
+<table class="tablelist" width="100%" cellpadding="0" cellspacing="0">
+<tr><th>Название категории</th><th width="100" style="text-align:center">Перейти</th></tr>
+<tr>
+{li}
+<td><b>Не в альбомах</b></td><td align="center"><a href="main-modules-setting-mod-{name}-5-0.pl">перейти</a></td>
+</tr>
+
+</table>
+
+</div> 
+[/section::22]
+[section::23]
+<tr><td>{name}</td><td align="center"><a href="main-modules-setting-mod-{nameT}-5-{id}.pl">перейти</a></td></tr>
+[/section::23]
+[section::24]
+<script type="text/javascript">
+function PositionImage(idthis,idchange,page)
+{
+	id_cat = '{id}';
+	$.get('/admin.php?ajax=1&idimagethis='+idthis+'&idimagechange='+idchange+'&imagepage='+page+'&id_cat='+id_cat, function(data) {
+		$('#positionimage').html(data);
+	});
+}
+</script>
+<div class="LeftPadding"> 
+<br /><p style="clear:both"><span class="mainTopP">Редактирование изображений (Альбом: {name})</span></p> 
+
+<table class="tablelist" width="100%" id="positionimage" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th width="70"  style="text-align:center">Порядок</th><th>Превью</th><th  style="text-align:center" width="150">Редактирование</th> 
+</tr> 
+{list}
+</table>
+</div>
+[/section::24]
+[section::25]
+[<b>{n1}</b>] 
+[/section::25]
+[section::26]
+[<a href="main-modules-setting-mod-{nameT}-5-{id}-{n}.pl">{n1}</a>]
+[/section::26]
+[section::26-1]
+<p style="text-align:center">{list}</p>
+[/section::26-1]
+[section::26-2]
+<a href="main-modules-setting-mod-{nameT}-5-{id}-{n}.pl">назад</a> 
+[/section::26-2]
+[section::26-3]
+<a href="main-modules-setting-mod-{nameT}-5-{id}-{n}.pl">вперед</a> 
+[/section::26-3]
+[section::27]
+<tr> 
+<td align="center">{toupimage}{todownimage}</td>
+<td><img src="{image}" style="height:100px;" alt="" /></td> 
+<td align="center"> 
+{window}
+<img style="cursor:pointer;" onclick="ShowWindow({id})" src="../templates/admin/images/icon/edit.gif" alt="" /> 
+</td> 
+</tr> 
+[/section::27]
+[section::27-1]
+<style>
+#upload{id}{
+	padding:10px;
+	font-weight:bold; font-size:12px;
+	font-family:Arial, Helvetica, sans-serif;
+	text-align:center;
+	background:#f2f2f2;
+	color:#3366cc;
+	border:1px solid #ccc;
+	width:140px;
+	cursor:pointer !important;
+	-moz-border-radius:5px; -webkit-border-radius:5px;
+}
+.darkbg{id}{
+	background:#ddd !important;
+}
+#status{id}{
+	font-family:Arial; padding:5px;
+}
+#file{id} img { max-width:160px; max-height:150px; }
+</style>
+<script type="text/javascript" >
+	$(function(){
+		var counter=0;
+		var btnUpload=$('#upload{id}');
+		var status=$('#status{id}');
+		var fileloaded=$('#file{id}');
+		new AjaxUpload(btnUpload, {
+			action: '/admin.php?ajax=1',
+			name: 'uploadfile',
+			data: {
+				key : 'edit'
+			  },
+			onSubmit: function(file, ext){
+				 if (! (ext && /^(jpg|png|jpeg|gif)$/.test(ext))){ 
+                    // extension is not allowed
+					status.text('Поддерживаемые форматы JPG, PNG или GIF');
+					return false;
+				}
+				status.text('Загрузка...');
+			},
+			onComplete: function(file, response){
+				//On completion clear the status
+				status.text('');
+				//Add uploaded file to list
+				if(response==="error"){
+					fileloaded.text('Файл не загружен' + file).addClass('error');
+				} else{
+					var file1=response.substring(8, response.lenght);
+					var randimg='?'+Math.floor((Math.random()*10000)+1);
+					fileloaded.html('<input type="hidden" name="preload_img" value="'+file1+'"/><img src="../images/{modname}/upload/'+file1+randimg+'" alt=""/><br />'+file);
+					counter++;
+				}
+			}
+		});
+	});
+</script>
+
+<form action="#" method="post" style="clear:both" enctype="multipart/form-data">
+<input style="width:200px;" class="set1" type="hidden" name="nameCat" value="image" />
+<table class="table"> 
+<tr> 
+<td align="right">Название:</td>
+<td align="left"><input style="width:200px;" class="set1" type="text" name="name" value="{name}" /></td>
+</tr>
+<tr> 
+<td align="right">Описание:</td><td align="left"><textarea name="desc" class="set1" style="width:250px;height:100px;">{desc}</textarea></td> 
+</tr>
+<tr> 
+<td align="right">Альбом:</td><td align="left">
+<select name="idAlbum" class="set1" style="height:25px">
+<option value="0" {opt}>без альбома</option>
+{option}
+</select>
+</td> 
+</tr>
+<tr> 
+<td align="right">Изображение:</td><td align="left">
+<div id="file{id}"><img style="height:100px" src="{image}" alt="" /></div>
+<p id="status{id}" ></p>
+<div id="upload{id}" ><span>Выбрать изображение</span></div>
+
+</td> 
+</tr>  
+<tr> 
+<td></td><td><input type="submit" name="edit" class="buttons" value="сохранить" /> 
+<input type="hidden" name="id" value="{id}" /> 
+</td> 
+</tr> 
+</table> 
+</form> 
+[/section::27-1]
+[section::28]
+<option value="{id}" {opt}>{name}</option>
+[/section::28]
+[section::29]
+<div class="LeftPadding"> 
+<br /><p style="clear:both"><span class="mainTopP">Альбомы</span></p> 
+<table class="tablelist" width="100%" cellpadding="0" cellspacing="0">
+<tr><th>Название категории</th><th width="70" style="text-align:center">Перейти</th></tr>
+<tr>
+{li}
+<td><b>Не в альбомах</b></td><td align="center"><a href="main-modules-setting-mod-{name}-6-0.pl">перейти</a></td>
+</tr>
+</table> 
+</div>
+[/section::29]
+[section::30]
+<tr><td>{name}</td><td align="center"><a href="main-modules-setting-mod-{nameT}-6-{id}.pl">перейти</a></td></tr>
+[/section::30]
+[section::31]
+[<b>{n1}</b>]
+[/section::31]
+[section::32]
+[<a href="main-modules-setting-mod-{nameT}-6-{id}-{n}.pl">{n1}</a>]
+[/section::32]
+[section::32-1]
+<p style="text-align:center">{list}</p>
+[/section::32-1]
+[section::32-2]
+<a href="main-modules-setting-mod-{nameT}-6-{id}-{n}.pl">назад</a> 
+[/section::32-2]
+[section::32-3]
+<a href="main-modules-setting-mod-{nameT}-6-{id}-{n}.pl">вперед</a> 
+[/section::32-3]
+[section::33]
+<tr>
+
+<td><img src="{image}" style="height:100px;" alt="" /></td> 
+<td align="center"> 
+{window}
+<img style="cursor:pointer;" onclick="ShowWindow({id})" src="../templates/admin/images/icon/delete.gif" alt="" /> 
+</td> 
+</tr> 
+[/section::33]
+[section::33-1]
+<p class="editPUser">Вы точно хотите удалить данное изображение?</p>
+<form action="#" method="post" >
+<input type="submit" style="text-align:center;" name="delete" class="TrueButton" value="да" />&nbsp;&nbsp;&nbsp;<input type="button" class="TrueButton" value="нет" onclick="hiddenWindow({id})" /> 
+<input type="hidden" name="id" value="{id}" />
+</form>
+[/section::33-1]
+[section::34]
+<div class="LeftPadding"> 
+<br /><p style="clear:both"><span class="mainTopP">Удаление изображений (Альбом: {name})</span></p> 
+ 
+<table class="tablelist" width="100%" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th>Превью</th><th width="100" style="text-align:center">Удаление</th> 
+</tr> 
+{list}
+</table>
+</div>
+[/section::34]
+[section::36]
+<p style="text-align:center">{ppp}</p>
+[/section::36]
+[section::36-1]
+<span onclick="PositionAlbum('{idalbumthis}','{idalbumchange}',1);"><img style="cursor:pointer;" src="../templates/admin/images/up_block.png" alt="" /></span>
+[/section::36-1]
+[section::36-2]
+<span onclick="PositionAlbum('{idalbumthis}','{idalbumchange}',1);"><img style="cursor:pointer;" src="../templates/admin/images/down_block.png" alt="" /></span>
+[/section::36-2]
+[section::36-3]
+<span onclick="PositionImage('{idimagethis}','{idimagechange}',{imagepage});"><img style="cursor:pointer;" src="../templates/admin/images/up_block.png" alt="" /></span>
+[/section::36-3]
+[section::36-4]
+<span onclick="PositionImage('{idimagethis}','{idimagechange}',{imagepage});"><img style="cursor:pointer;" src="../templates/admin/images/down_block.png" alt="" /></span>
+[/section::36-4]

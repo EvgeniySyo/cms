@@ -1,0 +1,438 @@
+[section::0]
+<script type="text/javascript">
+
+		$('.delstoreelem').click(function() {
+			$('.delstoreelem').removeClass('delselected');
+			$(this).addClass('delselected');
+			changeslider($(this).attr('id'));
+			return false;
+		});
+		
+		function changeslider(id)
+		{
+			$.post('/status.php?status=12&page=delivery',{id:id},function(data){ 
+				var arr= data.split('<><>');
+				$('#carousel').trigger( 'destroy');
+				$('#thumbs').trigger( 'destroy');
+				if(arr[0]!='')
+				{
+					$( "#carousel" ).css('display','block');
+					$( "#thumbs" ).css('display','block');
+					$( "#carousel" ).html(arr[0]);
+					$( "#thumbs" ).html(arr[1]);
+					
+					$('#carousel').carouFredSel({
+						responsive: true,
+						circular: false,
+						auto: false,
+						items: {
+							visible: 1,
+							width: 460,
+							height: 360
+						},
+						scroll: {
+							fx: 'directscroll'
+						}
+					});
+
+					$('#thumbs').carouFredSel({
+						responsive: true,
+						circular: false,
+						infinite: false,
+						auto: false,
+						prev: '#prev',
+						next: '#next',
+						items: {
+							visible: {
+								min: 2,
+								max: 6
+							},
+							width: 100
+						}
+					});
+					
+					$('#thumbs a').click(function() {
+					$('#carousel').trigger('slideTo', '#' + this.href.split('#').pop() );
+					$('#thumbs a').removeClass('selected');
+					$(this).addClass('selected');
+					return false;
+					
+					});
+				}
+				else
+				{
+					$( "#carousel" ).css('display','none');
+					$( "#thumbs" ).css('display','none');
+				}
+				//$( "#test" ).html(data);
+				//if(document.getElementById('trash2')) $( "#trash2" ).html(data);
+			});
+		}
+</script>
+[/section::0]
+[section::1] 
+{map}
+<div style="padding-top:35px;padding-bottom:50px;">{text}</div>
+{list}
+[/section::1]
+[section::2] 
+<div style="position:absolute;z-index:5000;margin-left:200px;">
+	<p><input type="checkbox" name="mag" value="1" id="mag" checked="checked"/> - магазины</p>
+	<p><input type="checkbox" name="post" value="1" id="post"/> - почтовые отделения</p>
+</div>
+<div id="YMapsID" style="width:878px;height:498px;border:1px #adadad solid;"></div>
+<script type="text/javascript">
+		
+        // Создает обработчик события window.onLoad
+        YMaps.jQuery(function () {
+            // Создает экземпляр карты и привязывает его к созданному контейнеру
+            var map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
+            
+			var sv = new YMaps.Style();
+			// Создает стиль значка метки
+			sv.iconStyle = new YMaps.IconStyle();
+			sv.iconStyle.href = "https://www.svclassic.ru/images/mapmark_sv.png";
+			sv.iconStyle.size = new YMaps.Point(35, 44);
+			sv.iconStyle.offset = new YMaps.Point(-9, -40);
+			
+			var svpost = new YMaps.Style();
+			// Создает стиль значка метки
+			svpost.iconStyle = new YMaps.IconStyle();
+			svpost.iconStyle.href = "https://www.svclassic.ru/images/mapmark_rpost.png";
+			svpost.iconStyle.size = new YMaps.Point(35, 44);
+			svpost.iconStyle.offset = new YMaps.Point(-9, -40);
+			
+			//массив с точками
+			var points = [
+			{coords}
+				];
+			var myCollection = new YMaps.GeoObjectCollection({});
+			
+			myPointssv = [];
+			myPointspost = [];
+			for (var i = 0; i<points.length; i++) {
+				
+				if(points[i][5]=='post')
+				{
+					myPointspost[i]=new YMaps.Placemark(new YMaps.GeoPoint(points[i][1],points[i][0]), {style: svpost});
+					myPointspost[i].name = '<p>'+points[i][3]+'</p>';
+					myPointspost[i].description = '<p>'+points[i][4]+'</p>'+'<p style="text-align:right;"><a href="/delivery/'+points[i][6]+'/'+points[i][2]+'/">Подробнее...</a></p>';
+				}
+				else
+				{
+					myPointssv[i]=new YMaps.Placemark(new YMaps.GeoPoint(points[i][1],points[i][0]), {style: sv});
+					myPointssv[i].name = '<p>'+points[i][3]+'</p>';
+					myPointssv[i].description = '<p>'+points[i][4]+'</p>'+'<p style="text-align:right;"><a href="/delivery/'+points[i][6]+'/'+points[i][2]+'/">Подробнее...</a></p>';
+				}
+				
+				//map.addOverlay(myPoints[i]);
+			}
+			//myCollection = new ymaps.GeoObjectCollection({});
+			//myCollection.add(new ymaps.Placemark(coords[i]));
+			//myMap.geoObjects.add(myCollection);
+			//myCollection.removeAll();
+			/*$.each(myPointspost, function(i, field){
+				map.addOverlay(myPointspost[i]);
+			});*/
+			$.each(myPointssv, function(i, field){
+				map.addOverlay(myPointssv[i]);
+			});
+			
+			
+			
+			/*var placemark = new YMaps.Placemark(new YMaps.GeoPoint(37.609218,55.753559), {style: sv});//, {style: sv}
+			
+			// Устанавливает содержимое балуна
+			placemark.name = "Москва";
+			placemark.description = '<p>Столица Российской Федерации</p> <p style="text-align:right;"><a href="yandex.ru">Подробнее...</a></p>';
+			
+			// Добавляет метку на карту
+			map.addOverlay(placemark);*/
+			map.addControl(new YMaps.ToolBar());
+			map.addControl(new YMaps.Zoom());
+			map.addControl(new YMaps.ScaleLine());
+			
+			map.enableScrollZoom();
+            // Устанавливает начальные параметры отображения карты: центр карты и коэффициент масштабирования
+            map.setCenter(new YMaps.GeoPoint(97.64, 65.76), 3);
+			//map.geoObjects.add(myCollection);
+			$("#mag").change(function () {
+				$.each(myPointspost, function(i, field){
+					map.removeOverlay(myPointspost[i]);
+				});
+				$.each(myPointssv, function(i, field){
+					map.removeOverlay(myPointssv[i]);
+				});
+				if($("#post").prop("checked")==true)
+				{
+					$.each(myPointspost, function(i, field){
+						map.addOverlay(myPointspost[i]);
+					});
+				}
+				if($("#mag").prop("checked")==true)
+				{
+					$.each(myPointssv, function(i, field){
+						map.addOverlay(myPointssv[i]);
+					});
+				}
+			});
+			$("#post").change(function () {
+				$.each(myPointspost, function(i, field){
+					map.removeOverlay(myPointspost[i]);
+				});
+				$.each(myPointssv, function(i, field){
+					map.removeOverlay(myPointssv[i]);
+				});
+				if($("#post").prop("checked")==true)
+				{
+					$.each(myPointspost, function(i, field){
+						map.addOverlay(myPointspost[i]);
+					});
+				}
+				if($("#mag").prop("checked")==true)
+				{
+					$.each(myPointssv, function(i, field){
+						map.addOverlay(myPointssv[i]);
+					});
+				}
+			});
+        })
+    </script>
+[/section::2]
+[section::2-1]
+[{coord1},{coord2}, '{id}', '{town}', '{address}','{type}',{id_town}],[/section::2-1]
+[section::3] 
+<div class="dellist">
+	<div class="dellistdiv">
+		<div class="delitemcapdiv">{itemscap}</div>
+		{items}
+	</div>
+	<div class="dellistdiv">
+		{items1}
+	</div>
+	<div class="dellistdiv">
+		{items2}
+	</div>
+	<div class="dellistdiv">
+		{items3}
+	</div>
+	<div style="clear:left;"></div>
+</div>
+[/section::3]
+[section::4] 
+<p class="delitemcap"><a href="{href}">{name}</a></p>
+[/section::4]
+[section::5] 
+<p class="delitem"><a href="{href}">{name}</a></p>
+[/section::5]
+[section::6] 
+<p class="delitemlet">{letter}</p>
+[/section::6]
+[section::7]
+
+<div class="delstoreelem{first}" id="store_{id}">
+	<div class="delstorehead">
+		<table>
+			<tr>
+				<td class="delstorearrow"><div style="width:23px;height:1px;"></div></td>
+				<td><p>г. {town}, {address}</p></td>
+			</tr>
+		</table>
+	</div>
+	<div class="delstoreinfo">
+		<p>Адрес: <span>{address}</span></p>
+		{phone}
+		{worktime}
+		{proezd}
+		{addition}
+	</div>
+</div>
+[/section::7]
+[section::7-1]
+<p>Телефон: <span>{phone}</span></p>
+[/section::7-1]
+[section::7-2]
+<p>Мы работаем <span>{worktime}</span></p>
+[/section::7-2]
+[section::7-3]
+<p>Проезд: <span>{proezd}</span></p>
+[/section::7-3]
+[section::7-4]
+<p>*-Данная страница содержит информацию о главном отделении почты России соответствующего города. Информацию о сопутствующих отделениях почты города Вы можете узнать по номеру главного отделения почты.</p>
+[/section::7-4]
+[section::8]
+<div class="delstoreleft">
+	{storelist}
+</div>
+<div class="delstoreright">
+	{slider}
+</div>
+<div style="clear:left;"></div>
+<div id="test"></div>
+[/section::8]
+[section::9]
+<script type="text/javascript">
+	$(function() {
+		
+		$('#carousel').carouFredSel({
+			responsive: true,
+			circular: false,
+			auto: false,
+			items: {
+				visible: 1,
+				width: 460,
+				height: 360
+			},
+			scroll: {
+				fx: 'directscroll'
+			}
+		});
+
+		$('#thumbs').carouFredSel({
+			responsive: true,
+			circular: false,
+			infinite: false,
+			auto: false,
+			prev: '#prev',
+			next: '#next',
+			items: {
+				visible: {
+					min: 2,
+					max: 6
+				},
+				width: 100
+			}
+		});
+
+		$('#thumbs a').click(function() {
+			$('#carousel').trigger('slideTo', '#' + this.href.split('#').pop() );
+			$('#thumbs a').removeClass('selected');
+			$(this).addClass('selected');
+			return false;
+		});
+
+	});
+</script>
+	
+
+<style type="text/css">
+
+	#wrapper {
+		
+	}
+	#carousel-wrapper {
+		padding-bottom: 10px;
+		position: relative;
+	}
+	#carousel, #thumbs {
+		overflow: hidden;
+	}
+	#carousel-wrapper .caroufredsel_wrapper {
+		box-shadow: 0 0 5px #899;
+	}
+
+	#carousel span, #carousel img,
+	#thumbs a, #thumbs img  {
+		display: block;
+		float: left;
+	}
+	#carousel span, #carousel a,
+	#thumbs span, #thumbs a {
+		position: relative;
+	}
+	#carousel img,
+	#thumbs img {
+		border: none;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	#carousel img.glare,
+	#thumbs img.glare {
+		width: 102%;
+		height: auto;
+	}
+
+	#carousel span {
+		width: 460px;
+		height: 360px;
+	}
+
+	#thumbs-wrapper {
+		padding: 20px 40px;
+		position: relative;
+	}
+	#thumbs a {
+		border: 2px solid #899;
+		width: 150px;
+		height: 100px;
+		margin: 0 2px;
+		overflow: hidden;
+		border-radius: 0px;
+		
+		-webkit-transition: border-color .5s;
+		-moz-transition: border-color .5s;
+		-ms-transition: border-color .5s;
+		transition: border-color .5s;
+	}
+	#thumbs a:hover, #thumbs a.selected {
+		border-color: #770004;
+	}
+	
+	
+	#prev, #next {
+		
+		display: block;
+		width: 14px;
+		height: 80px;
+		margin-top: -40px;
+		position: absolute;
+		top: 50%;
+	}
+	#prev {
+		background: transparent url('/images/slider/slideleftarr.png') no-repeat;
+		left: 10px;
+	}
+	#next {
+		background: transparent url('/images/slider/sliderightarr.png') no-repeat;
+		right: 10px;
+	}
+	
+	#prev.disabled, #next.disabled {
+		display: none !important;
+	}
+</style>
+
+
+<div id="wrapper">
+	<div id="carousel-wrapper">
+		<div id="carousel">
+			{imgmain}
+		</div>
+	</div>
+	<div id="thumbs-wrapper">
+		<div id="thumbs">
+			{imgsub}
+		</div>
+		<a id="prev" href="#"></a>
+		<a id="next" href="#"></a>
+	</div>
+</div>
+[/section::9]
+[section::9-1]
+<span id="idpic{id}"><img src="{img}" /></span>
+[/section::9-1]
+[section::9-2]
+<a href="#idpic{id}" {class}><img src="{img}" /></a>
+[/section::9-2]
+[section::10]
+
+[/section::10]
+[section::error]
+<p>Нет пунктов выдачи</p>
+[/section::error]
+[section::error2]
+<p>Нет магазинов</p>
+[/section::error2]

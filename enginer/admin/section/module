@@ -1,0 +1,41 @@
+[section::1]
+<div class="LeftPadding">
+
+<div class="clear"></div>
+<p class="mainTopP">Модули</p>
+<div class="clear"></div>
+<div class="mainIMG">
+<a href="main-modules-install.pl" title="установка дополнительных модулей">
+<img src="../templates/admin/ico/admin/install.png" alt="" />
+<p>установка модулей</p>
+</a>
+</div>
+<div class="mainIMG">
+<a href="main-modules-setting.pl" title="настройка модулей">
+<img src="../templates/admin/ico/admin/set.png" alt="" />
+<p>настройка модулей</p>
+</a>
+</div>
+<div class="mainIMG">
+<a href="main-blocks-install.pl" title="установка дополнительных блоков">
+<img src="../templates/admin/ico/admin/install.png" alt="" />
+<p>установка блоков</p>
+</a>
+</div>
+<div class="mainIMG">
+<a href="main-blocks-setting.pl" title="настройка блоков">
+<img src="../templates/admin/ico/admin/set.png" alt="" />
+<p>настройка блоков</p>
+</a>
+</div>
+
+<div class="mainIMG">
+<a href="main-modules-delete.pl" title="удаление модулей и блоков">
+<img src="../templates/admin/ico/admin/remove.png" alt="" />
+<p>удаление модулей и блоков</p>
+</a>
+</div>
+
+<div class="clear"></div>
+</div>
+[/section::1]

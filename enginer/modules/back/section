@@ -1,0 +1,78 @@
+[section::0]
+<div class="LeftPadding"> 
+<p class="mainTopP">Обратная связь</p>
+</div>
+[/section::0]
+
+[section::1]
+<table class="table5" cellpadding="0" cellspacing="0">
+<tr>
+<th></th><th>редактировать</th>
+</tr>
+<tr>
+	<td class="textTable" style="width:170px;">Текст обратной связи</td>
+	<td><a href="main-modules-setting-mod-%MOD%-1.pl"><img src="../images/news/edit.png" alt="" /></a></td>
+</tr>
+</table>
+<div class="LeftPadding">
+<p><span class="mainTopP">Настройки</span></p>
+<form action="#" method="post">
+<table>
+<tr>
+<td align="right">Используемый адрес элетронной почты:</td><td><input style="height:15px;" class="stepInput" value="%MAIL%" type="text" name="mail" /></td>
+</tr>
+<tr>
+<td align="right">Тема письма:</td><td><input style="height:15px;" class="stepInput" value="%subj%" type="text" name="subj" /></td>
+</tr>
+<tr>
+<td align="right">Использовать капчу::</td><td><select name="cap" style="height:20px;" class="stepInput"><option value="1" {s}>Да</option><option value="2" {s1}>Нет</option></select></td>
+</tr>
+<tr>
+<td align="right"></td><td><input type="submit" name="save" class="buttons" value="сохранить" /></td>
+</tr>
+</table>
+</form>
+</div>
+[/section::1]
+
+
+[section::2]
+<div class="LeftPadding">
+<p class="backgo"><a href="main-modules-setting-mod-%MOD%.pl">вернуться назад</a></p>
+<table class="tablelist" width="100%" cellpadding="0" cellspacing="0" > 
+<tr> 
+<th>Текст</th><th style="text-align:center">Редактирование</th>  
+</tr> 
+<tr> 
+<td>Текст до формы обратной связи</td><td align="center"><a href="main-modules-setting-mod-%MOD%-2.pl"><img style="cursor:pointer;" src="../templates/admin/images/icon/edit.gif"  alt="" /></a></td>
+</tr> 
+<tr>
+<td>Текст после формы обратной связи</td><td align="center"><a href="main-modules-setting-mod-%MOD%-3.pl"><img style="cursor:pointer;" src="../templates/admin/images/icon/edit.gif"  alt="" /></a></td>    
+</tr> 
+</table>
+</div>
+[/section::2]
+[section::3]
+<div class="LeftPadding">
+<p class="backgo"><a href="main-modules-setting-mod-%MOD%-1.pl">вернуться назад</a></p>
+<p><span class="mainTopP">Редактирование текста %TEXT% формы обратной связи</span></p>
+<table width="100%">
+<form action="#" method="post">
+<tr>
+<td>
+[/section::3]
+[section::4]
+</td>
+</tr>
+<tr>
+<td align="center"><input type="submit" name="edit" class="buttons" value="сохранить" /></td>
+</tr>
+</form>
+</table>
+</div>
+[/section::4]
+
+[section::40]
+<p class="editPUser" style="color:green">%TEXT%</p> 
+<p>&nbsp;</p>
+[/section::40]

@@ -1,0 +1,69 @@
+﻿[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Учетные записи</p>
+<p><span class="mainTopP">список пользователей</span></p> 
+
+[/section::1]
+[section::2]
+<table class="tablelist" width="100%" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th>Пользователь</th><th>e-mail</th><th>IP-адрес</th><th>Дата регистрации</th><th>Редактирование</th> 
+</tr> 
+%INFO%
+</table>
+
+<p><span onclick="PanelWorks(1)" class="p10">Добавить пользователя</span></p> 
+<div class="panelCss" style="margin-top: 10px; " id="1">
+
+<form action="#" method="post"> 
+<table>
+<tr> 
+<td>Логин:</td><td><input style="width:200px;height:30px;" class="set1" type="text" name="login" value="" /></td>
+</tr>
+<tr>
+<td>Пароль:</td><td><input style="width:200px;height:30px;" class="set1" type="text" name="pass" value="" /></td>
+</tr>
+<tr>
+<td>E-mail:</td><td><input style="width:200px;height:30px;" class="set1" type="text" name="mail" value="" /></td>
+</tr>
+<tr>
+<td></td><td><input type="submit" name="add" class="buttons" value="добавить" /></td>
+</tr>
+</table>
+</form>
+</div> 
+</div>
+[/section::2]
+[section::3]
+<tr>
+<td><span >%USER%</span></td><td><span >%MAIL%</span></td><td><span >%IP%</span></td><td><span >%DATA%</span></td><td>
+{window}
+<div style="float:left;margin-right:20px;">
+<img style="cursor:pointer;" title="редатировать учетную запись" onclick="ShowWindow(%ID%)" src="../templates/admin/images/icon/edit.gif" alt="" />
+</div>
+{window1}
+<div style="float:left;margin-right:20px;">
+<img style="cursor:pointer;" title="удаление учетной записи" onclick="ShowWindow(-%ID%)" src="../templates/admin/images/icon/delete.gif" alt="" />
+</div>
+</td>
+</tr>
+[/section::3]
+[section::3-1]
+<div style="width:100%;height:120px">
+<form action="#" method="post">
+<input type="hidden" value="%ID%" name="id" /> 
+<div class="LeftD">Логин:</div><div class="RightD"><b>%USER%</b></div>
+<div class="LeftD">Новый пароль:</div><div class="RightD"><input class="set1" type="text" name="NewPass" value="" /></div>
+<div class="LeftD">e-mail:</div><div class="RightD"><input class="set1" type="text" name="NewMail" value="%MAIL%" /></div>
+<div class="LeftD">&nbsp;</div><div class="RightD"><input type="submit" name="edit" class="buttons" value="сохранить" /></div>
+</form>
+</div>
+[/section::3-1]
+[section::3-2]
+<p>Вы точно хотите удалить данного пользователя?</p>
+<form action="#" method="post" style="clear:both;float:left;padding-left:140px;"> 
+		<input type="submit" name="delete" class="TrueButton" value="да" />
+		<input type="hidden" name="id" value="%ID%" />
+	</form>
+	<input type="submit" style="float:left;margin-left:30px;" name="" onclick="hiddenWindow(-%ID%)" class="TrueButton" value="нет" />
+[/section::3-2]

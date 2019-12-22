@@ -1,0 +1,16 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Контент</p>
+<div class="clear"></div>
+{list}
+<div class="clear"></div>
+</div>
+[/section::1]
+[section::2]
+<div class="mainIMG">
+<a href="{url}" title="{title}">
+<img src="../templates/admin/ico/{image}" alt="" />
+<p>{name}</p>
+</a>
+</div>
+[/section::2]

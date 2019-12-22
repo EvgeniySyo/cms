@@ -1,0 +1,21 @@
+﻿[section::1]
+<div class="wid"><span class="main_c main_1"><a href="#">Список пользователей</a></span></div>
+<div class="wid_1">
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<table width="100%" cellpadding="4" cellspacing="4">
+	<tr>
+	<td>Пользователь</td><td>e-mail</td><td>Уровень Доступа</td><td>IP-адрес</td><td>Дата регистрации</td><td>Редактирование</td><td>Удаление</td>
+	</tr>
+[/section::3]
+[section::4]
+<tr>
+<td><b>%USER%</b></td><td>%MAIL%</td><td>%LEVEL%</td><td>%IP%</td><td>%DATA%</td><td><a style="color:green;" href="user-edit-%ID%.pl">Редактировать</a></td><td><a style="color:red;" href="user-del-%ID%.pl">Удалить</a></td>
+</tr>
+[/section::4]
+[section::5]
+</table>
+[/section::5]

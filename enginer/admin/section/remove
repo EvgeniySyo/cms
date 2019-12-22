@@ -1,0 +1,70 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Удаление модулей и блоков</p>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<p>Модули не установлены</p>
+[/section::3]
+[section::4]
+<table width="100%" cellpadding="0" cellspacing="0" class="tablelist">
+<tr>
+<th width="50"></th><th>Название модуля</th><th width="80">Удалить</th>
+</tr>
+{list}
+</table>
+[/section::4]
+[section::5]
+<tr>
+<td><img src="{img}" height="50" alt="" /></td><td>{name}</td><td align="center">{window} <img style="cursor:pointer;"  onclick="ShowWindow('{id}')" src="../templates/admin/images/icon/delete.gif" alt="" /></td>
+</tr>
+[/section::5]
+[section::6]
+<p><span class="mainTopP">Установленые модули</span></p>
+{text}
+[/section::6]
+[section::7]
+<p align="center">Вы точно хотите удалить данный модуль?</p>
+<form action="#" method="post" style="clear:both;float:left;padding-left:140px;"> 
+		<input type="submit" name="delete" class="TrueButton" value="да" />
+		<input type="hidden" name="name" value="{name}" />
+		<input type="hidden" name="type" value="module" />
+	</form>
+	<input type="submit" style="float:left;margin-left:30px;" name="" onclick="hiddenWindow('module-{name}')" class="TrueButton" value="нет" />
+[/section::7]
+[section::8]
+<p><span class="mainTopP">Установленые блоки</span></p>
+{text}
+[/section::8]
+[section::9]
+<p>Блоки не установлены</p>
+[/section::9]
+[section::10]
+<table width="100%" cellpadding="0" cellspacing="0" class="tablelist">
+<tr>
+<th width="50"></th><th>Название блока</th><th width="80">Удалить</th>
+</tr>
+{list}
+</table>
+[/section::10]
+[section::11]
+<tr>
+<td><img src="{img}" height="50" alt="" /></td><td>{name}</td><td align="center">{window} <img style="cursor:pointer;"  onclick="ShowWindow('{id}')" src="../templates/admin/images/icon/delete.gif" alt="" /></td>
+</tr>
+[/section::11]
+[section::12]
+<p align="center">Вы точно хотите удалить данный блок?</p>
+<form action="#" method="post" style="clear:both;float:left;padding-left:140px;"> 
+		<input type="submit" name="delete" class="TrueButton" value="да" />
+		<input type="hidden" name="name" value="{name}" />
+		<input type="hidden" name="type" value="block" />
+	</form>
+	<input type="submit" style="float:left;margin-left:30px;" name="" onclick="hiddenWindow('block-{name}')" class="TrueButton" value="нет" />
+[/section::12]
+[section::13]
+<tr>
+<td><img src="{img}" height="50" alt="" /></td><td>{name}</td><td align="center">{window} <img style="cursor:pointer;"  onclick="ShowWindow('{id}')" src="../templates/admin/images/icon/delete.gif" alt="" /></td>
+</tr>
+[/section::13]

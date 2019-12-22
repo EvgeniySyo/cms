@@ -1,0 +1,29 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Установка модулей</p>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+
+[/section::3]
+[section::4]
+<table width="100%" cellpadding="2" cellspacing="2">
+[/section::4]
+[section::5]
+</table>
+[/section::5]
+[section::6]
+<form action="#" method="post">
+<tr><td style="width:60px"><img src="../{img}" width="50" alt="" /></td><td align="left" style="width:200px;"><b>%NAME%</b></td><td align="left"><input type="submit" name="add" value="установить" class="buttons" />
+<input type="hidden" name="mod" value="%ID%" />
+</td></tr>
+</form>
+[/section::6]
+[section::7]
+<p style="color:green;">Модуль успешно установлен</p>
+[/section::7]
+[section::8]
+<p>Доступных модулей для установки обнаруженно не было</p>
+[/section::8]

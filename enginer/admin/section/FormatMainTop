@@ -1,0 +1,6 @@
+﻿[section::1]
+<ul>%LI%</ul>
+[/section::1]
+[section::2]
+<li><a href="%URL%">%NAME%</a></li>
+[/section::2]

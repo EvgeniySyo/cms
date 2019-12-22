@@ -1,0 +1,42 @@
+[section::1]
+<div class="news">
+{image}
+	<p class="date"><a href="{url}">{date}</a></p>
+	<p class="name"><a href="{url}">{name}</a></p>
+	<p>{text}</p>
+	<p class="more"><a href="{url}">>> читать далее</a></p>
+</div>
+
+[/section::1]
+[section::2]
+<div class="news">
+{image}
+	<p class="name"><a href="{url}">{name}</a></p>
+	<p class="date">{date1}</p>
+	<p>{text}</p>
+</div>
+[/section::2]
+[section::3]
+<div class="subnews">
+	<p class="subnewsname"><a href="{url}">{name}</a></p>
+	<p class="subnewstext">{text}</p>
+	<p class="newsdate">{date1}</p>
+</div>
+[/section::3]
+[section::4]
+<img src="{image}" alt="" width="104" height="67" align="left" />
+[/section::4]
+[section::5]
+<div class="newblock">
+	<div class="content">
+		<p class="subnewstop">Другие новости</p>
+		{text}
+	</div>
+</div>
+[/section::5]
+[section::28]
+<a class="subnewsImage" href="{url}"><img alt="" src="{URL_SITE}{image}" /></a>
+[/section::28]
+[section::30]
+<a class="subnewsImage" href="{url}"><img  alt="" src="{URL_SITE}{image}" /></a>
+[/section::30]

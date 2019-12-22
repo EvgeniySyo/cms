@@ -1,0 +1,30 @@
+<?php
+session_start();
+$_SESSION['captcha']=rand(100000,999999);
+$text_capcha = $_SESSION['captcha'];
+$rand["image"] = rand(2,2);
+$rand["font"] = rand(1,7);
+$rand["x"] = rand(5,26);
+$rand["y"] = rand(25,40);
+$rand["angle"] = rand(-8,8);
+$rand["height"] = rand(14,16);
+$rand["col_1"] = 111;
+$rand["col_2"] = 111;
+$rand["col_3"] = 111;
+$rand["col_4"] = 0;
+$cap["file"] = "images/capcha/".$rand["image"].".jpg";
+$cap["size"] = getimagesize($cap["file"]);
+$cap["color"] = imagecreatetruecolor($cap["size"][0],$cap["size"][1]);
+$cap["create"] = imagecreatefromjpeg($cap["file"]);
+imagecopyresampled($cap["color"],$cap["create"],0,0,0,0,$cap["size"][0],$cap["size"][1],$cap["size"][0],$cap["size"][1]);
+$cap["font"] = "font/".$rand["font"].".ttf";
+$cap["img_color"] = imagecolorallocatealpha($cap["create"],$rand["col_1"],$rand["col_2"],$rand["col_3"],$rand["col_4"]);
+$cap["text"] = $text_capcha;
+$cap["height"] = $rand["height"];
+$cap["angle"] = $rand["angle"];
+$cap["box"] = imagettftext($cap["create"],$cap["height"],$cap["angle"],$rand["x"],$rand["y"],$cap["img_color"],$cap["font"],$cap["text"]);
+header ("Content-type: image/jpeg");
+imagejpeg($cap["create"]);
+imagedestroy($cap["color"]);
+imagedestroy($cap["create"]);
+?>

@@ -1,0 +1,8 @@
+[module::title]
+<div class="mainhdiv">
+	<h1 class="mainh">%TEXT_TITLE%</h1>
+</div>
+[/module::title]
+[module::content]
+%TEXT_MODULE%
+[/module::content]

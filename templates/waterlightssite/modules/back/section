@@ -1,0 +1,94 @@
+[section::0]
+<style>
+#msg {
+border:1px solid #969696;
+padding:5px;
+font-weight:bold;
+width:100%;
+padding-top:25px;
+padding-bottom:25px;
+text-align:center;
+margin-bottom:15px;
+}
+#msg1 {
+border:1px solid red;
+padding:5px;
+font-weight:bold;
+width:100%;
+padding-top:25px;
+padding-bottom:25px;
+text-align:center;
+margin-bottom:15px;
+}
+</style>
+[/section::0]
+[section::1]
+<div id="msg">
+%TEXT%
+</div>
+[/section::1]
+[section::1-1]
+<div id="msg1">
+%TEXT%
+</div>
+[/section::1-1]
+[section::2]
+%TEXT%
+[/section::2]
+[section::3]
+
+<div class="backindent"></div>
+<div class="backmap">
+	<!-- map -->
+	<div id="YMapsID" class="map"></div>
+	<!--ymaps-->
+	<script type="text/javascript">
+		ymaps.ready(init);
+        var myMap, 
+            myPlacemark;
+
+        function init(){ 
+            myMap = new ymaps.Map("YMapsID", {
+                center: [59.924008, 30.361391],
+                zoom: 16
+            }); 
+			var maptargetstyle = [];
+			// Создает стиль значка метки
+			maptargetstyle.iconLayout = 'default#image'
+			maptargetstyle.iconImageHref = "/userfiles/map_mark.png";
+			maptargetstyle.iconImageSize = [27, 35];
+			maptargetstyle.iconImageOffset = [0, -35];
+            
+            myPlacemark = new ymaps.Placemark([59.924008, 30.361391], {
+                hintContent: 'ООО «Вмеза»',
+                balloonContent: 'Санкт-Петербург, Лиговский проспект, дом 50, корпус 17',
+				maptargetstyle
+            });
+            
+            myMap.geoObjects.add(myPlacemark);
+			myMap.behaviors.disable('scrollZoom');
+			myMap.behaviors.disable('drag');
+        }
+        
+    </script>
+</div>
+<div class="backform">
+{before}
+	<div class="formdata">
+		<form action="#" method="post">
+			<input type="text" name="name" placeholder="Как вас зовут?" class="backinput"/>
+			<input type="text" name="mailorphone" placeholder="Ваш e-mail или телефон" class="backinput"/>
+			<textarea name="quest" placeholder="Сообщение" class="backtextarea"></textarea>
+			<input type="button" value="Отправить" class="sendformback"/>
+		</form>
+	</div>
+</div>
+
+
+[/section::3]
+[section::4]
+%TEXT%
+[/section::4]
+[section::5]
+%TEXT%
+[/section::5]

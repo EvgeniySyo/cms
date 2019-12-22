@@ -1,0 +1,50 @@
+[section::1]
+    
+    <script src=../templates/admin/code/lib/codemirror.js></script>
+    <script src=../templates/admin/code/mode/css/css.js></script>
+    <link rel=stylesheet href=../templates/admin/code/lib/codemirror.css>
+   
+		<style type="text/css">
+			.CodeMirror {width:100%;
+			border:1px #000 solid;}
+			.CodeMirror-scroll {
+        height: 400px;
+      }
+		</style>
+
+
+<div class="LeftPadding"> 
+<p class="mainTopP">Редактитрование css файла</p>
+<p class="backgo"><a href="templates.pl">вернуться назад</a></p>
+<div class="LineTop"><div class="posText"><strong>{name}</strong></div><img src="{img}" style="height:50px;" class="posImg bImg" alt="" /> </div> 
+<p class="RedText"><strong>Внимание! Только для опытных пользователей!</strong></p> 
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<div class="csslist"><a href="templates-css-{template}-mod-{file}.pl#edit"><img src="../templates/admin/images/cssbig.png" alt="" /><p>{name}</p></a></div>
+[/section::3]
+[section::4]
+<div class="csslist1"><a href="templates-css-{template}-mod-{file}.pl#edit"><img src="../templates/admin/images/cssbig.png" alt="" /><p>{name}</p></a></div>
+[/section::4]
+[section::5]
+<div style="clear:both;width:100%;"></div>
+</div>
+<div class="LeftPadding">
+<form action="#edit" method="post">
+<a href="#" name="edit"></a>
+<p class="mainTopP">Редактитрование файла &mdash; &laquo;{name}.css&raquo;</p>
+
+<textarea name="text" id="code" class="css" style="width:95%;height:500px">{text}</textarea>
+<p align="center"><input type="submit" class="buttons" name="update" value="сохранить" /></p>
+
+</form>
+<script>
+      var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        lineNumbers: true,
+        height: "1350px",
+      });
+      
+    </script>
+[/section::5]

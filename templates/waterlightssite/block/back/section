@@ -1,0 +1,168 @@
+[section::0]
+<style>
+#msg {
+border:1px solid #969696;
+padding:5px;
+font-weight:bold;
+width:100%;
+padding-top:25px;
+padding-bottom:25px;
+text-align:center;
+margin-bottom:15px;
+}
+#msg1 {
+border:1px solid red;
+padding:5px;
+font-weight:bold;
+width:100%;
+padding-top:25px;
+padding-bottom:25px;
+text-align:center;
+margin-bottom:15px;
+}
+</style>
+
+
+[/section::0]
+[section::1]
+<div id="msg">
+%TEXT%
+</div>
+[/section::1]
+[section::1-1]
+<div id="msg1">
+%TEXT%
+</div>
+[/section::1-1]
+[section::2]
+%TEXT%
+[/section::2]
+[section::3]
+
+<script type="text/javascript">
+function backhide()
+{
+	var back=document.getElementById('backshade');
+	back.style.display='none';
+}
+function backshow()
+{
+	var back=document.getElementById('backshade');
+	back.style.display='block';
+}
+function TestMailBack(name)
+{
+	var dataHtml = $.ajax({
+		url: "/status.php?status=1",
+		type: "POST",
+		data: ({id : name}),
+		dataType: "html",
+		async:false
+	}).responseText;
+	return dataHtml;
+}
+function TestCodeBack(name)
+{
+	var dataHtml = $.ajax({
+		url: "/status.php?status=2",
+		type: "POST",
+		data: ({id : name}),
+		dataType: "html",
+		async:false
+	}).responseText;
+	return dataHtml;
+}
+
+function ValidateBackForm(f)
+{
+if(f.name.value.length < 1 || f.name.value=='Ваше имя')
+{
+        alert('Требуется заполнить текстовое поле: Имя');
+		f.name.focus();
+		return false;
+}
+if(f.message.value.length < 1 || f.message.value=='Текст сообщения')
+{
+        alert('Требуется заполнить текстовое поле: Сообщение');
+		f.message.focus();
+		return false;
+}
+
+	mailUser = TestMailBack(f.mail.value);
+
+	if(mailUser == 1 || mailUser == 2)
+	{
+		if(mailUser == 1)
+		{
+			alert('Не верный e-mail');
+			f.mail.focus();
+			return false;
+		}
+	}
+	
+	code=TestCodeBack(f.code.value);
+	if(code==0)
+	{
+		alert('Не верный код безопастности');
+		f.code.focus();
+		return false;
+	}
+}
+function backfocusclear(elem)
+{
+	elem.value='';
+}
+function backblurclear(elem)
+{
+	if(elem.value=='')
+	{
+		if(elem.name=='name') elem.value='Ваше имя';
+		if(elem.name=='mail') elem.value='Эл. почта';
+		if(elem.name=='message') elem.value='Текст сообщения';
+	}
+}
+</script>
+<script type="text/javascript">
+            $( document ).ready(function() {
+                $('.notBot').append('<input type="hidden" name="not_bot" value="User">');
+            });
+</script>
+<div class="shade" id="backshade">
+	<div class="backmaindiv">
+	<div class="backheader">
+		<div class="backclose" onclick="backhide();"></div><p>Форма обратной связи</p>
+	</div>
+	<form action="#" method="post" id="backform" class="notBot" onsubmit="return ValidateBackForm(this);">
+	<table class="table2">
+	
+	<tr>
+		<td><input class="backinput" type="text" name="name" value="Ваше имя" onfocus="backfocusclear(this);" onblur="backblurclear(this);"/></td>
+	</tr>
+	<tr>
+		<td><input type="text" class="backinput" name="mail" value="Эл. почта" onfocus="backfocusclear(this);" onblur="backblurclear(this);"/></td>
+	</tr>
+	<tr>
+		<td><textarea name="message" class="backarea" onfocus="backfocusclear(this);" onblur="backblurclear(this);">Текст сообщения</textarea></td>
+	</tr>
+	<tr>
+		<td><span>Код безопастности: </span><img class="back" src="/capture.php" alt=""/></td>
+	</tr>
+	<tr>
+		<td><input type="text" name="code" class="backinput"/></td>
+	</tr>
+	<tr>
+		<td><input type="submit" name="sendback" class="backsend" value=""/></td>
+	</tr>
+	
+	</table>
+	</form>
+	<div class="clear1"></div>
+	</div>
+</div>
+[/section::3]
+[section::4]
+%TEXT%
+[/section::4]
+[section::5]
+%TEXT%
+[/section::5]

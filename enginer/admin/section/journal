@@ -1,0 +1,41 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Журнал событий</p>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<p>Журнал событий пуст</p>
+[/section::3]
+[section::4]
+<table width="100%" cellpadding="2" cellspacing="2" class="tablelist">
+<tr>
+<th width="250" style="text-align:center">Дата</th><th>Событие</th><th>IP адрес</th>
+</tr>
+{list}
+</table>
+{page}
+[/section::4]
+[section::5]
+<tr>
+<td align="center">{date}</td><td>{text}</td><td>{ip}</td>
+</tr>
+[/section::5]
+
+=== pages ===
+[section::33]
+<p align="center">{page}</p>
+[/section::33]
+[section::34]
+<a href="{url}">назад</a> 
+[/section::34]
+[section::35]
+<a href="{url}">вперед</a> 
+[/section::35]
+[section::36]
+<a href="{url}">{n1}</a> 
+[/section::36]
+[section::37]
+<b>{n1}</b> 
+[/section::37]

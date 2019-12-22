@@ -1,0 +1,64 @@
+[section::1]
+<div class="LeftPadding"> 
+<p class="mainTopP">Компоненты и блоки</p>
+<p class="backgo"><a href="templates.pl">вернуться назад</a></p>
+<p>&nbsp;</p>
+<div class="LineTop"><div class="posText"><strong>{name}</strong></div><img src="{img}" style="height:50px;" class="posImg bImg" alt="" /> </div> 
+<p class="RedText"><strong>Внимание! Только для опытных пользователей!</strong></p> 
+<a name="down2"></a>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<div class="csslist"><a href="templates-addition-{template}-mod-{component}.pl#down"><img src="../templates/admin/images/additionbig.png" alt="" /><p>{name}</p></a></div>
+[/section::3]
+[section::4]
+<div class="csslist1"><a href="templates-addition-{template}-mod-{component}.pl#down"><img src="../templates/admin/images/additionbig.png" alt="" /><p>{name}</p></a></div>
+[/section::4]
+[section::5]
+<div style="clear:both;width:100%;"></div>
+</div>
+<div class="LeftPadding">
+<p class="mainTopP">Список модулей</p><a name="down"></a>
+[/section::5]
+[section::6]
+</div>
+[/section::6]
+[section::7]
+<div style="clear:both;width:100%;"></div>
+</div>
+<div class="LeftPadding">
+<p class="mainTopP">Список блоков</p><a name="down"></a>
+[/section::7]
+[section::8]
+<div class="csslist" style="padding:6px;height:200px;margin-bottom:30px;margin-rigth:35px;"><a href="templates-addition-{template}-mod-{component}-{namemodule}.pl#down1"><img src="../templates/admin/images/source.png" alt="" /><p>{name}</p></a></div>
+[/section::8]
+[section::9]
+<div class="csslist1" style="height:200px;margin-bottom:30px;margin-rigth:35px;"><a href="templates-addition-{template}-mod-{component}-{namemodule}.pl#down1"><img src="../templates/admin/images/source.png" alt="" /><p>{name}</p></a></div>
+[/section::9]
+[section::10]
+<div style="clear:both;width:100%;"></div>
+</div><a name="down1"></a>
+<div class="LeftPadding">
+<p class="mainTopP">Модуль &rarr; {name}</p>
+[/section::10]
+[section::11]
+<form action="#down2" method="post">
+{list}
+<p style="text-align:center;"><input type="submit" name="saveModsection" class="buttons" value="сохранить" /></p>
+</form>
+[/section::11]
+[section::12]
+<div class="NameElement"><span onclick="PanelWorks({id})"><b>section :: {name}</b></span></div>
+<input type="hidden" name="element[{id}]" value="{name}" />
+<div class="panelCss" id="{id}">
+<textarea name="css[{id}]" class="css">{section}</textarea>
+</div>
+[/section::12]
+[section::14]
+<div style="clear:both;width:100%;"></div>
+</div>
+<div class="LeftPadding"><a name="down1"></a>
+<p class="mainTopP">Блок &rarr; {name}</p>
+[/section::14]

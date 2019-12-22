@@ -1,0 +1,95 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Настройки сайта</p>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<form action="#" method="post">
+<table>
+[/section::3]
+[section::4]
+</table>
+</form>
+[/section::4]
+[section::5]
+<tr>
+<td>
+<div style="text-align:right">
+Название сайта: </td><td><input type="text" style="width:500px;height:26px;" class="set1" name="title" value="%TITLE%" /></div></td>
+</tr>
+<tr><td></td><td></td></tr>
+<!-- ################################################################################# -->
+<tr>
+<td>
+<div style="text-align:right">
+Ключевые слова: </td><td><input type="text" style="width:500px;height:26px;" class="set1" name="key" value="%KEY%" /></div></td>
+</tr>
+<tr><td></td><td></td></tr>
+
+<tr>
+<td>
+
+<!-- ################################################################################# -->
+<tr>
+<td>
+<div style="text-align:right">
+Описание: </td><td><input type="text" style="width:500px;height:26px;" class="set1" name="desc" value="{desc}" /></div></td>
+</tr>
+<tr><td></td><td></td></tr>
+
+<tr>
+<td>
+
+<div style="text-align:right">
+Кеширование: </td><td><input type="radio" name="buffer" value="on" %CH1% /> вкл. <input type="radio" name="buffer" value="off" %CH2% /> выкл.</td>
+</tr>
+<tr><td></td><td></td></tr>
+<!-- ################################################################################# -->
+<tr>
+<td>
+<div style="text-align:right">
+Статистика посещаемости: </td><td><input style="width:15px;" type="radio" name="stats" value="on" %CH3% /> вкл. <input style="width:15px;" type="radio" name="stats" value="off" %CH4% /> выкл.</td>
+</tr>
+<tr><td></td><td></td></tr>
+<!-- ################################################################################# -->
+<tr>
+<td>
+<div style="text-align:right">
+Время генерации страницы: </td><td><input style="width:15px;" type="radio" name="time" value="on" %CH5% /> вкл. <input style="width:15px;" type="radio" name="time" value="off" %CH6% /> выкл.</td>
+</tr>
+<tr><td></td><td></td></tr>
+<!-- ################################################################################# -->
+<tr>
+<td>
+<div style="text-align:right">
+Подавление ошибок: </td><td><input style="width:15px;" type="radio" name="error" value="on" %CH7% /> вкл. <input style="width:15px;" type="radio" name="error" value="off" %CH8% /> выкл.</td>
+</tr>
+<tr><td></td><td></td></tr>
+<!-- ################################################################################# -->
+<tr>
+<td>
+<div style="text-align:right">
+Пользователи онлайн: </td><td><input style="width:15px;" type="radio" name="user_online" value="on" %CH9% /> вкл. <input style="width:15px;" type="radio" name="user_online" value="off" %CH10% /> выкл.</td>
+</tr>
+<tr><td></td><td></td></tr>
+<!-- ################################################################################# -->
+<tr>
+<td class="St1">
+<div style="text-align:right">
+Показывать онлайн на сайте: </td><td><input style="width:15px;" type="radio" name="looks" value="on" %CH11% /> вкл. <input style="width:15px;" type="radio" name="looks" value="off" %CH12% /> выкл.</td>
+</tr>
+<tr><td></td><td></td></tr>
+<!-- ################################################################################# -->
+<tr>
+<td class="St1" valign="top">
+
+<div style="text-align:right">
+Закрытие сайта: </td><td><textarea style="width:500px;height:100px;" class="set1" name="closed_text">%TEXTCLOSE%</textarea><br />
+<input style="width:15px;" type="radio" name="close" value="on" %CH13% /> вкл. <input style="width:15px;" type="radio" name="close" value="off" %CH14% /> выкл.</td>
+</tr>
+<tr><td></td><td></td></tr>
+<!-- ################################################################################# -->
+<tr><td></td><td><input type="submit" name="enter" class="buttons" value="сохранить" /></td></tr>
+[/section::5]

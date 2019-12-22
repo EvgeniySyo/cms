@@ -1,0 +1,62 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Настройка блоков</p>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<p><span class="mainTopP">Слева &larr;</span></p>
+[/section::3]
+[section::4]
+<p><span class="mainTopP">Справа &rarr;</span></p>
+[/section::4]
+[section::5]
+<p><span class="mainTopP">По центру &uarr;</span></p>
+[/section::5]
+[section::6]
+<p><span class="mainTopP">Снизу &darr;</span></p>
+[/section::6]
+[section::7]
+<form action="main-blocks-setting.pl" method="post">
+<table style="width:100%" class="tablelist" cellpadding="0" cellspacing="0">
+<tr>
+<th style="width:60px;"></th><th >Позиция</th><th>Название</th><th >Статус</th><th >Положение</th>
+<th >Титул</th><th >Показывать титул</th><th align="left">Показывать в модулях</th>
+</tr>
+{list}
+<tr id="table-clear">
+<td></td><td></td><td></td><td></td><td align="left"></td><td></td><td></td><td><input type="submit" name="save" value="" class="saveMod" /></td>
+</tr>
+</table>
+</form>
+[/section::7]
+[section::8]
+<tr>
+<td align="center"><img src="../{image}" style="height:50px;" alt="" /></td>
+<td>{goF}</td><td>{name}</td><td style="width:150px;">
+<span style="color:#77b211"><b>вкл</b></span> <input  name="q[{i}]" type="radio" value="1"  {check1} />
+<span style="color:#ff0000"><b>выкл</b></span> <input name="q[{i}]" type="radio" value="2"  {check2} />
+</td><td align="left">{pos}</td><td><input type="text" class="stepInput" style="height:16px;width:160px;" name="title[{i}]" value="{title}" /></td><td align="center"><input type="checkbox" name="show[{i}]" {check} /></td><td><a href="{url}" style="color:black;text-decoration:underline;">перейти</a>
+<input type="hidden" name="nameblock[{i}]" value="{NameBlock}" />
+</td>
+</tr>
+[/section::8]
+[section::9]
+<select name="pos[{i}]">
+<option value="1" {s1}>Слева</option>
+<option value="2" {s2}>Справа</option>
+<option value="3" {s3}>По центру</option>
+<option value="4" {s4}>Снизу</option>
+</select>
+[/section::9]
+[section::11]
+<a href="main-blocks-setting-bl-{name}-down-{num}-{pos}.pl"><img src="../templates/admin/images/down_block.png" alt="" /></a>
+[/section::11]
+[section::12]
+<a href="main-blocks-setting-bl-{name}-up-{num}-{pos}.pl"><img src="../templates/admin/images/up_block.png" alt="" /></a>
+[/section::12]
+[section::13]
+<a href="main-blocks-setting-bl-{name}-up-{num1}-{pos}.pl"><img src="../templates/admin/images/up_block.png" alt="" /></a><br />
+<a href="main-blocks-setting-bl-{name}-down-{num}-{pos}.pl"><img src="../templates/admin/images/down_block.png" alt="" /></a>
+[/section::13]

@@ -1,0 +1,48 @@
+[section::6]
+<tr class="{t}">
+<td style="text-align:left;">{go} {position} {name}</td><td align="center">{window}<img style="cursor:pointer" onclick="ShowWindow({id})" src="../templates/admin/images/icon/edit.gif" alt="" /></td><td align="center">{window1}<img style="cursor:pointer" src="../templates/admin/images/icon/delete.gif" onclick="ShowWindow(-{id})" alt="" /></td>
+</tr>
+[/section::6]
+[section::7]
+<option value="{id}">{go}{name}</option>
+[/section::7]
+[section::8]
+<p class="editPUser">Вы точно хотите удалить данный раздел меню?</p>
+<form action="#" method="post" style="text-align:center">
+<input type="submit" style="text-align:center;" name="delete" class="TrueButton" value="да" />&nbsp;&nbsp;&nbsp;<input type="button" class="TrueButton" value="нет" onclick="hiddenWindow(-{id})" /> 
+<input type="hidden" name="id" value="{id}" />
+</form>
+[/section::8]
+[section::9]
+<form action="#" method="post">
+<table class="table">
+<tr>
+<td align="right">Название:</td><td align="left"><input style="width:200px;" class="set1" type="text" name="name" value="{name}" /></td>
+</tr>
+<tr>
+<td align="right">Ссылка:</td><td align="left"><input style="width:200px;" class="set1" id="url{id}" type="text" name="url" value="{url}" /> <img onclick="SiteMapPro100('url{id}');"  src="../plugin/tiny_mce/plugins/advlink/sitemap.png" alt="" /></td>
+</tr>
+<tr>
+<td colspan="2">{module}</td>
+</tr>
+<tr>
+<td align="right">Подсветка, список url:</td><td align="left"><input style="width:200px;" class="set1" type="text" name="urlList" value="{url_list}" /></td>
+</tr>
+<tr>
+<td align="right"></td><td align="left"><input type="submit" class="buttons" name="edit" value="сохранить" /></td>
+</tr>
+</table>
+<input type="hidden" name="id" value="{id}" />
+</form>
+[/section::9]
+[section::10]
+<div style="float:left;width:100px;height:40px;margin-top:10px;">
+<input type="checkbox" name="moduleList[]" value="{module}" {check} /> {name}
+</div>
+[/section::10]
+[section::11]
+<img onclick="PositionElement({id},'top')" style="cursor:pointer;" src="../templates/admin/images/up_block.png" alt="" />
+[/section::11]
+[section::12]
+<img onclick="PositionElement({id},'bottom')" style="cursor:pointer;" src="../templates/admin/images/down_block.png" alt="" />
+[/section::12]

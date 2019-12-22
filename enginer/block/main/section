@@ -1,0 +1,117 @@
+[section::1]
+<div class="LeftPadding"> 
+<p class="mainTopP">Меню</p>
+<script type="text/javascript">
+function SiteMapPro100(id)
+{
+
+	urlSite=showModalDialog('../plugin/tiny_mce/plugins/sitemap.php','','dialogHeight:500px; dialogWidth:300px; resizable:no; status:no; scrollbars:yes; toolbar:no');
+	if(urlSite!==false)
+	{
+		document.getElementById(id).value=urlSite;
+	}
+}
+
+</script>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<p><span onclick="PanelWorks(-1)" class="p10">Добавить</span></p> 
+<div class="panelCss" style="margin-top: 10px; " id="-1">
+<form action="#" method="post">
+<table style="width:700px;">
+<tr><td width="200" align="right">Название:</td><td><input type="text" name="name" style="width:300px;height:20px;" class="set1" /></td></tr>
+<tr><td align="right">Ссылка:</td><td><input type="text" id="AddUrl" name="url" style="width:300px;height:20px;" class="set1" /> <img onclick="SiteMapPro100('AddUrl');"  src="../plugin/tiny_mce/plugins/advlink/sitemap.png" alt="" title="карта сайта" /></td></tr>
+<tr><td align="right">Категория:</td><td>
+<select name="cat" style="width:300px;height:25px;" class="set1" />
+<option value="0">&mdash; не вносить в категорию</option>
+{option}
+</select>
+</td></tr>
+<tr><td align="right">Подсветка список модулей:</td><td>
+{module}
+</td></tr>
+<tr><td align="right">Подсветка список url (через запятую):</td><td><input type="text" name="urlList" style="width:300px;height:20px;" class="set1" /></td></tr>
+<tr><td></td><td><input type="submit" name="add" class="buttons" value="добавить" /></td></tr>
+</table>
+</form>
+</div>
+[/section::3]
+[section::4]
+<div style="float:left;width:150px;height:40px;margin-top:10px;">
+<input type="checkbox" name="moduleList[]" value="{module}" /> {name}
+</div>
+[/section::4]
+[section::5]
+
+<script type="text/javascript">
+
+function PositionElement(id,type)
+{
+	
+	$.get('/admin.php?ajax1='+id+'&type='+type, function(data) {
+			$('#MainPosition').html(data);
+	});
+}
+
+</script>
+
+<table class="tablelist" width="100%" cellpadding="0" cellspacing="0">
+<th>Название</th><th width="120">Редактировать</th><th width="60">Удалить</th>
+<tbody id="MainPosition">
+{li}
+</tbody>
+</table>
+[/section::5]
+[section::6]
+<tr>
+<td style="text-align:left;">{go} {position} {name}</td><td align="center">{window}<img style="cursor:pointer" onclick="ShowWindow({id})" src="../templates/admin/images/icon/edit.gif" alt="" /></td><td align="center">{window1}<img style="cursor:pointer" src="../templates/admin/images/icon/delete.gif" onclick="ShowWindow(-{id})" alt="" /></td>
+</tr>
+[/section::6]
+[section::7]
+<option value="{id}">{go}{name}</option>
+[/section::7]
+[section::8]
+<p class="editPUser">Вы точно хотите удалить данный раздел меню?</p>
+<form action="#" method="post" style="text-align:center">
+<input type="submit" style="text-align:center;" name="delete" class="TrueButton" value="да" />&nbsp;&nbsp;&nbsp;<input type="button" class="TrueButton" value="нет" onclick="hiddenWindow(-{id})" /> 
+<input type="hidden" name="id" value="{id}" />
+</form>
+[/section::8]
+[section::9]
+<form action="#" method="post">
+<table class="table">
+<tr>
+<td align="right">Название:</td><td align="left"><input style="width:200px;" class="set1" type="text" name="name" value="{name}" /></td>
+</tr>
+<tr>
+<td align="right">Ссылка:</td><td align="left"><input style="width:200px;" class="set1" id="url{id}" type="text" name="url" value="{url}" /> <img onclick="SiteMapPro100('url{id}');"  src="../plugin/tiny_mce/plugins/advlink/sitemap.png" alt="" /></td>
+</tr>
+<tr>
+</tr>
+<tr>
+<td colspan="2">{module}</td>
+</tr>
+<tr>
+<td align="right">Подсветка, список url:</td><td align="left"><input style="width:200px;" class="set1" type="text" name="urlList" value="{url_list}" /></td>
+</tr>
+<tr>
+<td align="right"></td><td align="left"><input type="submit" class="buttons" name="edit" value="сохранить" /></td>
+</tr>
+</table>
+<input type="hidden" name="id" value="{id}" />
+</form>
+[/section::9]
+[section::10]
+<div style="float:left;width:100px;height:40px;margin-top:10px;">
+<input type="checkbox" name="moduleList[]" value="{module}" {check} /> {name}
+</div>
+[/section::10]
+[section::11]
+<img onclick="PositionElement({id},'top')" style="cursor:pointer;" src="../templates/admin/images/up_block.png" alt="" />
+[/section::11]
+[section::12]
+<img onclick="PositionElement({id},'bottom')" style="cursor:pointer;" src="../templates/admin/images/down_block.png" alt="" />
+[/section::12]

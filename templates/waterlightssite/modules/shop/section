@@ -1,0 +1,244 @@
+[section::1]
+{list}
+<div class="clearleft"></div>
+[/section::1]
+[section::2]
+<div class="shopcat">
+<a href="{url}" class="shopcatgreenline"><div><p class="shopcatname">{name}</p></div></a>
+<table><tr><td><img src="{img}" alt="{name}" /></td></tr></table>
+
+
+</div>
+[/section::2]
+[section::2-1]
+<div class="clearleft"></div>
+[/section::2-1]
+[section::3]
+&nbsp;&nbsp;&#8594;&nbsp;&nbsp;<a href="{url}">{name}</a>
+[/section::3]
+[section::4]
+<div class="shop">
+	<a href="{url}" class="shopimg"><table><tr><td><img src="{img}" alt="{name}" /></td></tr></table></a>
+	<div class="shopname"><p>{name}</p></div>
+	<a href="{url}" class="shopview">Просмотр</a>
+</div>
+
+
+[/section::4]
+[section::4-1]
+
+
+<div class="shopfilter">
+	<form action="/shop/{id_cat}/" method="post">
+		<div class="sftop"><p>Фильтр поиска:</p></div>
+		<div class="pricefilter">
+			<p>Цена</p>
+			<label for="price">от: <input type="text" name="price"  id="price" /> <span class="b-rub">р</span> </label> <!--onfocus="this.blur();"-->
+			<label for="price2" id="forprice2">до: <input type="text" name="price2"  id="price2"/> <span class="b-rub">р</span></label>
+			<div id="slider_price"></div>
+		</div>
+		<div class="checkfilter">
+			<p>{name}</p>
+			<div class="cfcheck">{one}</div><div class="cfcheck">{two}</div>
+			<div class="clearleft"></div>
+		</div>
+		<div style="text-align:center;"><input type="submit" value="Фильтровать" class="btn"></div>
+	</form>
+</div>
+<script type="text/javascript">
+	/* price */
+    $(function() {
+        $('#price').change(function () {
+            var val = $(this).val();
+            $('#slider_price').slider("values",0,val);
+			
+        });    
+
+        $('#price2').change( function() {
+            var val2 = $(this).val();
+            $('#slider_price').slider("values",1,val2);
+        });
+		
+        $( "#slider_price" ).slider({
+            range: true,
+            //orientation: "vertical",
+            min: 0,
+            step:1,
+            max: 40000,
+            values: [ {price}, {price2} ],
+            slide: function( event, ui ) {
+                $('#price').val(ui.values[0]);
+                $('#price2').val(ui.values[1]);
+            },
+			change: function( event, ui ) {
+				
+			}
+        });
+        $('#price').val($('#slider_price').slider("values",0));
+        $('#price2').val($('#slider_price').slider("values",1));
+    });
+	
+</script>
+[/section::4-1]
+[section::4-2]
+<label for="check{num}"><input type="checkbox" name="filter[]" id="check{num}" value="{value}" {checked}/> {value}</label>
+[/section::4-2]
+[section::4-3]
+<td><a href="{url}"><img src="{img}" alt="" /></a></td>
+[/section::4-3]
+[section::4-4]
+<div class="shop">
+	<a href="{url}" class="shopimg"><table><tr><td><img src="{img}" alt="{name}" /></td></tr></table></a>
+	<div class="shopname"><p>{name}</p></div>
+	<a href="{url}" class="shopview">Просмотр</a>
+</div>
+
+
+[/section::4-4]
+[section::5]
+{filter}
+{list}
+{inf}
+{page}
+<div style="clear:left;"></div>
+[/section::5]
+[section::5-1]
+<div class="subcontent shopcatdesc">{desc}</div>
+[/section::5-1]
+[section::6]
+<!--<h2>{name}</h2>-->
+
+<div class="shopimginner"><table><tr><td><a href="{img1}" class="gallery shopmainimghref" rel="shop"><img src="{img1}" alt="" class="shopmainimg"/></a></td></tr></table></div>
+<div class="shopinfo">
+	<div class="shopinfoname"><p>{name}</p></div>
+	<p class="shopinfoprice">{money} <span class="brub">Р</span></p>
+	<input type="button" value="ЗАКАЗАТЬ" class="showproduct" data-popup="popup1" data-product="{name}">
+</div>
+<div class="clearleft"></div>
+<div class="shopdesc">
+	{desc}
+</div>
+
+
+
+
+[/section::6]
+[section::6-1]
+	<p class="shopchar">{name}</p>
+<div class="shopcharvmap">
+	<script src="http://api-maps.yandex.ru/1.1/index.xml" type="text/javascript"></script>
+    <script type="text/javascript">
+        var map, geoResult;
+
+        // Создание обработчика для события window.onLoad
+        YMaps.jQuery(function () {
+            // Создание экземпляра карты и его привязка к созданному контейнеру
+            map = new YMaps.Map(YMaps.jQuery("#YMapsID")[0]);
+
+            var geocoder = new YMaps.Geocoder('{value}', {results: 1, boundedBy: map.getBounds()});
+
+            // Создание обработчика для успешного завершения геокодирования
+            YMaps.Events.observe(geocoder, geocoder.Events.Load, function () {
+                // Если объект был найден, то добавляем его на карту
+                // и центрируем карту по области обзора найденного объекта
+                if (this.length()) {
+                    geoResult = this.get(0);
+                    map.addOverlay(geoResult);
+                    map.setBounds(geoResult.getBounds());
+                }else {
+                    alert("Ничего не найдено")
+                }
+            });
+
+            // Процесс геокодирования завершен неудачно
+            YMaps.Events.observe(geocoder, geocoder.Events.Fault, function (geocoder, error) {
+                alert("Произошла ошибка: " + error);
+            })
+
+            // Добавление элементов управления
+            //map.addControl(new YMaps.TypeControl());
+            //map.addControl(new YMaps.Zoom());
+            //map.addControl(new YMaps.ToolBar());
+
+        });
+        
+    </script>
+	<div id="YMapsID" style="width:365px;height:172px"></div>
+</div>
+[/section::6-1]
+[section::6-2]
+	<p class="shopchar">{name}</p>
+	<div class="shopfiles">{value}</div>
+[/section::6-2]
+[section::6-3]
+	<p class="shopchar">{name}</p>
+	<p class="shopcharv">{value}</p>
+[/section::6-3]
+[section::6-4]
+	<p class="shopchar">{name}</p>
+	<p class="shopcharvprice">от <span>{value}</span> <strong>руб.</strong> за м&sup2;</p>
+[/section::6-4]
+[section::6-5]
+	<p class="shopchar">{name}</p>
+	<p class="shopcharv">{value} м&sup2;</p>
+[/section::6-5]
+[section::6-6]
+<a href="{fpath}" download="{fname}">{fname}</a>
+[/section::6-6]
+[section::7]
+<div class="item"><img width="92" src="{img1}" alt="" class="shopsubimg"/><a href="{img1}" class="gallery" rel="{rel}"></a></div>
+[/section::7]
+[section::8]
+<table class="jshop list_product">
+{list}
+</table>
+[/section::8]
+[section::9]
+<td width="50%" class="block_product">
+        <table class ="product">
+<tr>
+    <td class="image" style="padding-right:5px;">
+                <div class="image_block">
+                        <a href="{url}">
+                <img src="{img}" width="100" alt="" />
+            </a>
+        </div>
+        
+               
+                    </td>
+    <td>
+        <div class="name">
+            <a href="{url}">{name}</a>
+                    </div>
+        <div class="description">
+                    </div>
+                                                    
+                                                <div class="jshop_price"><p style="padding-top:5px;">{money} руб</p></div>            
+                                                                                           
+            </td>
+</tr>
+</table>
+
+    </td>
+[/section::9]
+[section::10]
+<tr>{t}</tr>
+<tr>
+        <td colspan="2"><div class="product_list_hr"></div></td>
+    </tr>    
+[/section::10]
+[section::11]
+<p class="pages">{page}</p>
+[/section::11]
+[section::12]
+<a href="{url}">назад</a> 
+[/section::12]
+[section::13]
+<a href="{url}">вперед</a> 
+[/section::13]
+[section::14]
+<a href="{url}">{n1}</a> 
+[/section::14]
+[section::15]
+<span>{n1}</span> 
+[/section::15]

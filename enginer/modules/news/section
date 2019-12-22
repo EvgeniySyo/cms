@@ -1,0 +1,735 @@
+== START PAGE == pagebreak
+[section::1]
+
+<div class="LeftPadding">
+<p class="mainTopP">Новости</p>
+</div>
+<table class="table5" cellpadding="0" cellspacing="0">
+<tr>
+<th></th><th>добавить</th><th>редактировать</th><th>удалить</th>
+</tr>
+<tr>
+<td class="textTable" style="width:170px;">категории</td>
+<td><a href="main-modules-setting-mod-{NameModule}-1.pl"><img src="../images/news/+.png" alt="" /></a></td><td><a href="main-modules-setting-mod-{NameModule}-2.pl"><img src="../images/news/edit.png" alt="" /></a></td><td><a href="main-modules-setting-mod-{NameModule}-3.pl"><img src="../images/news/delete.png" alt="" /></a></td>
+</tr>
+<tr>
+<th></th><th></th><th></th><th></th>
+</tr>
+<tr>
+<th></th><th></th><th></th><th></th>
+</tr>
+<tr>
+<td class="textTable" style="width:170px;">новости</td>
+<td><a href="main-modules-setting-mod-{NameModule}-7.pl"><img src="../images/news/+.png" alt="" /></a></td><td><a href="main-modules-setting-mod-{NameModule}-8.pl"><img src="../images/news/edit.png" alt="" /></a></td><td><a href="main-modules-setting-mod-{NameModule}-9.pl"><img src="../images/news/delete.png" alt="" /></a></td>
+</tr>
+</table>
+<div class="LeftPadding"><p><span class="mainTopP">Настройки</span></p> 
+
+<form action="#" method="post">
+<table>
+<tr>
+<td align="left">Количество выводимых новостей на странице:</td><td><input style="height:15px;" class="stepInput" value="{newspage}" type="text" name="NewsOnPasge" /></td>
+</tr>
+<tr>
+<td align="left">Количество выводимых комментариев:</td><td><input style="height:15px;" class="stepInput" type="text" value="{commentpage}" name="CommOnPasge" /></td>
+</tr>
+<tr>
+<td align="left">Выводить последние новости:</td><td><select style="height:20px;" class="stepInput" name="LastNews"><option value="1" {select-3}>включено</option><option value="2" {select-4}>выключено</option></select></td>
+</tr>
+<tr>
+<td align="left">Выводить титул:</td><td><select style="height:20px;" class="stepInput" name="title"><option value="1" {select-5}>да</option><option value="2" {select-6}>нет</option></select></td>
+</tr>
+<tr>
+<td align="left">Выводить титул в категориях:</td><td><select style="height:20px;" class="stepInput" name="title1"><option value="1" {select-7}>да</option><option value="2" {select-8}>нет</option></select></td>
+</tr>
+<tr>
+<td align="left">Использовать PageBreak:</td><td><select style="height:20px;" class="stepInput" name="pagebreak"><option value="1" {select-9}>да</option><option value="0" {select-10}>нет</option></select></td>
+</tr>
+<tr>
+<td align="left">Использовать время публикации:</td><td><select style="height:20px;" class="stepInput" name="timepublic"><option value="1" {select-11}>да</option><option value="0" {select-12}>нет</option></select></td>
+</tr>
+<tr>
+<td align="left">Ширина превью для новости:</td><td> <input style="width:50px;height:15px;" class="stepInput" value="{widthsmall}" type="text" name="widthsmall" /> </td>
+</tr>
+<tr>
+<td align="left">Высота превью для новости:</td><td> <input style="width:50px;height:15px;" class="stepInput" value="{heightsmall}" type="text" name="heightsmall" /> </td>
+</tr>
+<tr>
+<td align="left">E-mail для отправки заявок:</td><td> <input style="height:15px;" class="stepInput" value="{mailsend}" type="text" name="mailsend" /> </td>
+</tr>
+
+<tr><td></td><td></td></tr>
+<tr>
+<td align="right"></td><td><input type="submit" name="save" class="buttons" value="сохранить" /></td>
+</tr>
+</table>
+<input type="hidden" name="comment" value="2" />
+</form>
+</div>
+[/section::1]
+== MAIN ==
+[section::2]
+<div class="LeftPadding">
+<p class="mainTopP">Новости</p>
+<p class="backgo"><a href="main-modules-setting-mod-{NameModule}.pl">вернуться назад</a></p>	
+</div>
+<ul class="ul1"> 
+<li><a href="main-modules-setting-mod-{NameModule}-7.pl" {style-1}>{list-1} Добавить новость</a></li> 
+<li><a href="main-modules-setting-mod-{NameModule}-8.pl" {style-2}>{list-2} Редактировать новости</a></li> 
+<li><a href="main-modules-setting-mod-{NameModule}-9.pl" {style-3}>{list-3} Удалить новости</a></li> 
+</ul>
+[/section::2]
+### CATEGORY ###
+[section::5]
+<div class="LeftPadding">
+<p style="clear:both"><br /><span class="mainTopP">Добавление категории</span></p> 
+<form action="#" method="post" style="clear:both"> 
+<table width="100%"> 
+<table> 
+<tr> 
+<td align="left" width="220px">Название:</td><td align="left"><input style="width:100%;height:25px;" class="set1" type="text" name="nameCat" value="" /></td> 
+</tr>
+<tr> 
+<td colspan="2">{seo}</td> 
+</tr> 
+<tr> 
+<td></td><td><input type="submit" name="add" class="buttons" value="добавить" /></td> 
+</tr> 
+</table> 
+</form>
+</div>
+[/section::5]
+[section::8]
+<div class="LeftPadding">
+<p style="clear:both"><br /><span class="mainTopP">Редактирование категорий</span></p>   
+[/section::8]
+[section::9]
+</div>
+[/section::9]
+[section::10]
+<table class="tablelist" style="width:800px" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th style="width:650px;">Название</th><th width="100" align="center">Редактирование</th> 
+</tr>
+[/section::10]
+[section::11]
+</table>
+[/section::11]
+[section::12]
+<tr>
+<td>%NAME%</td>
+<td align="center">
+{window}
+<img style="cursor:pointer;" onclick="ShowWindow(%ID%)" src="../templates/admin/images/icon/edit.gif" alt="" /> 
+</td>
+</tr>
+[/section::12]
+[section::13]
+<form action="#" method="post" style="clear:both"> 
+<table class="table"> 
+<tr> 
+<td align="right" width="100">Название:</td><td align="left"><input style="width:200px;" class="set1" type="text" name="nameCat" value="%NAME%" /></td> 
+</tr>
+<!--
+<tr> 
+<td align="right" width="100">Meta title:</td><td align="left"><input style="width:200px;" class="set1" type="text" name="title" value="{title}" /></td> 
+</tr> 
+<tr> 
+<td align="right" width="100">Meta keywords:</td><td align="left"><input style="width:200px;" class="set1" type="text" name="title" value="{title}" /></td> 
+</tr> 
+<tr> 
+<td align="right" width="100">Meta description:</td><td align="left"><input style="width:200px;" class="set1" type="text" name="title" value="{title}" /></td> 
+</tr> 
+-->
+<tr> 
+<td></td><td><input type="submit" name="edit" class="buttons" value="сохранить" />
+<input type="hidden" name="id" value="%ID%" />
+</td> 
+</tr> 
+</table> 
+</form>
+[/section::13]
+[section::15]
+<div class="LeftPadding">
+<br /><br />
+<span class="TextTopS">Удаление категорий</span>
+<br /><br /> 
+[/section::15]
+[section::16]
+</div>
+[/section::16]
+[section::17]
+<tr>
+<td>%NAME%</td>
+<td>
+<div class="UserWindow" id="-%ID%"> 
+<div class="ClosedI"><img style="cursor:pointer;" src="../templates/admin/images/icon/close.png" onclick="windowsUserClosed(-%ID%)" alt="" /></div> 
+<p class="editPUser">Удаление категории</p> 
+<p>Вы точно хотите удалить данную категорию?</p>
+<form action="#" method="post" style="clear:both;float:left;padding-left:140px;"> 
+<input type="submit" name="delete" class="set" value="да" />
+<input type="hidden" name="id" value="%ID%" />
+</form>
+<input type="submit" style="float:left;padding-left:100px;" name="" onclick="windowsUserClosed(-%ID%)" class="set" value="нет" />
+</div> 
+<img style="cursor:pointer;" onclick="windowUser(-%ID%)" src="../templates/admin/images/icon/delete.gif" alt="" /> 
+</td>
+</tr>
+[/section::17]
+[section::18]
+<div class="UserWindow" id="100" style="display:block;height:80px;"> 
+<div class="ClosedI"><img style="cursor:pointer;" src="../templates/admin/images/icon/close.png" onclick="windowsUserClosed(100)" alt="" /></div> 
+<p class="editPUser">Категория удалена</p> 
+</div>
+[/section::18]
+### END ###
+== ADD NEWS ==
+[section::3]
+<div class="LeftPadding">
+<br /><br />
+<form action="#" method="post" style="clear:both" enctype="multipart/form-data">
+<table width="100%">
+<tr>
+<td align="left" width="170">Название новости:</td><td align="left"><input style="width:100%;height:25px;" class="set1" style type="text" value="{name}" name="NameNews" /></td>
+</tr>
+<tr>
+<td align="left">Категория новости:</td><td align="left"><select style="width:100%;height:25px" class="set1" name="category">
+<option value="0">Не вносить в категорию</option>
+{CATEGORY}</select></td>
+</tr>
+<tr>
+<td align="left">Изображение новости:</td><td align="left"><input type="file" name="file" style="width:500px;height:30px;" class="set1" /></td>
+</tr>
+
+<tr>
+<td align="left">Дата публикации:</td><td>
+<select name="day" style="width:50px;height:25px" class="set1">
+{day}
+</select>&nbsp;
+<select name="month" style="width:120px;height:25px" class="set1">
+{month}
+</select>&nbsp;
+<input type="text" name="year" maxlength="4" value="{year}" style="width:50px;height:25px" class="set1">
+&nbsp;&nbsp;
+<select name="hour" style="width:50px;height:25px" class="set1">
+{hour}
+</select>&nbsp;
+<select name="minute" style="width:50px;height:25px" class="set1">
+{minute}
+</select>&nbsp;
+<select name="second" style="width:50px;height:25px" class="set1">
+{second}
+</select>&nbsp;
+</td>
+</tr>
+<tr>
+<td align="left">Добавить дату окончания: </td><td>
+<input type="checkbox" name="enddate" value="1" onclick="PanelWorks(1)">
+<div id="1" style="display:none;">
+<select name="dayend" style="width:50px;height:25px" class="set1">
+{dayend}
+</select>&nbsp;
+<select name="monthend" style="width:120px;height:25px" class="set1">
+{monthend}
+</select>&nbsp;
+<input type="text" name="yearend" maxlength="4" value="{yearend}" style="width:50px;height:25px" class="set1">
+&nbsp;&nbsp;
+<select name="hourend" style="width:50px;height:25px" class="set1">
+{hourend}
+</select>&nbsp;
+<select name="minuteend" style="width:50px;height:25px" class="set1">
+{minuteend}
+</select>&nbsp;
+<select name="secondend" style="width:50px;height:25px" class="set1">
+{secondend}
+</select>&nbsp;</div>
+</td>
+</tr>
+{comment}
+<tr>
+<td colspan="2">{form}</td>
+</tr>
+<tr>
+<td colspan="2" align="center"><input type="submit" class="buttons" name="add" value="добавить" /></td>
+</tr>
+</table>
+<p><i>Ограничитель новостей: <img src="../templates/admin/images/break.png" alt="" /> <b>page break</b> (до page break короткая новость, после полная)</i></p>
+</form>
+</div>
+[/section::3]
+[section::4]
+<div class="LeftPadding">
+<p class="mainTopP">Новости</p>
+<p class="backgo"><a href="main-modules-setting-mod-{NameModule}.pl">вернуться назад</a></p>
+</div>
+<ul class="ul1"> 
+<li><a href="main-modules-setting-mod-{NameModule}-1.pl" {style-1}>{list-1} Добавить категорию</a></li> 
+<li><a href="main-modules-setting-mod-{NameModule}-2.pl" {style-2}>{list-2} Редактировать категорию</a></li> 
+<li><a href="main-modules-setting-mod-{NameModule}-3.pl" {style-3}>{list-3} Удалить категорию</a></li> 
+</ul>
+[/section::4]
+[section::19]
+<option value="{ID}" {selected}>{NAME}</option>
+[/section::19]
+[section::22]
+<tr>
+<td align="left">Разрешить добавление комментариев:</td><td align="left"><select style="width:100%;height:25px" class="set1" name="addcomment">
+<option value="1" {com1}>Да</option>
+<option value="2" {com2}>Нет</option>
+{CATEGORY}</select></td>
+</tr>
+[/section::22]
+== EDIT NEWS ==
+[section::24]
+<script type="text/javascript">
+
+var x = 1;
+
+function StatusPage(id,x)
+{
+	if(x == 1)
+	{
+		$.get('/admin.php?ajax=1&id='+id, function(data) {
+			$('#status'+id).html(data);
+		});
+		x = 2;
+	}
+}
+
+</script>
+<div class="LeftPadding">
+[/section::24]
+[section::25]
+</div>
+[/section::25]
+[section::26]
+<p>&nbsp;</p>
+<p><span class="mainTopP">Категории новостей</span></p>
+<table class="tablelist" style="width:800px;" cellpadding="0" cellspacing="0">
+<tr><th>Название категории</th><th>Перейти</th></tr>
+{listcat}
+</table>
+[/section::26]
+[section::27]
+<tr>
+<td>{name}</td><td><a href="main-modules-setting-mod-{module}-4-{id}.pl">перейти</a></td>
+</tr>
+[/section::27]
+[section::28]
+<br /><br />
+<span class="mainTopP">Новости не в категориях</span><br /><br />
+<table class="tablelist" style="width:800px;" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th>Название новости</th><th>Дата</th><th style="text-align:center">Редактирование</th>  
+</tr> 
+{list}
+</table>
+[/section::28]
+[section::29]
+<tr>
+<td align="left"><b>{name}</b></td><td align="left">{data}</td>
+<td align="center">
+<a href="main-modules-setting-mod-{module}-5-0-{id}.pl"><img style="cursor:pointer;" src="../templates/admin/images/icon/edit.gif" alt="" /></a> <span id="status{id}" onclick="StatusPage('{id}',1);">{status}</span>
+</td>
+</tr>
+[/section::29]
+[section::30]
+<p>&nbsp;</p>
+<p>Еще не созданно не одной категории, вернуться <a href="main-modules-setting-mod-{module}-8.pl">назад</a></p>
+[/section::30]
+[section::31]
+<p>&nbsp;</p>
+<p>Данной категории не существует, вернуться <a href="main-modules-setting-mod-{module}-8.pl">назад</a></p>
+[/section::31]
+[section::32]
+<p>&nbsp;</p>
+<p>В данной категории еще нет новостей <a href="main-modules-setting-mod-{module}-8.pl">назад</a></p>
+[/section::32]
+[section::33]
+<p>&nbsp;</p>
+<span class="mainTopP">Новости в категории: {namecat}</span><br /><br />
+<table class="tablelist" style="width:800px;" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th>Название новости</th><th align="center">Дата</th><th align="center">Редактирование</th>  
+</tr> 
+{list}
+</table>
+[/section::33]
+[section::34]
+<tr>
+<td align="left"><span style="color:#787878"><b>{name}</b></span></td><td align="left"><span style="color:#787878">{data}</span></td>
+<td align="center">
+<a href="main-modules-setting-mod-{module}-4-{id}-{page}-{idnews}.pl"><img style="cursor:pointer;" src="../templates/admin/images/icon/edit.gif" alt="" /></a> <span id="status{id_new}" onclick="StatusPage('{id_new}',1);">{status}</span>
+</td>
+</tr>
+[/section::34]
+== PAGES CATEGORY==
+[section::35]
+<p style="font-size:13px;text-align:center;">Страницы: {back}{list}{next}</p>
+[/section::35]
+[section::36]
+[<a href="main-modules-setting-mod-{module}-4-{id}-{page}.pl">{n}</a>] 
+[/section::36]
+[section::36-1]
+[<b>{n}</b>] 
+[/section::36-1]
+[section::36-2]
+<a href="main-modules-setting-mod-{module}-4-{id}-{page}.pl">назад</a>
+[/section::36-2]
+[section::36-3]
+<a href="main-modules-setting-mod-{module}-4-{id}-{page}.pl">вперед</a>
+[/section::36-3]
+[section::37]
+[<b>{n}</b>] 
+[/section::37]
+== END ==
+== EDIT NEWS FORM ==
+[section::38]
+<p>Данной новости не существует <a href="main-modules-setting-mod-{module}-8.pl">назад</a></p>
+[/section::38]
+[section::39]
+<p>&nbsp;</p>
+<p class="backgo"><a href="main-modules-setting-mod-{module}-4-{id}-{page}.pl">к списку новостей</a></p>
+<form action="#" method="post" style="clear:both" enctype="multipart/form-data">
+{image}
+<table width="100%">
+<tr>
+<td align="left" width="170">Название новости:</td><td align="left"><input style="width:100%;height:25px;" class="set1" style type="text" value="{name}" name="NameNews" /></td>
+</tr>
+<tr>
+<td align="left">Категория новости:</td><td align="left"><select style="width:100%;height:25px" class="set1" name="category">
+<option value="0">Не вносить в категорию</option>
+{CATEGORY}</select></td>
+</tr>
+<tr>
+<td align="left">Изображение новости:</td><td align="left"><input type="file" name="file" style="width:500px;height:30px;" class="set1" /></td>
+</tr>
+<tr>
+<td align="left">Дата публикации:</td><td>
+<select name="day" style="width:50px;height:25px" class="set1">
+{day}
+</select>&nbsp;
+<select name="month" style="width:120px;height:25px" class="set1">
+{month}
+</select>&nbsp;
+<input type="text" name="year" maxlength="4" value="{year}" style="width:50px;height:25px" class="set1">
+&nbsp;&nbsp;
+<select name="hour" style="width:50px;height:25px" class="set1">
+{hour}
+</select>&nbsp;
+<select name="minute" style="width:50px;height:25px" class="set1">
+{minute}
+</select>&nbsp;
+<select name="second" style="width:50px;height:25px" class="set1">
+{second}
+</select>&nbsp;
+</td>
+</tr>
+<tr>
+<td align="left">Добавить дату окончания: </td><td>
+<input type="checkbox" name="enddate" value="1" onchange="PanelWorks(1)" {check}>
+<div id="1" style="display:{visible};">
+<select name="dayend" style="width:50px;height:25px" class="set1">
+{dayend}
+</select>&nbsp;
+<select name="monthend" style="width:120px;height:25px" class="set1">
+{monthend}
+</select>&nbsp;
+<input type="text" name="yearend" maxlength="4" value="{yearend}" style="width:50px;height:25px" class="set1">
+&nbsp;&nbsp;
+<select name="hourend" style="width:50px;height:25px" class="set1">
+{hourend}
+</select>&nbsp;
+<select name="minuteend" style="width:50px;height:25px" class="set1">
+{minuteend}
+</select>&nbsp;
+<select name="secondend" style="width:50px;height:25px" class="set1">
+{secondend}
+</select>&nbsp;</div>
+</td>
+</tr>
+{comment}
+<tr>
+<td colspan="2">{form}</td>
+</tr>
+<tr>
+<td colspan="2" align="center"><input type="submit" class="buttons" name="edit" value="сохранить" /></td>
+</tr>
+</table>
+</form>
+<p><i>Ограничитель новостей: <img src="../templates/admin/images/break.png" alt="" /> <b>page break</b> (до page break короткая новость, после полная)</i></p>
+</div>
+[/section::39]
+[section::40]
+<p>{image}</p>
+<p><input type="checkbox" name="image" id="image" /><label for="image">&nbsp;удалить</a></p>
+[/section::40]
+=== NEWS NOT CATEGORY ===
+== PAGES ==
+[section::41]
+<p style="font-size:13px;text-align:center;">Страницы: {back}{list}{next}</p>
+[/section::41]
+[section::42]
+[<a href="main-modules-setting-mod-{module}-5-{page}.pl">{n}</a>] 
+[/section::42]
+[section::42-1]
+[<b>{n}</b>] 
+[/section::42-1]
+[section::42-2]
+<a href="main-modules-setting-mod-{module}-5-{page}.pl">назад</a>
+[/section::42-2]
+[section::42-3]
+<a href="main-modules-setting-mod-{module}-5-{page}.pl">вперед</a>
+[/section::42-3]
+[section::43]
+<p>Не созданно еще не одной новости <a href="main-modules-setting-mod-{module}-8.pl">назад</a></p>
+[/section::43]
+[section::44]
+<p>&nbsp;</p>
+<p class="backgo"><a href="main-modules-setting-mod-{module}-5-{page}.pl">к списку новостей</a></p>
+<form action="#" method="post" style="clear:both" enctype="multipart/form-data">
+{image}
+<table width="100%">
+<tr>
+<td align="left" width="170">Название новости:</td><td align="left"><input maxlength="255" style="width:100%;height:25px;" class="set1" style type="text" value="{name}" name="NameNews" /></td>
+</tr>
+<tr>
+<td align="left">Категория новости:</td><td align="left"><select style="width:100%;height:25px" class="set1" name="category">
+<option value="0">Не вносить в категорию</option>
+{CATEGORY}</select></td>
+</tr>
+<tr>
+<td align="left">Изображение новости:</td><td align="left"><input type="file" name="file" style="width:500px;height:30px;" class="set1" /></td>
+</tr>
+<tr>
+<td align="left">Дата публикации:</td><td>
+<select name="day" style="width:50px;height:25px" class="set1">
+{day}
+</select>&nbsp;
+<select name="month" style="width:120px;height:25px" class="set1">
+{month}
+</select>&nbsp;
+<input type="text" name="year" maxlength="4" value="{year}" style="width:50px;height:25px" class="set1">
+&nbsp;&nbsp;
+<select name="hour" style="width:50px;height:25px" class="set1">
+{hour}
+</select>&nbsp;
+<select name="minute" style="width:50px;height:25px" class="set1">
+{minute}
+</select>&nbsp;
+<select name="second" style="width:50px;height:25px" class="set1">
+{second}
+</select>&nbsp;
+</td>
+</tr>
+<tr>
+<td align="left">Добавить дату окончания: </td><td>
+<input type="checkbox" name="enddate" value="1" onchange="PanelWorks(1)" {check}>
+<div id="1" style="display:{visible};">
+<select name="dayend" style="width:50px;height:25px" class="set1">
+{dayend}
+</select>&nbsp;
+<select name="monthend" style="width:120px;height:25px" class="set1">
+{monthend}
+</select>&nbsp;
+<input type="text" name="yearend" maxlength="4" value="{yearend}" style="width:50px;height:25px" class="set1">
+&nbsp;&nbsp;
+<select name="hourend" style="width:50px;height:25px" class="set1">
+{hourend}
+</select>&nbsp;
+<select name="minuteend" style="width:50px;height:25px" class="set1">
+{minuteend}
+</select>&nbsp;
+<select name="secondend" style="width:50px;height:25px" class="set1">
+{secondend}
+</select>&nbsp;</div>
+</td>
+</tr>
+{comment}
+<tr>
+<td colspan="2">{form}</td>
+</tr>
+<tr>
+<td colspan="2" align="center"><input type="submit" class="buttons" name="edit" value="сохранить" /></td>
+</tr>
+</table>
+</form>
+<p><i>Ограничитель новостей: <img src="../templates/admin/images/break.png" alt="" /> <b>page break</b> (до page break короткая новость, после полная)</i></p>
+</div>
+[/section::44]
+[section::45]
+<tr>
+<td align="left"><b>{name}</b></td><td align="left">{data}</td>
+<td align="left">
+<a href="main-modules-setting-mod-{module}-5-{page}-{id}.pl"><img style="cursor:pointer;" src="../templates/admin/images/icon/edit.gif" alt="" /></a>
+</td>
+</tr>
+[/section::45]
+[section::5-3]
+<img src="../templates/admin/images/on.png" alt="" title="включен" /> 
+[/section::5-3]
+[section::5-4]
+<img src="../templates/admin/images/off.png" alt="" title="выключен" /> 
+[/section::5-4]
+== DELETE NEWS ==
+[section::46]
+<p>&nbsp;</p>
+<p><span class="mainTopP">Категории новостей</span></p>
+<table class="tablelist" cellpadding="0" cellspacing="0" style="width:800px;">
+<tr><th>Название категории</th><th>Перейти</th></tr>
+{listcat}
+</table>
+[/section::46]
+[section::47]
+<tr>
+<td>{name}</td><td><a href="main-modules-setting-mod-{module}-6-{id}.pl">перейти</a></td>
+</tr>
+[/section::47]
+[section::48]
+<br /><br />
+<span class="mainTopP">Новости не в категориях</span><br /><br />
+<table class="tablelist" style="width:800px;" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th>Название новости</th><th>Дата</th><th>Удаление</th>  
+</tr> 
+{list}
+</table>
+[/section::48]
+[section::49]
+<tr>
+<td align="left"><b>{name}</b></td><td align="left">{data}</td>
+<td align="left">
+{window}
+<img style="cursor:pointer;" onclick="ShowWindow({id})" src="../templates/admin/images/icon/delete.gif" alt="" /> 
+</td>
+</tr>
+[/section::49]
+[section::49-1]
+<p>Вы точно хотите удалить данную новость?</p>
+<form action="#" method="post" style="clear:both;float:left;padding-left:140px;"> 
+<input type="submit" name="deleteNews" class="TrueButton" value="да" />
+<input type="hidden" name="id" value="{id}" />
+</form>
+<input type="submit" style="float:left;margin-left:10px;" name="" onclick="hiddenWindow({id})" class="TrueButton" value="нет" />
+</div> 
+[/section::49-1]
+[section::50]
+<p style="font-size:13px;text-align:center">Страницы:{back}{list}{next}</p>
+[/section::50]
+[section::51]
+[<a href="main-modules-setting-mod-{module}-10-{page}.pl">{n}</a>] 
+[/section::51]
+[section::51-1]
+[<b>{n}</b>] 
+[/section::51-1]
+[section::51-2]
+<a href="main-modules-setting-mod-{module}-10-{page}.pl">назад</a> 
+[/section::51-2]
+[section::51-3]
+<a href="main-modules-setting-mod-{module}-10-{page}.pl">вперед</a> 
+[/section::51-3]
+[section::53]
+<p style="font-size:13px;text-align:center">Страницы:{back}{list}{next}</p>
+[/section::53]
+[section::54]
+[<a href="main-modules-setting-mod-{module}-6-{id}-{page}.pl">{n}</a>] 
+[/section::54]
+[section::54-1]
+<a href="main-modules-setting-mod-{module}-6-{id}-{page}.pl">назад</a> 
+[/section::54-1]
+[section::54-2]
+<a href="main-modules-setting-mod-{module}-6-{id}-{page}.pl">вперед</a> 
+[/section::54-2]
+[section::55]
+[<b>{n}</b>] 
+[/section::55]
+[section::56]
+<p>&nbsp;</p>
+<span class="TextTopS">Новости в категории: {name}</span><br /><br />
+<table class="table2" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th>Название новости</th><th>Дата</th><th>Удаление</th>  
+</tr> 
+{list}
+</table>
+[/section::56]
+== COMMENTS ==
+[section::57]
+<div class="LeftPadding">
+<h3>Комментарии</h3>
+<a href="#" name="comments"></a>
+<table width="100%" class="table2" cellpadding="5" cellspacing="5">
+<tr>
+<th align="left">Имя</th><th align="left">Текст</th><th align="left">IP</th><th align="left">Удалить</th>
+</tr>
+{list}
+</table>
+</div>
+[/section::57]
+[section::58]
+<tr>
+<td align="left">{name}</td><td align="left"><i>{text}</i></td><td align="left">{ip}</td><td align="left">
+<form action="#comments" method="post">
+<input type="submit" class="deleteTemplate" name="del" value="" /> 
+<input type="hidden" name="IdCom" value="{id}" /> 
+</form>
+</td>
+</tr>
+[/section::58]
+[section::59]
+<form action="#comments" method="post" style="float:left">
+<input type="submit" name="x" class="pageB" value="{n}" />
+<input type="hidden" name="pageC" class="set" value="{n1}" />
+</form>
+[/section::59]
+[section::60]
+<input style="float:left" type="button" class="pageB1" name="x"  value="{n}" />
+[/section::60]
+[section::60-1]
+<div class="LeftPadding">{back}{list}{next}</div>
+[/section::60-1]
+[section::60-2]
+<form action="#comments" method="post" style="float:left">
+<input type="submit" name="x" class="pageB" value="назад" />
+<input type="hidden" name="pageC" class="set" value="{n}" />
+</form>
+[/section::60-2]
+[section::60-3]
+<form action="#comments" method="post" style="float:left">
+<input type="submit" name="x" class="pageB" value="вперед" />
+<input type="hidden" name="pageC" class="set" value="{n}" />
+</form>
+[/section::60-3]
+[section::61]
+<div style="width:100%;clear:both;"></div>
+[/section::61]
+[section::62]
+<div class="LeftPadding">
+<p style="clear:both"><br /><span class="mainTopP">Удаление категорий</span></p>
+<table class="tablelist" style="width:800px;" cellpadding="0" cellspacing="0"> 
+<tr> 
+<th style="width:650px;">Название</th><th>Удаление</th> 
+</tr> 
+{list}
+</table>
+</div>
+[/section::62]
+[section::63]
+<tr>
+<td><b>{name}</b></td>
+<td>
+{window}
+<img style="cursor:pointer;" onclick="ShowWindow({id})" src="../templates/admin/images/icon/delete.gif" alt="" /> 
+</td>
+</tr>
+[/section::63]
+[section::64]
+<p class="editPUser">Вы точно хотите удалить данную категорию? Внимание! Также будут удалены и новости входящие в данную категорию.</p>
+<form action="#" method="post" style="text-align:center;">
+<input type="submit" name="deletePage" class="TrueButton" value="да" />&nbsp;&nbsp;&nbsp;<input type="button" class="TrueButton" value="нет" onclick="hiddenWindow({id})" /> 
+<input type="hidden" name="idCat" value="{id}" />
+</form>
+[/section::64]
+[section::65]
+<option value="{n}" {s}>{name}</option>
+[/section::65]

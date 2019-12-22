@@ -1,0 +1,29 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Js библиотеки</p>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<form action="#" method="post">
+<table class="tablelist" width="100%">
+<tr>
+<th align="left">Библиотека</th><th align="left">Статус</th>
+</tr>
+[/section::3]
+[section::4]
+{list}
+<tr>
+<td></td><td align="left"><input type="submit" name="save" value="Сохранить" class="buttons" /></td>
+</tr>
+</table>
+</form>
+[/section::4]
+[section::5]
+<tr>
+<td><b>{name}</b></td><td><span style="color:#77b211"><b>вкл</b></span> <input  name="q[{id}]" {ch2} type="radio" value="1"  checked="checked" />
+<span style="color:#ff0000"><b>выкл</b></span> <input name="q[{id}]" type="radio" value="2" {ch1}  />
+</td>
+</tr>
+[/section::5]

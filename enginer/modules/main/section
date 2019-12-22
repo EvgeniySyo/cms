@@ -1,0 +1,41 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Главная</p>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<p><span class="mainTopP">Текущая страница на главной</span></p> 
+<table width="100%" class="tablelist" cellpadding="0" cellspacing="0">
+<tr>
+<th align="left">ID</th><th align="left">Название страницы</th><th align="left">Контент</th><th></th>
+</tr>
+<tr>
+<td align="left">{id}</td><td align="left">{name}</td><td align="left"><i>{content}</i></td><td><form action="#" method="post">
+<input type="submit" class="buttons" name="delete" value="убрать" />
+</form>
+</td>
+</tr>
+</table>
+[/section::3]
+[section::4]
+<p>
+<span class="mainTopP">Список страниц</span>
+</p> 
+<table width="100%" cellpadding="0" cellspacing="0" class="tablelist">
+<tr>
+<th align="left">ID</th><th align="left">Название страницы</th><th align="left">Контент</th><th></th>
+</tr>
+{pages}
+</table>
+[/section::4]
+[section::5]
+<tr>
+<td align="left">{id}</td><td align="left">{name}</td><td align="left"><i>{content}</i></td><td><form action="#" method="post">
+<input type="submit" class="buttons" name="set" value="установить" />
+<input type="hidden" name="id" value="{id}" />
+</form>
+</td>
+</tr>
+[/section::5]

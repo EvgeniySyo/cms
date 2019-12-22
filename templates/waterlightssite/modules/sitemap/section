@@ -1,0 +1,6 @@
+[section::1]
+<ul style="list-style:none">{list}</ul>
+[/section::1]
+[section::2]
+<li style="margin-bottom:10px;">{go} <a href="{url}">{name}</a></li>
+[/section::2]

@@ -1,0 +1,33 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /block/
+Disallow: /close_tm/
+Disallow: /enginer/
+Disallow: /error/
+Disallow: /font/
+Disallow: /includes/
+Disallow: /js/
+Disallow: /languages/
+Disallow: /modules/
+Disallow: /plagin/
+Disallow: /templates/
+Disallow: /pro100/
+Disallow: /stat/
+
+User-agent: Yandex
+Disallow: /admin/
+Disallow: /block/
+Disallow: /close_tm/
+Disallow: /enginer/
+Disallow: /error/
+Disallow: /font/
+Disallow: /includes/
+Disallow: /js/
+Disallow: /languages/
+Disallow: /modules/
+Disallow: /plagin/
+Disallow: /templates/
+Disallow: /pro100/
+Disallow: /stat/
+
+Host:www.galaktika32.ru

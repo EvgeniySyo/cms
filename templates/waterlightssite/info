@@ -1,0 +1,6 @@
+<?PHP
+$date_templates = "18.12.2009";
+$autor_templates = "Whynot-studio";
+$info_templates = "";
+$email_templates = "09@whynot-studio.ru";
+?>

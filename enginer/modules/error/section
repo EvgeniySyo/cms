@@ -1,0 +1,15 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Страница вывода 404 ошибки</p>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<form action="#" method="post">
+{editor}
+<br /><br />
+<center><input type="submit" value="сохранить" name="go" class="buttons" /></center>
+</form>
+{seo}
+[/section::3]

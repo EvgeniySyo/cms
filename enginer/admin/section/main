@@ -1,0 +1,141 @@
+[section::1]
+<div class="LeftPadding">
+
+{component}
+{block}
+
+<div class="clear"></div>
+<p class="mainTopP">Сайт</p>
+<div class="clear"></div>
+
+<div class="mainIMG">
+<a href="configure-conf.pl" title="основные настройки сайта">
+<img src="../templates/admin/ico/admin/settings.png" alt="" />
+<p>настройки</p>
+</a>
+</div>
+<div class="mainIMG">
+<a href="templates.pl" title="управление шаблонами">
+<img src="../templates/admin/ico/admin/theme.png" alt="" />
+<p>шаблоны</p>
+</a>
+</div>
+
+<div class="mainIMG">
+<a href="configure-info.pl" title="общая информация о сервере">
+<img src="../templates/admin/ico/admin/info.png" alt="" />
+<p>информация</p>
+</a>
+</div>
+<div class="mainIMG">
+<a href="user.pl" title="управления учетными записями">
+<img src="../templates/admin/ico/admin/users.png" alt="" />
+<p>учетный записи</p>
+</a>
+</div>
+
+<div class="mainIMG">
+<a href="log.pl" title="100 последних заходов в панель администратора">
+<img src="../templates/admin/ico/admin/logs.png" alt="" />
+<p>лог заходов</p>
+</a>
+</div>
+<div class="mainIMG">
+<a href="jslib.pl" title="управление javascript библиотеками (предназначены для модулей сайта)">
+<img src="../templates/admin/ico/admin/library.png" alt="" />
+<p>js библиотеки</p>
+</a>
+</div>
+
+<div class="mainIMG">
+<a href="backup.pl" title="Backup БД">
+<img src="../templates/admin/ico/admin/database.png" alt="" />
+<p>backup</p>
+</a>
+</div>
+
+<div class="mainIMG">
+<a href="ban.pl" title="запрет доступа к сайту по ip адресу">
+<img src="../templates/admin/ico/admin/banned.png" alt="" />
+<p>бан ip</p>
+</a>
+</div>
+
+<div class="mainIMG">
+<a href="other.pl" title="настройка шаблонов для отдельных страниц">
+<img src="../templates/admin/ico/admin/other.png" alt="" />
+<p>индивидуальные шаблоны</p>
+</a>
+</div>
+
+<div class="mainIMG">
+<a href="journal.pl" title="Журнал событий">
+<img src="../templates/admin/ico/admin/journal.png" alt="" />
+<p>Журнал событий</p>
+</a>
+</div>
+
+<div class="mainIMG">
+<a href="stat.pl" title="Статистика">
+<img src="../templates/admin/ico/admin/stat.png" alt="" />
+<p>Статистика</p>
+</a>
+</div>
+
+
+<div class="clear"></div>
+<p class="mainTopP">Компоненты</p>
+<div class="clear"></div>
+<div class="mainIMG">
+<a href="main-modules-install.pl" title="установка дополнительных модулей">
+<img src="../templates/admin/ico/admin/install.png" alt="" />
+<p>установка модулей</p>
+</a>
+</div>
+<div class="mainIMG">
+<a href="main-modules-setting.pl" title="настройка модулей">
+<img src="../templates/admin/ico/admin/set.png" alt="" />
+<p>настройка модулей</p>
+</a>
+</div>
+<div class="mainIMG">
+<a href="main-blocks-install.pl" title="установка дополнительных блоков">
+<img src="../templates/admin/ico/admin/install.png" alt="" />
+<p>установка блоков</p>
+</a>
+</div>
+<div class="mainIMG">
+<a href="main-blocks-setting.pl" title="настройка блоков">
+<img src="../templates/admin/ico/admin/set.png" alt="" />
+<p>настройка блоков</p>
+</a>
+</div>
+
+
+
+</div>
+</div>
+
+[/section::1]
+[section::2]
+<div class="clear"></div>
+<p class="mainTopP">Контент</p>
+<div class="clear"></div>
+{list}
+<div class="clear"></div>
+[/section::2]
+[section::3]
+<p class="mainTopP">Блоки</p>
+<div class="clear"></div>
+{list}
+<div class="clear"></div>
+
+[/section::3]
+[section::4]
+<div class="mainIMG">
+<a href="{url}" title="{title}">
+<img src="../templates/admin/ico/{image}" alt="" />
+<p>{name}</p>
+</a>
+</div>
+[/section::4]

@@ -1,0 +1,44 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Настройка модулей</p>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<form action="#" method="post">
+<table style="width:100%" cellpadding="0" class="tablelist" cellspacing="0">
+<tr>
+<th></th><th align="left">Название</th><th align="left">Статус</th><th align="left">Заголовок</th><th align="left">Модуль по умолчанию</th>
+</tr>
+{list}
+
+<tr id="table-clear">
+<td><td></td></td><td></td><td></td><td align="left"><input type="submit" name="save" value="" class="saveMod" /></td>
+</tr>
+</table>
+</form>
+[/section::3]
+[section::4]
+<tr>
+<td><img src="../{image}" alt="" style="width:50px;" /></td>
+<td align="left">{name} <br /> <a href="{url}" style="color:blue" target="_blank">{url-in}</a></td>
+<td>
+<span style="color:#77b211"><b>вкл</b></span> <input  name="q[{i}]" type="radio" value="1"  {check1} />
+<span style="color:#ff0000"><b>выкл</b></span> <input name="q[{i}]" type="radio" value="2"  {check2} />
+</td>
+<td>
+<input type="text" value="{title}" name="title[{i}]" style="height:16px" class="stepInput" />
+</td>
+<td>
+<input name="default" value="{n}" type="radio" {check3} /> {text}
+<input type="hidden" name="name[{i}]" value="{n}" />
+</td>
+</tr>
+[/section::4]
+[section::5]
+<span style="color:#71b205">установлен</span>
+[/section::5]
+[section::6]
+<span style="color:#089cc2; text-decoration:underline;">установить</span>
+[/section::6]

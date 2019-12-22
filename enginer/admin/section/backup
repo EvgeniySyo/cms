@@ -1,0 +1,50 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Бэкап базы данных</p>
+<form action="#" method="post"><input type="submit" name="backup" value="Сделать backup базы данных" class="buttonText" /></form>
+[/section::1]
+[section::2]
+{table}
+</div>
+[/section::2]
+[section::3]
+<p class="mainTopP">Список бэкапов</p>
+<table class="tablelist" width="100%" cellpadding="0" cellspacing="0">
+<tr>
+<th>Дата</th><th>Восстановление</th><th>Размер</th><th>Удаление</th>
+</tr>
+{list}
+</table>
+[/section::3]
+[section::4]
+<tr>
+<td>{date}</td>
+<td>
+{window1}
+<input type="button" name="restor" onclick="ShowWindow('-{id}')" value="восстановить" class="buttons" />
+</td>
+<td>{size} Mb</td>
+<td>
+{window}
+<input type="button" onclick="ShowWindow('{id}')" name="delete" value="удалить" class="buttons" />
+</td>
+</tr>
+[/section::4]
+[section::5]
+<p>Вы точно хотите удалить текущий бэкап?</p>
+<p>Дата бэкапа: <b>{date}</b></p>
+<form action="#" method="post" style="clear:both;float:left;padding-left:140px;"> 
+		<input type="submit" name="delete" class="TrueButton" value="да" />
+		<input type="hidden" name="f" value="{f}" />
+	</form>
+	<input type="submit" style="float:left;margin-left:30px;" name="" onclick="hiddenWindow('{id}')" class="TrueButton" value="нет" />
+[/section::5]
+[section::6]
+<p>Вы точно хотите произвести восстановление за текущую дату: <b>{date}</b>?</p>
+<p>Внимание, при восстановлении будет произведен откат данных до выбранного числа</p>
+<form action="#" method="post" style="clear:both;float:left;padding-left:140px;"> 
+		<input type="submit" name="restor" class="TrueButton" value="да" />
+		<input type="hidden" name="f" value="{f}" />
+	</form>
+	<input type="submit" style="float:left;margin-left:30px;" name="" onclick="hiddenWindow({id})" class="TrueButton" value="нет" />
+[/section::6]

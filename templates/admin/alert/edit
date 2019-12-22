@@ -1,0 +1,6 @@
+<div class="editWindow" id="dialog{id}" {title}>
+<div class="editWindow-text">
+<div class="editWindow-close" onclick="hiddenWindow({id})"></div>
+{text}
+</div>
+</div>

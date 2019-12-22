@@ -1,0 +1,1 @@
+<iframe src="../stat/frame.php?id_date=<?php echo $_GET['id_date']; ?>" width="100%" height="600" frameborder="0"></iframe>

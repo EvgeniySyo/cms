@@ -1,0 +1,6 @@
+[section::1]
+<img src="../templates/admin/images/on.png" onclick="StatusPage('{id}');" alt="" title="включен" /> 
+[/section::1]
+[section::2]
+<img src="../templates/admin/images/off.png" onclick="StatusPage('{id}');" alt="" title="выключен" /> 
+[/section::2]

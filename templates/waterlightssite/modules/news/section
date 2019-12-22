@@ -1,0 +1,102 @@
+[section::1]
+<div class="news">
+	<a href="/{url}">{image}</a>
+	<p class="newsname"><a href="/{url}">{name}</a></p>
+	<p class="newsdate">{date1}</p>
+</div>
+[/section::1]
+[section::1-1]
+<div class="news">
+	<a href="/{url}">{image}</a>
+	<p class="newsname"><a href="/{url}">{name}</a></p>
+	<p class="newsdate">{date1}</p>
+</div>
+[/section::1-1]
+[section::2]
+<ul>{list}
+<li><a href="{url}">Без категории</a></li>
+</ul>
+[/section::2]
+[section::3]
+<li><a href="{url}">{name}</a></li>
+[/section::3]
+[section::4]
+<a href="/{url}">{n}</a> 
+[/section::4]
+[section::5]
+<span>{n}</span> 
+[/section::5]
+[section::6]
+<p>данной категории не существует</p>
+[/section::6]
+[section::7]
+<div class="news1">
+{text}
+<table class="newstable"><tr>
+	<td class="newsdate"><div>{date1}</div></td>
+	<td class="news1line">&nbsp;</td>
+	<td><div><script src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js"></script>
+<script src="//yastatic.net/share2/share.js"></script>
+<div class="ya-share2" data-services="vkontakte,facebook,gplus,twitter,lj"></div></div></td>
+</tr></table>
+
+[/section::7]
+== ADD COMMENTS ==
+[section::8]
+<h3>Коментарии</h3>
+<a href="#" name="commnets"></a>
+{listcom}
+<p>&nbsp;</p>
+{page}
+<h3>Добавить комментарий</h3>
+<form action="#commnets" method="post">
+<table width="100%" cellpadding="2" cellspacing="2">
+<tr>
+<td>Ваше имя:</td><td><input type="text" style="width:100%" name="UserName" /></td>
+</tr>
+<tr>
+<td>Ваш текст:</td><td><textarea cols="" rows="" style="width:100%;height:200px" name="UserText"></textarea></td>
+</tr>
+<tr>
+<td></td><td><input type="submit" name="go" value="добавить" style="width:100px;" /></td>
+</tr>
+</table>
+</form>
+[/section::8]
+[section::9]
+<h4 style="background:#d0fffe;padding:3px;color:#000000">{name}</h4>
+<p>{text}</p>
+[/section::9]
+[section::10]
+<p>{number}</p>
+[/section::10]
+[section::11]
+<a href="{url}#commnets">{n}</a> 
+[/section::11]
+[section::12]
+{n} 
+[/section::12]
+[section::13]
+<p class="pages">{back}{list}{next}</p>
+[/section::13]
+[section::14]
+<a href="{URL_SITE}{url}">«</a> 
+[/section::14]
+[section::15]
+<a href="{URL_SITE}{url}">»</a> 
+[/section::15]
+[section::16]
+<a href="{URL_SITE}{url}">»</a> 
+[/section::16]
+[section::17]
+<a href="{URL_SITE}{url}">{n}</a> 
+[/section::17]
+[section::28]
+<img alt="" src="{image}" />
+[/section::28]
+[section::29]
+<img class="imgLeft" alt="" src="{image}" />
+[/section::29]
+[section::30]
+<img alt="" src="{image}" />
+[/section::30]

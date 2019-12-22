@@ -1,0 +1,28 @@
+[section::1]
+<ul>%LI%</ul>
+[/section::1]
+[section::2]
+<li><a href="%URL%">%LI%</a></li>
+[/section::2]
+[section::3]
+%TEXT%
+[/section::3]
+[section::4]
+&#8594;&nbsp;&nbsp;<a href="/">главная</a>
+[/section::4]
+[section::5]
+<li><a href="/mc/%URL%/">%LI%</a></li>
+[/section::5]
+[section::6]
+&nbsp;&nbsp;&#8594;&nbsp;&nbsp;<a href="/mc/%URL%/">%TEXT%</a>
+[/section::6]
+[section::7]
+<ul>%CAT%</ul>
+<ul>%PAGE%</ul>
+[/section::7]
+[section::8]
+<li><a href="/mc/%URL%/">%TEXT%</a></li>
+[/section::8]
+[section::9]
+<li><a href="/mc/%URL%/">%TEXT%</a></li>
+[/section::9]

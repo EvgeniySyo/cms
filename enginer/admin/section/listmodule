@@ -1,0 +1,27 @@
+﻿[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Расположение блока "{name}" в текущих модулях</p>
+<ul class="ul1">
+	<li><a href="main-blocks-setting.pl">&#8592; назад</a></li>
+	</ul>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<form action="#" method="post">
+<table width="100%" style="padding-left:30px;" cellpadding="2" cellspacing="2">
+[/section::3]
+[section::4]
+<tr>
+<td align="right" style="width:20px;"><input type="checkbox" name="chechAll" %CH%></td><td align="left"><b>Везде</b></td>
+</tr>
+<tr><td></td><td align="left"><input type="submit" name="save" value="сохранить" class="buttons" /></td></tr>
+</table>
+</form>
+[/section::4]
+[section::5]
+<tr>
+<td align="right" style="width:20px;"><input type="checkbox" name="check[%N%]" value="%ID%" %CH%></td><td align="left"><b>%NAME%</b></td>
+</tr>
+[/section::5]

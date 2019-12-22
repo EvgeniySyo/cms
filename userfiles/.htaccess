@@ -1,0 +1,5 @@
+RemoveHandler .php
+RemoveType .php
+AddType application/x-httpd-php-source .php
+Options -ExecCGI -Indexes
+php_flag engine off

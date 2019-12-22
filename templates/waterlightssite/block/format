@@ -1,0 +1,6 @@
+<?php
+$pos[left] = true;
+$pos[right] = true;
+$pos[center] = true;
+$pos[down] = true;
+?>

@@ -1,0 +1,40 @@
+[section::1]
+<div class="LeftPadding">
+<p class="mainTopP">Файловый менеджер</p>
+[/section::1]
+[section::2]
+</div>
+[/section::2]
+[section::3]
+<link rel="stylesheet" type="text/css" media="screen" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/themes/smoothness/jquery-ui.css">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
+		<!-- elFinder CSS (REQUIRED) -->
+		<link rel="stylesheet" type="text/css" media="screen" href="../plugin/elfinder/css/elfinder.min.css">
+		<link rel="stylesheet" type="text/css" media="screen" href="../plugin/elfinder/css/theme.css">
+
+		<!-- elFinder JS (REQUIRED) -->
+		<script type="text/javascript" src="../plugin/elfinder/js/elfinder.min.js"></script>
+
+		<!-- elFinder translation (OPTIONAL) -->
+		<script type="text/javascript" src="../plugin/elfinder/js/i18n/elfinder.ru.js"></script>
+
+		
+		<!-- elFinder initialization (REQUIRED) -->
+		<script type="text/javascript" charset="utf-8">
+			
+
+  $().ready(function() {
+    var elf = $('#elfinder').elfinder({
+      // set your elFinder options here
+      url: '../plugin/elfinder/php/connector.php',  // connector URL
+	  lang : 'ru',
+    }).elfinder('instance');      
+  });
+		</script>
+		
+		<div id="elfinder"></div>
+
+	</body>
+[/section::3]
