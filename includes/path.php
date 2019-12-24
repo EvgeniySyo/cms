@@ -1,3 +1,3 @@
 <?php
-$data_path = "E:/OpenServer/domains/vmeza.syo/enginer/";
+$data_path = "F:/web/domains/vmeza.syo/enginer/";
 ?>

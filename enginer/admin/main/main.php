@@ -4,8 +4,8 @@ $TemplatesSection = CMS::SectionFile('main');
 
 $SelectComp = Simple_DbApi::select_db('modules', '*', 'install', 'yes', '', '', '', '');
 $componet = $block = '';
+$find = 0;
 if (!empty($SelectComp)) {
-    $find = 0;
     foreach ($SelectComp as $i => $nm)
 	{
         if (file_exists('modules/' . $nm['name'] . '/index.php') && file_exists(DATA_PATH . 'modules/' . $nm['name'] . '/admin.php')) {
@@ -24,6 +24,7 @@ if (!empty($SelectComp)) {
     }
 }
 
+$componetIn = '';
 if ($find != 0) $componetIn = CMS::SectionAdmin($TemplatesSection, 2, '{list}', $componet);
 
 $SelectBlock = Simple_DbApi::select_db('block', '*', 'install', 'yes', '', '', '', '');
@@ -43,6 +44,7 @@ if (!empty($SelectBlock)) {
     }
 }
 
+$blockIn = '';
 if ($find != 0) $blockIn = CMS::SectionAdmin($TemplatesSection, 3, '{list}', $block);
 
 echo CMS::SectionAdmin($TemplatesSection, 1, "{component},{block}", $componetIn . "<><>" . $blockIn);

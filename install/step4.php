@@ -25,7 +25,7 @@
 <div id="2" class="block" onmouseout="Invisble(2)">
 <div class="imgWin"><img src="images/qh .png" alt="" /></div>
 <div class="TopWin"></div>
-<div class="centerWin">ппароль администратора</div>
+<div class="centerWin">пароль администратора</div>
 <div class="BottomWin"></div>
 </div>
 <!-- emd -->

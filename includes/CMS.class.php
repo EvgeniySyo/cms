@@ -38,7 +38,7 @@ class CMS
         self::$db = init_db();
 
         self::$error = new Simple_Error();
-        //echo '<pre>'.print_r(self::$db, true).'</pre>';
+
         if (!empty(self::$db->error)) {
             Simple_Theme_Work::Theme_Error(SIMPLE_ER_CONNECT_DB);
         }
@@ -46,6 +46,18 @@ class CMS
         self::$date = date("j.n.Y.H.i.s");
         self::$ip = $_SERVER['REMOTE_ADDR'];
         self::$copyright = "";
+    }
+
+    public static function init_db($mypdo_str) //__construct
+    {
+        /* db connection */
+        require DATA_PATH . '/core/DBSimple/Generic.php';
+        self::$config['db'] = $mypdo_str; //mypdo://login:password@server/database?enc=utf8mb4&persist=true
+        self::$db = init_db();
+
+        if (!empty(self::$db->error)) {
+            Simple_Theme_Work::Theme_Error(SIMPLE_ER_CONNECT_DB);
+        }
     }
 
     static function closed_site()

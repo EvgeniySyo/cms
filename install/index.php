@@ -1,166 +1,135 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 header('Content-Type: text/html; charset=utf-8');
-define("INSTALL_PRO100","yes");
+define("INSTALL_PRO100", "yes");
 session_start();
-if(!file_exists("includes/lock.pro"))
-{
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Установка</title>
-<link href="css/style.css" rel="stylesheet" type="text/css" /> 
-<script type="text/javascript" src="js_admin/j.js"></script> 
-		<script type="text/javascript" src="js_admin/m.js"></script> 
-		<script type="text/javascript" src="js_admin/s.js"></script> 
-		<script type="text/javascript" src="js_admin/w.js"></script> 
-		<link rel="stylesheet" type="text/css" media="all" href="js_admin/jscroll.css" /> 
-<script type="text/javascript"> 
-$(function()
-{
-	$('.scroll-pane').jScrollPane({showArrows:true, scrollbarWidth:19, dragMaxHeight:43});
-});
-</script> 
-</head>
-<body>
-<?php
-if(!isset($_GET['step']) || $_GET['step'] <1 || $_GET['step'] > 5) include("step1.php");
-else
-{
-	if($_GET['step'] == 2 || $_GET['step'] == 3 || $_GET['step'] == 4 || $_GET['step'] == 5)
-	{
-		switch ($_GET['step'])
-		{
-			case 2:
-				if(isset($_POST['back'])) include("step1.php");
-				if(isset($_POST['step']))
-				{
-					$stepGO = false;
-					$nameSite = strip_tags($_POST['nameSite']);
-					$keywords = strip_tags($_POST['keySite']);
-					$_SESSION['NameSite'] = $nameSite;
-					$_SESSION['keywords'] = $keywords;
-					$pathToengi = $_POST['path'];
-					if(!isset($_SESSION['enginerPATH'])) $PathTo = $_SERVER['DOCUMENT_ROOT'].'/enginer/';
-					else $PathTo = $_SESSION['enginerPATH'];
-					if($pathToengi[(strlen($pathToengi)-1)] != '/') $pathToengi = $pathToengi.'/';
-					if(file_exists($pathToengi.'system.php'))
-					{
-						$stepGO = true;
-						$_SESSION['enginerPATH'] = $pathToengi;
+define('DATA_PATH', $_SERVER['DOCUMENT_ROOT'] . '/enginer/');
+require("../includes/CMS.class.php");
+$warning = '';
+if (!file_exists("includes/lock.pro")) {
+    ?>
+    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+            "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Установка</title>
+        <link href="css/style.css" rel="stylesheet" type="text/css"/>
+        <script type="text/javascript" src="js_admin/j.js"></script>
+        <script type="text/javascript" src="js_admin/m.js"></script>
+        <script type="text/javascript" src="js_admin/s.js"></script>
+        <script type="text/javascript" src="js_admin/w.js"></script>
+        <link rel="stylesheet" type="text/css" media="all" href="js_admin/jscroll.css"/>
+        <script type="text/javascript">
+            $(function () {
+                $('.scroll-pane').jScrollPane({showArrows: true, scrollbarWidth: 19, dragMaxHeight: 43});
+            });
+        </script>
+    </head>
+    <body>
+    <?php
+    if (!isset($_GET['step']) || $_GET['step'] < 1 || $_GET['step'] > 5) include("step1.php");
+    else {
+        if ($_GET['step'] == 2 || $_GET['step'] == 3 || $_GET['step'] == 4 || $_GET['step'] == 5) {
+            switch ($_GET['step']) {
+                case 2:
+                    if (isset($_POST['back'])) include("step1.php");
+                    if (isset($_POST['step'])) {
+                        $stepGO = false;
+                        $nameSite = strip_tags($_POST['nameSite']);
+                        $keywords = strip_tags($_POST['keySite']);
+                        $_SESSION['NameSite'] = $nameSite;
+                        $_SESSION['keywords'] = $keywords;
+                        $pathToengi = $_POST['path'];
+                        if (!isset($_SESSION['enginerPATH'])) $PathTo = $_SERVER['DOCUMENT_ROOT'] . '/enginer/';
+                        else $PathTo = $_SESSION['enginerPATH'];
+                        if ($pathToengi[(strlen($pathToengi) - 1)] != '/') $pathToengi = $pathToengi . '/';
+                        if (file_exists($pathToengi . 'system.php')) {
+                            $stepGO = true;
+                            $_SESSION['enginerPATH'] = $pathToengi;
 
-					}
-					else
-					{
-						$warning = '<div class="warning">не верно указан путь до папки enginer</div>';
-					}
+                        } else {
+                            $warning = '<div class="warning">не верно указан путь до папки enginer</div>';
+                        }
 
-					if($stepGO == true) include('step3.php');
-					else include("step2.php");
-				}
-				break;
-			case 3:
-				if(isset($_POST['back']))
-				{
-					if(!isset($_SESSION['enginerPATH'])) $PathTo = $_SERVER['DOCUMENT_ROOT'].'/enginer/';
-					else $PathTo = $_SESSION['enginerPATH'];
-					include("step2.php");
-				}
-				if(isset($_POST['step']))
-				{
-					$connect = true;
-					$Server = $_POST['serverDB'];
-					$port = $_POST['portDB'];
-					$loginDB = $_POST['loginDB'];
-					$passDB = $_POST['passDB'];
-					$db = $_POST['db'];
-					$prefix = $_POST['prefix'];
-					@$textConnect = mysql_connect($Server.':'.$port,$loginDB,$passDB);
-					if(!$textConnect)
-					{
-						$connect = false;
-						$warning = '<div class="warning">не удалось подключиться к серверу БД</div>';
-					}
-					else
-					{
-						@$selectDB = mysql_select_db($db);
-						if(!$selectDB)
-						{
-							$connect = false;
-							$warning = '<div class="warning">не удалось подключиться к БД <b>'.$db.'</b></div>';
-							$_SESSION['serverDB'] = $Server;
-							$_SESSION['port'] = $port;
-							$_SESSION['Login'] = $loginDB;
-							$_SESSION['passDB'] = $passDB;
-						}
-					}
-					if($connect == false) include('step3.php');
-					else
-					{
-						$_SESSION['serverDB'] = $Server;
-						$_SESSION['port'] = $port;
-						$_SESSION['Login'] = $loginDB;
-						$_SESSION['passDB'] = $passDB;
-						$_SESSION['DB'] = $db;
-						$_SESSION['prefix'] = $prefix;
-						include("step4.php");
-					}
+                        if ($stepGO == true) include('step3.php');
+                        else include("step2.php");
+                    }
+                    break;
+                case 3:
+                    if (isset($_POST['back'])) {
+                        if (!isset($_SESSION['enginerPATH'])) $PathTo = $_SERVER['DOCUMENT_ROOT'] . '/enginer/';
+                        else $PathTo = $_SESSION['enginerPATH'];
+                        include("step2.php");
+                    }
+                    if (isset($_POST['step'])) {
+                        $connect = true;
+                        $Server = $_POST['serverDB'];
+                        $port = $_POST['portDB'];
+                        $loginDB = $_POST['loginDB'];
+                        $passDB = $_POST['passDB'];
+                        $db = $_POST['db'];
+                        $prefix = $_POST['prefix'];
+                        CMS::init_db('mypdo://' . $loginDB . ':' . $passDB . '@' . $Server . '/' . $db . '?enc=utf8mb4&persist=true'); //= mysql_connect($Server.':'.$port,$loginDB,$passDB);
 
-				}
-				break;
-			case 4:
-				if(isset($_POST['back'])) include("step3.php");
-				if(isset($_POST['step']))
-				{
-					$login = $_POST['login'];
-					$pass = $_POST['pass'];
-					$passReplay = $_POST['replaypass'];
-					$mail = $_POST['mail'];
-					$install = true;
-					if(!preg_match("/[a-zA-Z0-9]/i", $login))
-					{
-						$install = false;
-						$warning .= '<div class="warning">только латинские символы и цифры в логине</div>';
-					}
-					if(strlen($pass) < 6 )
-					{
-						$install = false;
-						$warning .= '<div class="warning">слишком короткий пароль (не менее 6 символов)</div>';
-					}
-					if($pass != $passReplay )
-					{
-						$install = false;
-						$warning .= '<div class="warning">пароль и повторный пароль не совпадают</div>';
-					}
-					if(!preg_match("/(([[:alnum:]]+(-|_)?[[:alnum:]]+)\.?)+@([[:alnum:]]+(-|_)?[[:alnum:]]+\.)+[[:alnum:]]/i", $mail) )
-					{
-						$install = false;
-						$warning .= '<div class="warning">неверный e-mail</div>';
-					}
+                        $_SESSION['serverDB'] = $Server;
+                        $_SESSION['port'] = $port;
+                        $_SESSION['Login'] = $loginDB;
+                        $_SESSION['passDB'] = $passDB;
+                        $_SESSION['DB'] = $db;
+                        $_SESSION['prefix'] = $prefix;
+                        include("step4.php");
+                    }
+                    break;
+                case 4:
+                    if (isset($_POST['back'])) include("step3.php");
+                    if (isset($_POST['step'])) {
+                        $login = $_POST['login'];
+                        $pass = $_POST['pass'];
+                        $passReplay = $_POST['replaypass'];
+                        $mail = $_POST['mail'];
+                        $install = true;
+                        if (!preg_match("/[a-zA-Z0-9]/i", $login)) {
+                            $install = false;
+                            $warning .= '<div class="warning">только латинские символы и цифры в логине</div>';
+                        }
+                        if (strlen($pass) < 6) {
+                            $install = false;
+                            $warning .= '<div class="warning">слишком короткий пароль (не менее 6 символов)</div>';
+                        }
+                        if ($pass != $passReplay) {
+                            $install = false;
+                            $warning .= '<div class="warning">пароль и повторный пароль не совпадают</div>';
+                        }
+                        if (!preg_match("/(([[:alnum:]]+(-|_)?[[:alnum:]]+)\.?)+@([[:alnum:]]+(-|_)?[[:alnum:]]+\.)+[[:alnum:]]/i", $mail)) {
+                            $install = false;
+                            $warning .= '<div class="warning">неверный e-mail</div>';
+                        }
 
-					if($install == false) include("step4.php");
-					else
-					{
-						$date = date("j.m.Y-G:i:s");
-						//mysql_connect($_SESSION['serverDB'].':'.$_SESSION['port'],$_SESSION['Login'],$_SESSION['passDB']);
-						//mysql_select_db($_SESSION['DB']);
+                        if ($install == false) include("step4.php");
+                        else {
+                            $date = date("j.m.Y-G:i:s");
+                            CMS::init_db('mypdo://' . $_SESSION['Login'] . ':' . $_SESSION['passDB'] . '@' . $_SESSION['serverDB'] . '/' . $_SESSION['DB'] . '?enc=utf8mb4&persist=true');
+                            //mysql_connect($_SESSION['serverDB'].':'.$_SESSION['port'],$_SESSION['Login'],$_SESSION['passDB']);
+                            //mysql_select_db($_SESSION['DB']);
 
-                        CMS::$db->query("DROP TABLE `".$_SESSION['prefix']."accounts`");
-                        CMS::$db->query("DROP TABLE `".$_SESSION['prefix']."ban_ip`");
-                        CMS::$db->query("DROP TABLE `".$_SESSION['prefix']."block`");
-                        CMS::$db->query("DROP TABLE `".$_SESSION['prefix']."hits`");
-                        CMS::$db->query("DROP TABLE `".$_SESSION['prefix']."modules`");
-                        CMS::$db->query("DROP TABLE `".$_SESSION['prefix']."search`");
-                        CMS::$db->query("DROP TABLE `".$_SESSION['prefix']."secutity`");
-                        CMS::$db->query("DROP TABLE `".$_SESSION['prefix']."statistics`");
-                        CMS::$db->query("DROP TABLE `".$_SESSION['prefix']."templates`");
+                            CMS::$db->query("DROP TABLE IF EXISTS `" . $_SESSION['prefix'] . "accounts`");
+                            CMS::$db->query("DROP TABLE IF EXISTS `" . $_SESSION['prefix'] . "ban_ip`");
+                            CMS::$db->query("DROP TABLE IF EXISTS `" . $_SESSION['prefix'] . "block`");
+                            CMS::$db->query("DROP TABLE IF EXISTS `" . $_SESSION['prefix'] . "hits`");
+                            CMS::$db->query("DROP TABLE IF EXISTS `" . $_SESSION['prefix'] . "modules`");
+                            CMS::$db->query("DROP TABLE IF EXISTS `" . $_SESSION['prefix'] . "search`");
+                            CMS::$db->query("DROP TABLE IF EXISTS `" . $_SESSION['prefix'] . "secutity`");
+                            CMS::$db->query("DROP TABLE IF EXISTS `" . $_SESSION['prefix'] . "statistics`");
+                            CMS::$db->query("DROP TABLE IF EXISTS `" . $_SESSION['prefix'] . "templates`");
 
 
-						/* SQL */
+                            /* SQL */
 
-                        CMS::$db->query("
-CREATE TABLE `".$_SESSION['prefix']."accounts` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "accounts` (
   `user_id` int(100) NOT NULL auto_increment,
   `login` varchar(15) NOT NULL default '',
   `password` varchar(32) NOT NULL default '',
@@ -182,11 +151,11 @@ CREATE TABLE `".$_SESSION['prefix']."accounts` (
 ) ENGINE=MyISAM ;
 ");
 
-                        CMS::$db->query("INSERT INTO `".$_SESSION['prefix']."accounts` VALUES ('', '".$login."', '".md5(md5($pass))."', '".$mail."', '200', '".$_SERVER['HTTP_HOST']."', '".$date."', '', '', '', '', '', '', '', '', '', '');
+                            CMS::$db->query("INSERT INTO `" . $_SESSION['prefix'] . "accounts` VALUES ('', '" . $login . "', '" . md5(md5($pass)) . "', '" . $mail . "', '200', '" . $_SERVER['HTTP_HOST'] . "', '" . $date . "', '', '', '', '', '', '', '', '', '', '');
 						");
 
-                        CMS::$db->query("
-CREATE TABLE `".$_SESSION['prefix']."admin_acsess` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "admin_acsess` (
   `id` int(100) NOT NULL auto_increment,
   `ip` varchar(20) NOT NULL default '',
   `date` varchar(20) NOT NULL default '',
@@ -194,8 +163,8 @@ CREATE TABLE `".$_SESSION['prefix']."admin_acsess` (
 ) ENGINE=MyISAM;
 ");
 
-                        CMS::$db->query("
-CREATE TABLE `".$_SESSION['prefix']."ban_ip` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "ban_ip` (
   `id` int(100) NOT NULL auto_increment,
   `ip` varchar(15) NOT NULL default '',
   `alert` text NOT NULL,
@@ -204,8 +173,8 @@ CREATE TABLE `".$_SESSION['prefix']."ban_ip` (
 ) ENGINE=MyISAM;
 ");
 
-                        CMS::$db->query("
-CREATE TABLE `".$_SESSION['prefix']."block` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "block` (
   `name_block` varchar(30) NOT NULL default '',
   `posision` varchar(15) NOT NULL default '',
   `ves` int(100) default NULL,
@@ -219,8 +188,8 @@ CREATE TABLE `".$_SESSION['prefix']."block` (
 ) ENGINE=MyISAM;
 ");
 
-                        CMS::$db->query("
-CREATE TABLE `".$_SESSION['prefix']."hits` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "hits` (
   `id` int(100) NOT NULL auto_increment,
   `date` varchar(10) NOT NULL default '',
   `hits` int(100) NOT NULL default '0',
@@ -252,8 +221,8 @@ CREATE TABLE `".$_SESSION['prefix']."hits` (
 ) ENGINE=MyISAM;
 ");
 
-                        CMS::$db->query("
-CREATE TABLE `".$_SESSION['prefix']."log` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "log` (
   `id` int(100) NOT NULL auto_increment,
   `ip` varchar(15) NOT NULL,
   `date` date NOT NULL,
@@ -262,8 +231,8 @@ CREATE TABLE `".$_SESSION['prefix']."log` (
 ) ENGINE=MyISAM;
 ");
 
-                        CMS::$db->query("
-CREATE TABLE `".$_SESSION['prefix']."modules` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "modules` (
   `name` varchar(15) NOT NULL default '',
   `status` char(3) NOT NULL default '',
   `acsess` char(3) NOT NULL default '',
@@ -273,8 +242,8 @@ CREATE TABLE `".$_SESSION['prefix']."modules` (
 ) ENGINE=MyISAM;
 ");
 
-                        CMS::$db->query("
-CREATE TABLE `".$_SESSION['prefix']."search` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "search` (
   `id` int(100) NOT NULL auto_increment,
   `module` varchar(255) NOT NULL,
   `page` text NOT NULL,
@@ -287,8 +256,8 @@ CREATE TABLE `".$_SESSION['prefix']."search` (
 ) ENGINE=MyISAM;
 ");
 
-                        CMS::$db->query("
-CREATE TABLE `".$_SESSION['prefix']."secutity` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "secutity` (
   `id` int(100) NOT NULL default '0',
   `date` varchar(20) NOT NULL default '',
   `ip` varchar(15) NOT NULL default '',
@@ -297,8 +266,8 @@ CREATE TABLE `".$_SESSION['prefix']."secutity` (
 ) ENGINE=MyISAM;
 ");
 
-                        CMS::$db->query("
-CREATE TABLE `".$_SESSION['prefix']."statistics` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "statistics` (
   `id` int(100) NOT NULL auto_increment,
   `date` varchar(10) NOT NULL default '',
   `ip` varchar(15) NOT NULL default '',
@@ -309,8 +278,8 @@ CREATE TABLE `".$_SESSION['prefix']."statistics` (
 ) ENGINE=MyISAM;
 ");
 
-                        CMS::$db->query("
-CREATE TABLE `".$_SESSION['prefix']."statistics_bot` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "statistics_bot` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `date` datetime NOT NULL,
   `ip` varchar(50) NOT NULL,
@@ -319,8 +288,8 @@ CREATE TABLE `".$_SESSION['prefix']."statistics_bot` (
 ) ENGINE=MyISAM;
 ");
 
-                        CMS::$db->query("
-CREATE TABLE `".$_SESSION['prefix']."templates` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "templates` (
   `name` varchar(30) NOT NULL default '',
   `status` char(3) NOT NULL default '',
   PRIMARY KEY  (`name`),
@@ -328,8 +297,8 @@ CREATE TABLE `".$_SESSION['prefix']."templates` (
 ) ENGINE=MyISAM;
 ");
 
-                        CMS::$db->query("
-CREATE TABLE IF NOT EXISTS `".$_SESSION['prefix']."history` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "history` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `text` text NOT NULL,
   `date` datetime NOT NULL,
@@ -338,8 +307,8 @@ CREATE TABLE IF NOT EXISTS `".$_SESSION['prefix']."history` (
 ) ENGINE=MyISAM;
 ");
 
-                        CMS::$db->query("
-CREATE TABLE IF NOT EXISTS `".$_SESSION['prefix']."aliases` (
+                            CMS::$db->query("
+CREATE TABLE IF NOT EXISTS `" . $_SESSION['prefix'] . "aliases` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
   `varnames` text NOT NULL,
@@ -347,44 +316,42 @@ CREATE TABLE IF NOT EXISTS `".$_SESSION['prefix']."aliases` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM;
 ");
-						
-						$dirTheme = scandir('../templates');
-						$DefaultTemplate = '';
-						for ($z=2;$z<count($dirTheme);$z++)
-						{
-							if($dirTheme[$z] != 'admin')
-							{
-								$DefaultTemplate = $dirTheme[$z];
-								break;
-							}
-						}
-						$DefaultTemplate = !empty($DefaultTemplate) ? $DefaultTemplate:'default';
 
-                        CMS::$db->query("
-						INSERT INTO `".$_SESSION['prefix']."templates` (`name` ,`status`) VALUES ('$DefaultTemplate', '');
+                            $dirTheme = scandir('../templates');
+                            $DefaultTemplate = '';
+                            for ($z = 2; $z < count($dirTheme); $z++) {
+                                if ($dirTheme[$z] != 'admin') {
+                                    $DefaultTemplate = $dirTheme[$z];
+                                    break;
+                                }
+                            }
+                            $DefaultTemplate = !empty($DefaultTemplate) ? $DefaultTemplate : 'default';
+
+                            CMS::$db->query("
+						INSERT INTO `" . $_SESSION['prefix'] . "templates` (`name` ,`status`) VALUES ('$DefaultTemplate', '');
 						");
-						/* */
-						//chmod('../includes/', 777);
-						//chmod($_SESSION['enginerPATH'].'config.php', 666);
-						//chmod('../includes/path.php', 666);
-						$fp = fopen($_SESSION['enginerPATH'].'config.php','w');
-						flock($fp,LOCK_EX);
-						fwrite($fp,
-						"<?php
-\$db[\"server\"] = \"".str_replace("\"","\\\"",$_SESSION['serverDB'])."\";
-\$db[\"port\"] = \"".str_replace("\"","\\\"",$_SESSION['port'])."\";
-\$db[\"login\"] = \"".str_replace("\"","\\\"",$_SESSION['Login'])."\";
-\$db[\"password\"] = \"".str_replace("\"","\\\"",$_SESSION['passDB'])."\";
-\$db[\"data_base\"] = \"".str_replace("\"","\\\"",$_SESSION['DB'])."\";
-\$db[\"prefix\"] = \"".str_replace("\"","\\\"",$_SESSION['prefix'])."\";
-\$html[\"title\"] = \"".str_replace("\"","\\\"",$_SESSION['NameSite'])."\";
-\$html[\"keywords\"] = \"".str_replace("\"","\\\"",$_SESSION['keywords'])."\";
+                            /* */
+                            //chmod('../includes/', 777);
+                            //chmod($_SESSION['enginerPATH'].'config.php', 666);
+                            //chmod('../includes/path.php', 666);
+                            $fp = fopen($_SESSION['enginerPATH'] . 'config.php', 'w');
+                            flock($fp, LOCK_EX);
+                            fwrite($fp,
+                                "<?php
+\$db[\"server\"] = \"" . str_replace("\"", "\\\"", $_SESSION['serverDB']) . "\";
+\$db[\"port\"] = \"" . str_replace("\"", "\\\"", $_SESSION['port']) . "\";
+\$db[\"login\"] = \"" . str_replace("\"", "\\\"", $_SESSION['Login']) . "\";
+\$db[\"password\"] = \"" . str_replace("\"", "\\\"", $_SESSION['passDB']) . "\";
+\$db[\"data_base\"] = \"" . str_replace("\"", "\\\"", $_SESSION['DB']) . "\";
+\$db[\"prefix\"] = \"" . str_replace("\"", "\\\"", $_SESSION['prefix']) . "\";
+\$html[\"title\"] = \"" . str_replace("\"", "\\\"", $_SESSION['NameSite']) . "\";
+\$html[\"keywords\"] = \"" . str_replace("\"", "\\\"", $_SESSION['keywords']) . "\";
 \$html[\"charset\"] = \"windows-1251\";
-\$html[\"templates\"]=\"".str_replace("\"","\\\"",$DefaultTemplate)."\";
+\$html[\"templates\"]=\"" . str_replace("\"", "\\\"", $DefaultTemplate) . "\";
 \$languages = \"ru\";
 \$default_module = \"main\";
 \$admin_data = \"admin\";
-\$date_create = \"".date("j.m.Y")."\";
+\$date_create = \"" . date("j.m.Y") . "\";
 \$buffer_date = \"on\";
 \$timing = \"off\";
 \$statistic = \"on\";
@@ -394,40 +361,36 @@ CREATE TABLE IF NOT EXISTS `".$_SESSION['prefix']."aliases` (
 \$users_on_site = \"off\";
 \$look_users_down = \"on\";
 \$html[\"description\"] = \"\";
-?>");	
-						flock($fp,LOCK_UN);
-						fclose($fp);
-						$fp = fopen('../includes/path.php','w');
-						fwrite($fp,"<?php\n\$data_path = \"".str_replace("\"","\\\"",$_SESSION['enginerPATH'])."\";\n?>");
-						fclose($fp);
-						//chmod('../includes/lock.pro', 666);
-						$fp = fopen('../includes/lock.pro','w');
-						fwrite($fp, 'Simple CMS');
-						fclose($fp);
-						unset($_SESSION);
-						include('step5.php');
-					}
-				}
-				break;
-		}
-	}
-	else
-	{
-		if($_GET['step'] == 1 && $_POST['yes'] == 'on')
-		{
-			if(!isset($_SESSION['enginerPATH'])) $PathTo = $_SERVER['DOCUMENT_ROOT'].'/enginer/';
-			else $PathTo = $_SESSION['enginerPATH'];
-			include("step2.php");
-		}
-		else include("step1.php");
-	}
-}
+?>");
+                            flock($fp, LOCK_UN);
+                            fclose($fp);
+                            $fp = fopen('../includes/path.php', 'w');
+                            fwrite($fp, "<?php\n\$data_path = \"" . str_replace("\"", "\\\"", $_SESSION['enginerPATH']) . "\";\n?>");
+                            fclose($fp);
+                            //chmod('../includes/lock.pro', 666);
+                            $fp = fopen('../includes/lock.pro', 'w');
+                            fwrite($fp, 'Simple CMS');
+                            fclose($fp);
+                            unset($_SESSION);
+                            include('step5.php');
+                        }
+                    }
+                    break;
+            }
+        } else {
+            if ($_GET['step'] == 1 && $_POST['yes'] == 'on') {
+                if (!isset($_SESSION['enginerPATH'])) $PathTo = $_SERVER['DOCUMENT_ROOT'] . '/enginer/';
+                else $PathTo = $_SESSION['enginerPATH'];
+                include("step2.php");
+            } else include("step1.php");
+        }
+    }
 
-?>
-</div>
-<div class="clear"></div>
-<div class="line"></div>
-</div>
-</body>
-</html>
+    ?>
+    </div>
+    <div class="clear"></div>
+    <div class="line"></div>
+    </div>
+    </body>
+    </html>
 <?php } ?>
