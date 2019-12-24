@@ -17,7 +17,7 @@
 </div>
 <!-- emd -->
 <div style="text-align:right">
-Название сайта: <img src="images/q.png" onmouseover="Visible(1)" alt="" /></td><td><input type="text" class="stepInput" name="nameSite" value="<?=$_SESSION['NameSite']?>" /></div></td>
+Название сайта: <img src="images/q.png" onmouseover="Visible(1)" alt="" /></td><td><input type="text" class="stepInput" name="nameSite" value="<?=!empty($_SESSION['NameSite']) ? $_SESSION['NameSite'] : '';?>" /></div></td>
 </tr>
 <tr>
 <td class="St1">
@@ -30,7 +30,7 @@
 </div>
 <!-- emd -->
 <div style="text-align:right">
-Ключевые слова: <img src="images/q.png" onmouseover="Visible(2)" alt="" /></td><td><input type="text" class="stepInput" name="keySite" value="<?=$_SESSION['keywords']?>" />
+Ключевые слова: <img src="images/q.png" onmouseover="Visible(2)" alt="" /></td><td><input type="text" class="stepInput" name="keySite" value="<?=!empty($_SESSION['keywords']) ? $_SESSION['keywords'] : '';?>" />
 </div>
 </td>
 </tr>

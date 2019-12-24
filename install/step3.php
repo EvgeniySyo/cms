@@ -17,7 +17,7 @@
 </div>
 <!-- emd -->
 <div style="text-align:right">
-Сервер: <img src="images/q.png" onmouseover="Visible(1)" alt="" /></td><td><input type="text" class="stepInput" name="serverDB" value="<?=$_SESSION['serverDB']?>" /></div></td>
+Сервер: <img src="images/q.png" onmouseover="Visible(1)" alt="" /></td><td><input type="text" class="stepInput" name="serverDB" value="<?=!empty($_SESSION['serverDB']) ? $_SESSION['serverDB'] : '';?>" /></div></td>
 </tr>
 <tr>
 <td class="St1">
@@ -30,7 +30,7 @@
 </div>
 <!-- emd -->
 <div style="text-align:right">
-Порт: <img src="images/q.png" onmouseover="Visible(2)" alt="" /></td><td><input type="text" class="stepInput" name="portDB" value="<?=$_SESSION['port']?>" />
+Порт: <img src="images/q.png" onmouseover="Visible(2)" alt="" /></td><td><input type="text" class="stepInput" name="portDB" value="<?=!empty($_SESSION['port']) ? $_SESSION['port'] : '';?>" />
 </div>
 </td>
 </tr>
@@ -45,7 +45,7 @@
 </div>
 <!-- emd -->
 <div style="text-align:right">
-Логин: <img src="images/q.png" onmouseover="Visible(3)" alt="" /></td><td><input type="text" class="stepInput" name="loginDB" value="<?=$_SESSION['Login']?>" />
+Логин: <img src="images/q.png" onmouseover="Visible(3)" alt="" /></td><td><input type="text" class="stepInput" name="loginDB" value="<?=!empty($_SESSION['Login']) ? $_SESSION['Login'] : '';?>" />
 </div>
 </td>
 </tr>
@@ -64,7 +64,7 @@
 
 <img style="cursor:pointer"  onmouseover="Visible(4)" src="images/q.png" alt="" />
 </div>
-</td><td><input type="text" class="stepInput" name="passDB" value="<?=$_SESSION['passDB']?>" /></td>
+</td><td><input type="text" class="stepInput" name="passDB" value="<?=!empty($_SESSION['passDB']) ? $_SESSION['passDB'] : '';?>" /></td>
 </tr>
 <tr>
 <td class="St1">
@@ -81,7 +81,7 @@
 
 <img style="cursor:pointer"  onmouseover="Visible(5)" src="images/q.png" alt="" />
 </div>
-</td><td><input type="text" class="stepInput" name="db" value="<?=$_SESSION['DB']?>" /></td>
+</td><td><input type="text" class="stepInput" name="db" value="<?=!empty($_SESSION['DB']) ? $_SESSION['DB'] : '';?>" /></td>
 </tr>
 
 <tr>
@@ -99,7 +99,7 @@
 
 <img style="cursor:pointer"  onmouseover="Visible(7)" src="images/q.png" alt="" />
 </div>
-</td><td><input type="text" class="stepInput" name="prefix" value="<?=$_SESSION['prefix']?>" /></td>
+</td><td><input type="text" class="stepInput" name="prefix" value="<?=!empty($_SESSION['prefix']) ? $_SESSION['prefix'] : '';?>" /></td>
 </tr>
 <tr>
 </table>

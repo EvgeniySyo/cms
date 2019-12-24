@@ -111,7 +111,9 @@ if (!file_exists("includes/lock.pro")) {
                         if ($install == false) include("step4.php");
                         else {
                             $date = date("j.m.Y-G:i:s");
-                            CMS::init_db('mypdo://' . $_SESSION['Login'] . ':' . $_SESSION['passDB'] . '@' . $_SESSION['serverDB'] . '/' . $_SESSION['DB'] . '?enc=utf8mb4&persist=true');
+							$db_config = 'mypdo://' . $_SESSION['Login'] . ':' . $_SESSION['passDB'] . '@' . (!empty($_SESSION['serverDB']) ? $_SESSION['serverDB'] : 'localhost') . '/' . $_SESSION['DB'] . '?enc=utf8mb4&persist=true';
+                            echo $db_config;
+							CMS::init_db($db_config);
                             //mysql_connect($_SESSION['serverDB'].':'.$_SESSION['port'],$_SESSION['Login'],$_SESSION['passDB']);
                             //mysql_select_db($_SESSION['DB']);
 
